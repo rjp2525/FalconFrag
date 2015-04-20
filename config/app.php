@@ -203,7 +203,7 @@ return [
 		 * Package Facades
 		 */
 		'Form' => 'Collective\Html\FormFacade',
-		'Html' => 'Collective\Html\HtmlFacade',
+		'HTML' => 'Collective\Html\HtmlFacade',
 		'Twitter' => 'Thujohn\Twitter\Facades\Twitter',
 
 	],
