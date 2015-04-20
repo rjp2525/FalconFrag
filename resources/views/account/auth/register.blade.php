@@ -47,6 +47,16 @@
                         {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => trans('forms.register.placeholders.password_repeat')]) !!}
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="col-md-8 col-md-offset-4">
+                        {!! Form::checkbox('terms_of_service', 'yes', old('terms_of_service')) !!} {{ trans('forms.register.terms_of_service') }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8 col-md-offset-4">
+                        {!! Form::submit(trans('forms.register.register_button'), ['class' => 'btn btn-success']) !!}
+                    </div>
+                </div>
             {!! Form::close() !!}
         </div>
     </div>
