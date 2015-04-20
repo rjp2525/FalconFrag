@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ Lang::get('general.site_title') }}</title>
+        <title>{{ Lang::get('general.site.title') }}</title>
 
         <meta name="description" content="Site description goes here.">
         <meta name="keywords" content="keywords, go, here">
