@@ -145,6 +145,12 @@ return [
 		'Falcon\Providers\EventServiceProvider',
 		'Falcon\Providers\RouteServiceProvider',
 
+		/*
+		 * Package Service Providers
+		 */
+		'Collective\Html\HtmlServiceProvider',
+		'Thujohn\Twitter\TwitterServiceProvider',
+
 	],
 
 	/*
@@ -192,6 +198,13 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+		/*
+		 * Package Facades
+		 */
+		'Form' => 'Collective\Html\FormFacade',
+		'Html' => 'Collective\Html\HtmlFacade',
+		'Twitter' => 'Thujohn\Twitter\Facades\Twitter',
 
 	],
 
