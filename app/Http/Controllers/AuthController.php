@@ -2,6 +2,7 @@
 
 use Falcon\Http\Requests;
 use Falcon\Http\Controllers\Controller;
+use Falcon\Http\Requests\Auth\RegistrationRequest;
 
 use Illuminate\Http\Request;
 
@@ -11,8 +12,8 @@ class AuthController extends Controller {
         return view('account.auth.register');
     }
 
-    public function postRegister() {
-        //
+    public function postRegister(RegistrationRequest $request) {
+        return 'You made it!';
     }
 
 }

@@ -4,6 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
+            
+            @include('layout.partial.messages.errors')
+
             {!! Form::open(['action' => 'AuthController@postRegister', 'class' => 'form-horizontal']) !!}
                 <div class="form-group">
                     {!! Form::label('first_name', trans('forms.register.labels.first_name'), ['class' => 'col-sm-4 control-label']) !!}
@@ -48,12 +51,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-8 col-md-offset-4">
-                        {!! Form::checkbox('terms_of_service', 'yes', old('terms_of_service')) !!} {{ trans('forms.register.terms_of_service') }}
+                    <div class="col-md-8 col-md-offset-4 text-center">
+                        {!! Form::checkbox('terms_of_service', 'yes', old('terms_of_service')) !!} {!! trans('forms.register.terms_of_service') !!}
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-8 col-md-offset-4">
+                    <div class="col-md-8 col-md-offset-4 text-right">
                         {!! Form::submit(trans('forms.register.register_button'), ['class' => 'btn btn-success']) !!}
                     </div>
                 </div>
