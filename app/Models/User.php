@@ -23,7 +23,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['first_name', 'last_name', 'company', 'username', 'email', 'password', 'activation_code'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -33,7 +33,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $hidden = ['password', 'remember_token'];
 
     /**
-     * Set the soft delete column name
+     * Set the column to use for soft deleting
      *
      * @var array
      */
