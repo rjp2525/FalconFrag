@@ -15,7 +15,6 @@ class Kernel extends HttpKernel {
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'Falcon\Http\Middleware\VerifyCsrfToken',
 	];
 
 	/**
@@ -27,6 +26,7 @@ class Kernel extends HttpKernel {
 		'auth' => 'Falcon\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'Falcon\Http\Middleware\RedirectIfAuthenticated',
+		'csrf' => 'Falcon\Http\Middleware\VerifyCsrfToken',
 	];
 
 }
