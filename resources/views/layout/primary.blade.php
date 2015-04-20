@@ -7,8 +7,8 @@
 
         <title>{{ Lang::get('general.site.title') }}</title>
 
-        <meta name="description" content="Site description goes here.">
-        <meta name="keywords" content="keywords, go, here">
+        <meta name="description" content="{{ Lang::get('general.site.description') }}">
+        <meta name="keywords" content="{{ Lang::get('general.site.keywords') }}">
 
         {!! HTML::style('//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css') }}
         {!! HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css') }}
@@ -24,7 +24,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Untitled</a>
+                    <a class="navbar-brand" href="#">{{ Lang::get('general.site.title') }}</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
