@@ -32,7 +32,7 @@ return [
 		],
 
 		"terms_of_service" => "I agree to the <a href=\"#\">Terms of Service</a> and <a href=\"#\">Privacy Policy</a>",
-		"register" => "Continue",
+		"register_button" => "Continue",
 	],
 
 ];
