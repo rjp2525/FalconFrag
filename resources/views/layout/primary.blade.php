@@ -5,13 +5,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ Lang::get('general.site.title') }}</title>
+        <title>{{ trans('general.site.title') }}</title>
 
-        <meta name="description" content="{{ Lang::get('general.site.description') }}">
-        <meta name="keywords" content="{{ Lang::get('general.site.keywords') }}">
+        <meta name="description" content="{{ trans('general.site.description') }}">
+        <meta name="keywords" content="{{ trans('general.site.keywords') }}">
 
-        {!! HTML::style('//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css') }}
-        {!! HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css') }}
+        {!! HTML::style('//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css') !!}
+        {!! HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css') !!}
+        <style type="text/css"> 
+            body {
+                padding-top: 50px;
+            }
+        </style>
     </head>
     <body>
 
@@ -24,7 +29,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">{{ Lang::get('general.site.title') }}</a>
+                    <a class="navbar-brand" href="#">{{ trans('general.site.title') }}</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -45,7 +50,8 @@
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-            ga('create', 'UA-00000000-0', 'auto');
+            ga('create', {{ env('GOOGLE_ANALYTICS_ID', 'UA-00000000-0') }}, 'auto');
+            @if(Auth::user()) ga('set', '&uid', {{ Auth::id() }}); @endif
             ga('send', 'pageview');
         </script>
 

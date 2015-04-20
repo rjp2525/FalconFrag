@@ -12,3 +12,6 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+
+Route::get('register', 'AuthController@getRegister');
+Route::post('register', 'AuthController@postRegister');
