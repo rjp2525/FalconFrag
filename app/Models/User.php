@@ -1,13 +1,15 @@
 <?php namespace Falcon\Models;
 
+use Falcon\Models\Forum\Thread;
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+{
 
     use Authenticatable, CanResetPassword, SoftDeletes;
 
@@ -38,5 +40,40 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    public function profile()
+    {
+        return $this->hasOne('Falcon\Models\User\Profile');
+    }
+
+    public function address()
+    {
+        return $this->hasMany('Falcon\Models\User\Address');
+    }
+
+    public function forum_threads()
+    {
+        return $this->hasMany('Falcon\Models\Forum\Thread');
+    }
+
+    public function forum_replies()
+    {
+        return $this->hasMany('Falcon\Models\Forum\Reply');
+    }
+
+    public function getForumThreads(Thread $thread)
+    {
+        $stack = [];
+        foreach ($this->replies as $reply) {
+            array_push($stack, $reply->thread_id);
+        }
+
+        $threads = [];
+        foreach (array_unique($stack) as $id) {
+            array_push($threads, $thread->find($id));
+        }
+
+        return $threads;
+    }
 
 }
