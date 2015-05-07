@@ -12,7 +12,7 @@
 
         {!! HTML::style('//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css') !!}
         {!! HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css') !!}
-        <style type="text/css"> 
+        <style type="text/css">
             body {
                 padding-top: 50px;
             }
@@ -50,7 +50,7 @@
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-            ga('create', {{ env('GOOGLE_ANALYTICS_ID', 'UA-00000000-0') }}, 'auto');
+            ga('create', {{ env('GOOGLE_ANALYTICS_ID', 'UA-41551742-3') }}, 'auto');
             @if(Auth::user()) ga('set', '&uid', {{ Auth::id() }}); @endif
             ga('send', 'pageview');
         </script>

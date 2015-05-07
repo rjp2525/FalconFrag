@@ -19,7 +19,7 @@ class AuthController extends Controller
 
     public function getLogin()
     {
-        return 'Login page';
+        return view('account.auth.login');
     }
 
     public function postLogin(LoginRequest $request)
@@ -29,7 +29,7 @@ class AuthController extends Controller
         $password = $request->input('password');
         $remember = $request->input('remember');
 
-        if ($this->auth->attempt(['email' => $username, 'password' => $password, 'active' => true], $remember)) {
+        if ($this->auth->attempt(['email' => $username, 'password' => $password], $remember)) {
             if (!$this->auth->user()->active == true) {
                 $error = 'Your account has not been activated yet. Please check your email for activation instructions.';
                 $this->auth->logout();
@@ -45,7 +45,7 @@ class AuthController extends Controller
 
     public function getRegister()
     {
-        return 'Registration page';
+        return view('account.auth.register');
     }
 
     public function postRegister(RegisterRequest $request)
@@ -58,12 +58,28 @@ class AuthController extends Controller
         $user->company = empty($request->input('company')) ? null : $request->input('company');
         $user->username = $request->input('username');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = bcrypt($request->input('password'));
         $user->activation_code = sha1(microtime(true) . $request->input('email'));
         $user->save();
 
         $success = 'You have successfully been registered. Please check your email for instructions on how to activate your account.';
         return redirect()->action('AuthController@getLogin')->with('success', $success);
+    }
+
+    public function getActivate(User $user, $token)
+    {
+        $account = $user->where('activation_code', $token)->first();
+        if ($account) {
+            $account->activation_code = null;
+            $account->active = true;
+            $account->save();
+
+            $success = 'Your account has been activated! You may now sign in.';
+            return redirect()->action('AuthController@getLogin')->with('success', $success);
+        }
+
+        $error = 'The activation code you provided was invalid or expired.';
+        return redirect()->action('AuthController@getLogin')->with('error', $error);
     }
 
 }
