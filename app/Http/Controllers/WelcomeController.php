@@ -11,15 +11,14 @@ class WelcomeController extends Controller {
 	| is configured to only allow guests. Like most of the other sample
 	| controllers, you are free to modify or remove it as you desire.
 	|
-	*/
+	 */
 
 	/**
 	 * Create a new controller instance.
 	 *
 	 * @return void
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 		$this->middleware('guest');
 	}
 
@@ -28,8 +27,7 @@ class WelcomeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
+	public function index() {
 		return view('welcome');
 	}
 
