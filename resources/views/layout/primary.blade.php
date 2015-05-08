@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="google-site-verification" content="XL21ThPIdHEt73LbUAr4sLa6tZmXgFUeTwoMnkNS0G8">
 
         <title>{{ trans('general.site.title') }}</title>
 
@@ -45,13 +46,15 @@
 
         {!! HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js') !!}
         {!! HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js') !!}
-        <script type="text/javascript">
+        <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-            ga('create', {{ env('GOOGLE_ANALYTICS_ID', 'UA-41551742-3') }}, 'auto');
-            @if(Auth::user()) ga('set', '&uid', {{ Auth::id() }}); @endif
+            ga('create', 'UA-41551742-3', 'auto');
+            @if(Auth::check())
+            ga('set', '&uid', {{ Auth::id() }});
+            @endif
             ga('send', 'pageview');
         </script>
 

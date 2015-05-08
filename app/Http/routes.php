@@ -19,6 +19,6 @@ Route::get('register', 'AuthController@getRegister');
 Route::post('register', 'AuthController@postRegister');
 Route::get('activate/{token}', 'AuthController@getActivate');
 
-Route::get('dump', function () {
-    return \Falcon\Models\User::all();
+Route::group(['prefix' => 'forum', 'namespace' => 'Forum'], function () {
+    Route::get('/', 'CategoryController@index');
 });
