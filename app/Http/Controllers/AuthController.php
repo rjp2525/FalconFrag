@@ -9,19 +9,40 @@ use Illuminate\Contracts\Auth\Guard;
 class AuthController extends Controller
 {
 
+    /**
+     * Laravel authentication Guard instance
+     *
+     * @var $auth
+     */
     protected $auth;
 
+    /**
+     * Initialize variables and middleware
+     *
+     * @param Guard $auth
+     */
     public function __construct(Guard $auth)
     {
         $this->auth = $auth;
         $this->middleware('guest');
     }
 
+    /**
+     * Display the login form
+     *
+     * @return Response
+     */
     public function getLogin()
     {
         return view('account.auth.login');
     }
 
+    /**
+     * Process the login authentication request
+     *
+     * @param  LoginRequest $request
+     * @return Response
+     */
     public function postLogin(LoginRequest $request)
     {
         // Process the login request
@@ -43,11 +64,22 @@ class AuthController extends Controller
         return redirect()->action('AuthController@getLogin')->with('error', $error);
     }
 
+    /**
+     * Display the registration form
+     *
+     * @return Response
+     */
     public function getRegister()
     {
         return view('account.auth.register');
     }
 
+    /**
+     * Process the account registration request
+     *
+     * @param  RegisterRequest $request
+     * @return Response
+     */
     public function postRegister(RegisterRequest $request)
     {
         // Process the registration request
@@ -66,6 +98,14 @@ class AuthController extends Controller
         return redirect()->action('AuthController@getLogin')->with('success', $success);
     }
 
+    /**
+     * Attempt activation on an account with the provided
+     * activation token
+     *
+     * @param  User   $user  Instance of User model
+     * @param  string $token Activation token string
+     * @return Response
+     */
     public function getActivate(User $user, $token)
     {
         $account = $user->where('activation_code', $token)->first();
