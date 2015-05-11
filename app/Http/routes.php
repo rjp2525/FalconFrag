@@ -18,7 +18,3 @@ Route::post('login', 'AuthController@postLogin');
 Route::get('register', 'AuthController@getRegister');
 Route::post('register', 'AuthController@postRegister');
 Route::get('activate/{token}', 'AuthController@getActivate');
-
-Route::group(['prefix' => 'forum', 'namespace' => 'Forum'], function () {
-    Route::get('/', 'CategoryController@index');
-});
