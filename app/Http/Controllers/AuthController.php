@@ -98,7 +98,8 @@ class AuthController extends Controller
 
         // Send the user an activation email
         $activation_code = $user->activation_code;
-        $mail->queue($minifier->html('emails.account.activate'), ['code' => $activation_code], function ($message) use ($user) {
+        $first_name = $user->first_name;
+        $mail->queue($minifier->html('emails.account.activate'), ['code' => $activation_code, 'fname' => $first_name], function ($message) use ($user) {
             $message->to($user->email, ($user->first_name . ' ' . $user->last_name))->subject('Account Activation Required');
         });
 
