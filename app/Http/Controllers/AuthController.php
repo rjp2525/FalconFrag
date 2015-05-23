@@ -4,7 +4,9 @@ use Falcon\Http\Controllers\Controller;
 use Falcon\Http\Requests\Auth\LoginRequest;
 use Falcon\Http\Requests\Auth\RegisterRequest;
 use Falcon\Models\User;
+use GrahamCampbell\HTMLMin\HTMLMin;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Mail\MailQueue;
 
 class AuthController extends Controller
 {
@@ -80,7 +82,7 @@ class AuthController extends Controller
      * @param  RegisterRequest $request
      * @return Response
      */
-    public function postRegister(RegisterRequest $request)
+    public function postRegister(RegisterRequest $request, HTMLMin $minifier, MailQueue $mail)
     {
         // Process the registration request
         $user = new User;
@@ -93,6 +95,12 @@ class AuthController extends Controller
         $user->password = bcrypt($request->input('password'));
         $user->activation_code = sha1(microtime(true) . $request->input('email'));
         $user->save();
+
+        // Send the user an activation email
+        $activation_code = $user->activation_code;
+        $mail->queue($minifier->html('emails.account.activate'), ['code' => $activation_code], function ($message) use ($user) {
+            $message->to($user->email, ($user->first_name . ' ' . $user->last_name))->subject('Account Activation Required');
+        });
 
         $success = 'You have successfully been registered. Please check your email for instructions on how to activate your account.';
         return redirect()->action('AuthController@getLogin')->with('success', $success);
