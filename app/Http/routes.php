@@ -18,3 +18,7 @@ Route::post('login', 'AuthController@postLogin');
 Route::get('register', 'AuthController@getRegister');
 Route::post('register', 'AuthController@postRegister');
 Route::get('activate/{token}', 'AuthController@getActivate');
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('/', 'DashboardController@index');
+});

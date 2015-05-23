@@ -12,5 +12,12 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('app.less');
+    mix.less([
+        'style.less',
+        'admin.less'
+    ])
+    .version([
+        'css/style.css',
+        'css/admin.css'
+    ]);
 });

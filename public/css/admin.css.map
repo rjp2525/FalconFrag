@@ -1,0 +1,1 @@
+{"version":3,"sources":["admin.less","admin.css"],"names":[],"mappings":"AAAA;EACI,qBAAA;EACA,aAAA;ECCH","file":"admin.css","sourcesContent":["body {\r\n    background: #fefefe;\r\n    color: #fff;\r\n}",null],"sourceRoot":"/source/"}
