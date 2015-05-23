@@ -211,6 +211,7 @@ return [
         'Purifier' => 'Mews\Purifier\Facades\Purifier',
         'Analytics' => 'Ipunkt\LaravelAnalytics\AnalyticsFacade',
         'HTMLMin' => 'GrahamCampbell\HTMLMin\Facades\HTMLMin',
+        'Carbon' => 'Carbon\Carbon',
 
     ],
 
