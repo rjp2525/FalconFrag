@@ -1,0 +1,273 @@
+// Custom Buttons
+.btn {
+    outline: none;
+    border: 1px solid transparent;
+    margin-bottom: @base-padding;
+
+    &.text-left {
+        text-align: left;
+    }
+
+    &.text-right {
+        text-align: right;
+    }
+
+    &:active,
+    &:focus {
+        outline: none !important;
+    }
+
+    &:active,
+    &.active {
+        .box-shadow(inset 0 0 5px 2px fade(#000, 8%));
+    }
+
+    // Spacing between buttons
+    + .btn {
+        margin-left: @base-padding / 2;
+
+        &.btn-block {
+            margin-left: 0;
+        }
+    }
+
+    // Single button with no margin
+    &.btn-single {
+        margin-bottom: 0;
+    }
+
+    // Button icons
+    &.btn-icon {
+        line-height: 1;
+
+        i {
+            vertical-align: middle;
+            display: inline-block;
+            padding: 5px 0;
+        }
+
+        span {
+            display: inline-block;
+        }
+    }
+
+    // "Standalone" button icon
+    &.btn-icon-standalone {
+        padding: 0;
+        border: 0;
+        line-height: 1;
+
+        i, span {
+            display: block;
+            padding: 12px @padding-base-horizontal;
+        }
+
+        i {
+            border-right: 1px solid transparent;
+            float: left;
+        }
+
+        span {
+            padding-left: 45px + @base-padding;
+            padding-right: @base-padding + 3;
+        }
+
+        &.btn-icon-standalone-right {
+            i {
+                float: right;
+                border-left: 1px solid transparent;
+                border-right: 0;
+            }
+
+            span {
+                padding-left: @base-padding + 3;
+                padding-right: 45px + @base-padding;
+            }
+        }
+
+        // Button Sizes
+        &.btn-lg {
+            i, span {
+                padding: 15px @padding-large-horizontal;
+            }
+
+            span {
+                padding-left: @base-padding + 65;
+            }
+
+            &.btn-icon-standalone-right {
+                span {
+                    padding-left: @base-padding + 7;
+                    padding-right: @base-padding + 65;
+                }
+            }
+        }
+
+        &.btn-sm {
+            i, span {
+                padding: 8px @padding-small-horizontal;
+            }
+
+            span {
+                padding-left: @base-padding + 40;
+            }
+
+            &.btn-icon-standalone-right {
+                span {
+                    padding-left: @base-padding + 2;
+                    padding-right: @base-padding + 40;
+                }
+            }
+        }
+
+        &.btn-xs {
+            i, span {
+                padding: 5px @padding-xs-horizontal;
+            }
+
+            span {
+                padding-left: @base-padding + 24;
+            }
+
+            &.btn-icon-standalone-right {
+                span {
+                    padding-left: @base-padding;
+                    padding-right: @base-padding + 24;
+                }
+            }
+        }
+    }
+
+    // Button Color Variants
+    &.btn-secondary {
+        .btn-style(@secondary-color, #fff);
+    }
+
+    &.btn-purple {
+        .btn-style(@falcon-purple, #fff);
+    }
+
+    &.btn-orange {
+        .btn-style(@falcon-orange, #fff);
+    }
+
+    &.btn-pink {
+        .btn-style(@falcon-pink, #fff);
+    }
+
+    &.btn-turquoise {
+        .btn-style(@falcon-turquoise, #fff);
+    }
+
+    &.btn-blue {
+        .btn-style(@falcon-blue, #fff);
+    }
+
+    &.btn-red {
+        .btn-style(@falcon-red, #fff);
+    }
+
+    &.btn-gray {
+        .btn-style(@falcon-gray, #333);
+    }
+
+    &.btn-black {
+        .btn-style(@falcon-black, #fff);
+
+        &:hover {
+            background-color: lighten(@falcon-black, 10%);
+        }
+    }
+
+    &.btn-white {
+        .btn-style(#fff, #333);
+        border: 1px solid @default-border-color;
+    }
+
+    // Standalone Button Styles
+    &.btn-primary {
+        .mx-btn-icon-standalone(@main-color; -5%; -10%);
+    }
+
+    &.btn-secondary {
+        .mx-btn-icon-standalone(@secondary-color; 2%; 4%);
+    }
+
+    &.btn-info {
+        .mx-btn-icon-standalone(@brand-info; 4%; 8%);
+    }
+
+    &.btn-danger {
+        .mx-btn-icon-standalone(@brand-danger; 4%; 8%);
+    }
+
+    &.btn-warning {
+        .mx-btn-icon-standalone(@brand-warning; 3%; 5%);
+    }
+
+    &.btn-red {
+        .mx-btn-icon-standalone(@falcon-red; 4%; 6%);
+    }
+
+    &.btn-purple {
+        .mx-btn-icon-standalone(@falcon-purple; 4%; 11%, 9%);
+    }
+
+    &.btn-blue {
+        .mx-btn-icon-standalone(@falcon-blue; 4%; 6%);
+    }
+
+    &.btn-white {
+        .mx-btn-icon-standalone(#fff; 4%; 10%; 12%);
+    }
+
+    &.btn-gray {
+        .mx-btn-icon-standalone(@falcon-gray; 4%; 10%; 12%);
+    }
+
+    &.btn-black {
+        .mx-btn-icon-standalone(@falcon-black; -5%; -10%; -12%);
+    }
+
+    // Button Group
+    .btn-group & {
+        &.btn-purple:hover {
+            border-color: darken(@falcon-purple, 15%);
+        }
+
+        &.btn-red:hover {
+            border-color: darken(@falcon-red, 15%);
+        }
+
+        &.btn-blue:hover {
+            border-color: darken(@falcon-blue, 15%);
+        }
+
+        &.btn-white:hover {
+            border-color: darken(#fff, 15%);
+        }
+
+        &.btn-gray:hover {
+            border-color: darken(@falcon-gray, 15%);
+        }
+
+        &.btn-black:hover {
+            border-color: lighten(@falcon-black, 15%);
+        }
+    }
+}
+
+.btn-unstyled {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    height: auto;
+    line-height: 1;
+
+    &:active,
+    &:focus {
+        background: none;
+        .box-shadow(none);
+    }
+}
