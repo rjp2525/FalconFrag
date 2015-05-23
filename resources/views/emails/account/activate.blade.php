@@ -340,6 +340,7 @@ display: inline !important;
   }
 }
 </style>
+    <span class="preheader" style="display: none !important;">Just one more step to go! To confirm your account, just click the button below. We may need to communicate important service issues with you from time to time, so it's important we have an up-to-date email on file.</span>
     <table class="body" style="border-collapse: collapse; border-spacing: 0; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; height: 100%; line-height: 19px; margin: 0; padding: 0; text-align: left; vertical-align: top; width: 100%">
         <tr style="padding: 0; text-align: left; vertical-align: top" align="left">
             <td class="center" align="center" valign="top" style="-moz-hyphens: auto; -webkit-hyphens: auto; border-collapse: collapse !important; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; hyphens: auto; line-height: 19px; margin: 0; padding: 0; text-align: center; vertical-align: top; word-break: break-word">
@@ -357,7 +358,7 @@ display: inline !important;
                                                             <img src="http://i.imgur.com/LVx2XnJ.png" style="-ms-interpolation-mode: bicubic; clear: both; display: block; float: left; max-width: 100%; outline: none; text-decoration: none; width: auto" align="left" />
                                                         </td>
                                                         <td class="six sub-columns last" align="right" style="-moz-hyphens: auto; -webkit-hyphens: auto; border-collapse: collapse !important; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; hyphens: auto; line-height: 19px; margin: 0; min-width: 0px; padding: 0px 0px 10px; text-align: right; vertical-align: middle; width: 50%; word-break: break-word" valign="middle">
-                                                            <span class="template-label" style="color: #888; font-size: 12px; vertical-align: middle">May 22, 2015</span>
+                                                            <span class="template-label" style="color: #888; font-size: 12px; vertical-align: middle">{{ Carbon::now()->toFormattedDateString() }}</span>
                                                         </td>
                                                         <td class="expander" style="-moz-hyphens: auto; -webkit-hyphens: auto; border-collapse: collapse !important; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; hyphens: auto; line-height: 19px; margin: 0; padding: 0; text-align: left; vertical-align: top; visibility: hidden; width: 0px; word-break: break-word" align="left" valign="top"></td>
                                                     </tr>
