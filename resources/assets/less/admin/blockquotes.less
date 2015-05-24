@@ -1,0 +1,69 @@
+// Custom Blockquotes
+blockquote {
+    small {
+        margin-top: @base-padding;
+        display: block;
+    }
+}
+
+.blockquote {
+    position: relative;
+    padding: @base-margin @default-padding;
+    background: #fff;
+    border: 1px solid @default-border-color;
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 6px;
+        background: #f7f7f7;
+    }
+
+    &.blockquote-blue {
+        .blockquote-style(@falcon-blue);
+    }
+
+    &.blockquote-red {
+        .blockquote-style(@falcon-red);
+    }
+
+    &.blockquote-success {
+        .blockquote-style(@brand-success);
+    }
+
+    &.blockquote-warning {
+        .blockquote-style(@brand-warning);
+    }
+
+    &.blockquote-info {
+        .blockquote-style(@brand-info);
+    }
+
+    &.blockquote-danger {
+        .blockquote-style(@brand-danger);
+    }
+
+    &.blockquote-purple {
+        .blockquote-style(@falcon-purple);
+    }
+    
+    &.blockquote-black {
+        .blockquote-style(@falcon-black);
+    }
+}
+
+.blockquote-style(@border) {
+    border: 1px solid @border;
+
+    &:before {
+        background: fade(@border, 10%);
+    }
+
+    strong {
+        color: @border;
+    }
+}
