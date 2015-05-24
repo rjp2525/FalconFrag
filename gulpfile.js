@@ -12,12 +12,8 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less([
-        'style.less',
-        'admin.less'
-    ])
-    .version([
-        'css/style.css',
-        'css/admin.css'
-    ]);
+    mix.less('admin.less')
+        .coffee()
+        .version('css/admin.css')
+        .copy('resources/assets/img', 'public/img');
 });
