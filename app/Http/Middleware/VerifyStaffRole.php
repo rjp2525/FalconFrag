@@ -33,7 +33,7 @@ class VerifyStaffRole
      */
     public function handle($request, Closure $next)
     {
-        if ($this->auth->user()->is('staff.*')) {
+        if ($this->auth->check() && $this->auth->user()->is('staff.*')) {
             return $next($request);
         }
 
