@@ -1,5 +1,7 @@
 <?php namespace Falcon\Models;
 
+use Bican\Roles\Contracts\HasRoleAndPermissionContract;
+use Bican\Roles\Traits\HasRoleAndPermission;
 use Falcon\Models\Forum\Thread;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -8,10 +10,10 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract, HasRoleAndPermissionContract
 {
 
-    use Authenticatable, CanResetPassword, SoftDeletes;
+    use Authenticatable, CanResetPassword, SoftDeletes, HasRoleAndPermission;
 
     /**
      * The database table used by the model.

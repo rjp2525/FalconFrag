@@ -153,6 +153,7 @@ return [
         'Mews\Purifier\PurifierServiceProvider',
         'Ipunkt\LaravelAnalytics\AnalyticsServiceProvider',
         'GrahamCampbell\HTMLMin\HTMLMinServiceProvider',
+        'Bican\Roles\RolesServiceProvider',
 
     ],
 
