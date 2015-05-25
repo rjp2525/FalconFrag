@@ -29,7 +29,7 @@
         </div>
     </div>
     {!! HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js') !!}
-    {!! HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js') !!}
+    {!! HTML::script(elixir('js/admin/bootstrap.js')) !!}
     {!! HTML::script('js/core.js') !!}
     {!! Analytics::render() !!}
     <!--<script>

@@ -6274,6 +6274,8 @@ button.close {
 .page-container .main-content .page-title:after,
 .sidebar-menu .logo-env:before,
 .sidebar-menu .logo-env:after,
+.sidebar-menu .menu-collapse:before,
+.sidebar-menu .menu-collapse:after,
 .navbar.horizontal-menu .navbar-inner:before,
 .navbar.horizontal-menu .navbar-inner:after,
 #chat .chat-conversation .conversation-body > li:before,
@@ -6316,6 +6318,7 @@ button.close {
 .modal-footer:after,
 .page-container .main-content .page-title:after,
 .sidebar-menu .logo-env:after,
+.sidebar-menu .menu-collapse:after,
 .navbar.horizontal-menu .navbar-inner:after,
 #chat .chat-conversation .conversation-body > li:after,
 .panel .panel-heading:after,
@@ -6363,6 +6366,8 @@ button.close {
 .page-container .main-content .page-title:after,
 .sidebar-menu .logo-env:before,
 .sidebar-menu .logo-env:after,
+.sidebar-menu .menu-collapse:before,
+.sidebar-menu .menu-collapse:after,
 .navbar.horizontal-menu .navbar-inner:before,
 .navbar.horizontal-menu .navbar-inner:after,
 #chat .chat-conversation .conversation-body > li:before,
@@ -6405,6 +6410,7 @@ button.close {
 .modal-footer:after,
 .page-container .main-content .page-title:after,
 .sidebar-menu .logo-env:after,
+.sidebar-menu .menu-collapse:after,
 .navbar.horizontal-menu .navbar-inner:after,
 #chat .chat-conversation .conversation-body > li:after,
 .panel .panel-heading:after,
@@ -7294,6 +7300,8 @@ footer.main-footer .go-up a,
 .page-container .main-content .page-title:after,
 .sidebar-menu .logo-env:before,
 .sidebar-menu .logo-env:after,
+.sidebar-menu .menu-collapse:before,
+.sidebar-menu .menu-collapse:after,
 .navbar.horizontal-menu .navbar-inner:before,
 .navbar.horizontal-menu .navbar-inner:after,
 #chat .chat-conversation .conversation-body > li:before,
@@ -7336,6 +7344,7 @@ footer.main-footer .go-up a,
 .modal-footer:after,
 .page-container .main-content .page-title:after,
 .sidebar-menu .logo-env:after,
+.sidebar-menu .menu-collapse:after,
 .navbar.horizontal-menu .navbar-inner:after,
 #chat .chat-conversation .conversation-body > li:after,
 .panel .panel-heading:after,
@@ -7383,6 +7392,8 @@ footer.main-footer .go-up a,
 .page-container .main-content .page-title:after,
 .sidebar-menu .logo-env:before,
 .sidebar-menu .logo-env:after,
+.sidebar-menu .menu-collapse:before,
+.sidebar-menu .menu-collapse:after,
 .navbar.horizontal-menu .navbar-inner:before,
 .navbar.horizontal-menu .navbar-inner:after,
 #chat .chat-conversation .conversation-body > li:before,
@@ -7425,6 +7436,7 @@ footer.main-footer .go-up a,
 .modal-footer:after,
 .page-container .main-content .page-title:after,
 .sidebar-menu .logo-env:after,
+.sidebar-menu .menu-collapse:after,
 .navbar.horizontal-menu .navbar-inner:after,
 #chat .chat-conversation .conversation-body > li:after,
 .panel .panel-heading:after,
@@ -7596,6 +7608,16 @@ body {
 .sidebar-menu .logo-env .settings-icon a:hover {
   color: #ffffff;
 }
+.sidebar-menu .menu-collapse {
+  overflow-x: visible;
+  -webkit-overflow-scrolling: touch;
+}
+.sidebar-menu .menu-collapse.in {
+  overflow-y: auto;
+}
+.sidebar-menu .menu-collapse.collapse {
+  display: block;
+}
 .sidebar-menu .main-menu {
   padding-left: 40px;
   padding-right: 40px;
@@ -7652,15 +7674,20 @@ body {
   transform: rotate(-90deg);
   transition: all 150ms ease-in-out;
 }
+.sidebar-menu .main-menu li.has-sub.open > a:before,
 .sidebar-menu .main-menu li.has-sub.opened > a:before,
 .sidebar-menu .main-menu li.has-sub.expanded > a:before {
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
 }
+.sidebar-menu .main-menu > li.open > ul,
 .sidebar-menu .main-menu > li.opened > ul {
   display: block;
 }
+.sidebar-menu .main-menu > li.open.open > ul,
+.sidebar-menu .main-menu > li.opened.open > ul,
+.sidebar-menu .main-menu > li.open .opened > ul,
 .sidebar-menu .main-menu > li.opened .opened > ul {
   display: block;
 }
@@ -8436,15 +8463,20 @@ body {
     transform: rotate(-90deg);
     transition: all 150ms ease-in-out;
   }
+  .navbar.horizontal-menu .navbar-inner .navbar-nav li.has-sub.open > a:before,
   .navbar.horizontal-menu .navbar-inner .navbar-nav li.has-sub.opened > a:before,
   .navbar.horizontal-menu .navbar-inner .navbar-nav li.has-sub.expanded > a:before {
     -webkit-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+  .navbar.horizontal-menu .navbar-inner .navbar-nav > li.open > ul,
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li.opened > ul {
     display: block;
   }
+  .navbar.horizontal-menu .navbar-inner .navbar-nav > li.open.open > ul,
+  .navbar.horizontal-menu .navbar-inner .navbar-nav > li.opened.open > ul,
+  .navbar.horizontal-menu .navbar-inner .navbar-nav > li.open .opened > ul,
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li.opened .opened > ul {
     display: block;
   }
@@ -9189,38 +9221,41 @@ body.chat-open #chat {
   .page-container .sidebar-menu {
     position: relative;
   }
-  .page-container .sidebar-menu .logo-env,
-  .page-container .sidebar-menu .main-menu {
+  .page-container .sidebar-menu .sidebar-menu-inner {
+    position: relative;
+  }
+  .page-container .sidebar-menu .sidebar-menu-inner .logo-env,
+  .page-container .sidebar-menu .sidebar-menu-inner .main-menu {
     padding-left: 20px;
     padding-right: 20px;
   }
-  .page-container .sidebar-menu .logo-env {
+  .page-container .sidebar-menu .sidebar-menu-inner .logo-env {
     margin-bottom: 0;
     padding-top: 20px;
     padding-bottom: 20px;
   }
-  .page-container .sidebar-menu .logo-env .mobile-menu-toggle {
+  .page-container .sidebar-menu .sidebar-menu-inner .logo-env .mobile-menu-toggle {
     float: right;
   }
-  .page-container .sidebar-menu .logo-env .mobile-menu-toggle a {
+  .page-container .sidebar-menu .sidebar-menu-inner .logo-env .mobile-menu-toggle a {
     position: relative;
     display: inline-block;
     color: #979898;
     line-height: 1;
     margin-left: 15px;
   }
-  .page-container .sidebar-menu .logo-env .mobile-menu-toggle a i {
+  .page-container .sidebar-menu .sidebar-menu-inner .logo-env .mobile-menu-toggle a i {
     line-height: 1;
     font-size: 18px;
     position: relative;
     top: 1px;
   }
-  .page-container .sidebar-menu .logo-env .mobile-menu-toggle a:hover,
-  .page-container .sidebar-menu .logo-env .mobile-menu-toggle a:active,
-  .page-container .sidebar-menu .logo-env .mobile-menu-toggle a:focus {
+  .page-container .sidebar-menu .sidebar-menu-inner .logo-env .mobile-menu-toggle a:hover,
+  .page-container .sidebar-menu .sidebar-menu-inner .logo-env .mobile-menu-toggle a:active,
+  .page-container .sidebar-menu .sidebar-menu-inner .logo-env .mobile-menu-toggle a:focus {
     color: #ffffff;
   }
-  .page-container .sidebar-menu .logo-env .mobile-menu-toggle a .badge {
+  .page-container .sidebar-menu .sidebar-menu-inner .logo-env .mobile-menu-toggle a .badge {
     position: absolute;
     right: -3px;
     top: -8px;
@@ -9228,39 +9263,65 @@ body.chat-open #chat {
     padding: 1px 2px;
     min-width: 14px;
   }
-  .page-container .sidebar-menu .main-menu {
-    display: none;
-    margin-bottom: 0;
+  .page-container .sidebar-menu .sidebar-menu-inner .menu-collapse {
+    width: auto;
+    border-top: 0;
+    box-shadow: none;
+    padding-left: 0;
+    padding-right: 0;
   }
-  .page-container .sidebar-menu .main-menu.mobile-is-visible {
+  .page-container .sidebar-menu .sidebar-menu-inner .menu-collapse.collapse {
+    display: none;
+  }
+  .page-container .sidebar-menu .sidebar-menu-inner .menu-collapse.collapse.in {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+  .page-container .sidebar-menu .sidebar-menu-inner .menu-collapse.collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition-property: height, visibility;
+    transition-duration: 0.35s;
+    transition-timing-function: ease;
+  }
+  .page-container .sidebar-menu .sidebar-menu-inner .menu-collapse.in {
+    overflow-y: visible;
+  }
+  .page-container .sidebar-menu .sidebar-menu-inner .menu-collapse.no-transition {
+    transition: height 0.01s;
+  }
+  .page-container .sidebar-menu .sidebar-menu-inner .main-menu.mobile-is-visible {
     display: block;
   }
-  .page-container .sidebar-menu .main-menu.mobile-is-visible.both-menus-visible {
+  .page-container .sidebar-menu .sidebar-menu-inner .main-menu.mobile-is-visible.both-menus-visible {
     margin-top: 0;
     padding-top: 0;
   }
-  .page-container .sidebar-menu .main-menu > li:last-child > a {
+  .page-container .sidebar-menu .sidebar-menu-inner .main-menu > li:last-child > a {
     border-bottom: 0;
   }
-  .page-container .main-content .navbar .user-info-navbar {
+  .page-container .main-content .navbar.user-info-navbar {
     display: none;
   }
-  .page-container .main-content .navbar .user-info-navbar.mobile-is-visible {
+  .page-container .main-content .navbar.user-info-navbar.mobile-is-visible {
     display: block;
   }
-  .page-container .main-content .navbar .user-info-navbar .user-info-menu > li {
+  .page-container .main-content .navbar.user-info-navbar .user-info-menu > li {
     min-height: 0 !important;
   }
-  .page-container .main-content .navbar .user-info-navbar .user-info-menu > li > a,
-  .page-container .main-content .navbar .user-info-navbar .user-info-menu > li > form {
+  .page-container .main-content .navbar.user-info-navbar .user-info-menu > li > a,
+  .page-container .main-content .navbar.user-info-navbar .user-info-menu > li > form {
     padding-top: 20px;
     padding-bottom: 20px;
   }
-  .page-container .main-content .navbar .user-info-navbar .user-info-menu > li.user-profile > a > span,
-  .page-container .main-content .navbar .navbar.horizontal-menu .navbar-inner > .nav > li.user-profile > a > span {
+  .page-container .main-content .navbar.user-info-navbar .user-info-menu > li.user-profile > a > span,
+  .page-container .main-content .navbar.navbar.horizontal-menu .navbar-inner > .nav > li.user-profile > a > span {
     display: none;
   }
-  .page-container .main-content .navbar .user-info-navbar .user-info-menu > li a > .badge {
+  .page-container .main-content .navbar.user-info-navbar .user-info-menu > li a > .badge {
     top: 10px;
   }
   .page-container .main-content .main-footer {

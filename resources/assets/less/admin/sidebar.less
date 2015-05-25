@@ -42,6 +42,25 @@
         }
     }
 
+    .menu-collapse {
+        overflow-x: visible;
+        &:extend(.clearfix all);
+        -webkit-overflow-scrolling: touch;
+        //max-height: @navbar-collapse-max-height;
+
+        &.in {
+            overflow-y: auto;
+        }
+
+        //@media (max-device-width: @screen-xs-min) and (orientation: landscape) {
+        //    max-height: 200px;
+        //}
+
+        &.collapse {
+            display: block;
+        }
+    }
+
     // Main Menu
     .main-menu {
         padding-left: @double-margin;
@@ -112,6 +131,7 @@
                 }
             }
             
+            &.open,
             &.opened,
             &.expanded {
                 > a:before {
@@ -122,11 +142,13 @@
         
         // First Level
         > li {
+            &.open,
             &.opened {
                 > ul {
                     display: block;
                 }
                 
+                &.open,
                 .opened {
                     > ul {
                         display: block;

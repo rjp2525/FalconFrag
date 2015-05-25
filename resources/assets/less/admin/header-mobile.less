@@ -61,11 +61,45 @@
                         }
                     }
                 }
+
+                .menu-collapse {
+                    width: auto;
+                    border-top: 0;
+                    box-shadow: none;
+                    padding-left: 0;
+                    padding-right: 0;
+
+                    &.collapse {
+                        display: none;
+                        &.in {
+                            display: block !important;
+                            height: auto !important;
+                            padding-bottom: 0; // Override default setting
+                            overflow: visible !important;
+                        }
+                    }
+
+                    &.collapsing {
+                        position: relative;
+                        height: 0;
+                        overflow: hidden;
+                        .transition-property(~"height, visibility");
+                        .transition-duration(.35s);
+                        .transition-timing-function(ease);
+                    }
+
+                    &.in {
+                        overflow-y: visible;
+                    }
+
+                    &.no-transition {
+                        .transition(height 0.01s);
+                    }
+                }
                 
                 .main-menu {
-                    display: none;
-                    margin-bottom: 0;
-                    
+
+                    // Will be removed at some point
                     &.mobile-is-visible {
                         display: block;
                         
