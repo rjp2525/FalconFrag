@@ -1,7 +1,7 @@
 <nav class="navbar user-info-navbar" role="navigation">
     <ul class="user-info-menu left-links list-inline list-unstyled">
         <li class="hidden-sm hidden-xs">
-            <a href="#" data-toggle=".main-menu">
+            <a href="#" id="sidebar-collapse-toggle">
                 <i class="fa-bars"></i>
             </a>
         </li>
@@ -20,7 +20,7 @@
     </ul>
     <ul class="user-info-menu right-links list-inline list-unstyled">
         <li class="search-form">
-            <form action="#" method="POST">
+            <form action="#" method="GET">
                 <input type="text" name="s" class="form-control search-field" placeholder="Type to search...">
                 <button type="submit" class="btn btn-link">
                     <i class="fa-search"></i>
@@ -40,6 +40,12 @@
                     <a href="#settings">
                         <i class="fa-wrench"></i>
                         Settings
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ action('AuthController@logout') }}">
+                        <i class="fa-sign-out"></i>
+                        Logout
                     </a>
                 </li>
             </ul>

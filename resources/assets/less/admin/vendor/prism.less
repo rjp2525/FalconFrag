@@ -1,0 +1,171 @@
+/* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+apacheconf+bash+c+csharp+cpp+coffeescript+css-extras+erlang+git+go+http+ini+java+less+markdown+objectivec+perl+php+php-extras+python+ruby+scss+sql+yaml&plugins=file-highlight */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+// Base Settings
+@prism-background: #eff1f5;
+@prism-color: #4f5b66;
+@prism-selection-background: @prism-background;
+@prism-selection-color: #c0c5ce;
+
+// Colors
+@prism-text-color: @prism-color;
+@prism-comment-color: #a7adba;
+@prism-punctuation-color: @prism-color;
+@prism-operator-color: @prism-color;
+@prism-keyword-color: #b48ead;
+@prism-variable-color: #bf616a;
+@prism-function-color: #8fa1b3;
+@prism-class-color: #d08770; // Meta #343d46
+@prism-method-color: @prism-function-color;
+@prism-storage-color: @prism-keyword-color;
+@prism-support-color: #96b5b4;
+@prism-string-color: #a3be8c; // string, constant.other
+@prism-integer-color: @prism-class-color; // constant.numeric
+@prism-boolean-color: @prism-class-color;
+@prism-constant-color: @prism-class-color;
+@prism-tag-color: @prism-variable-color;
+@prism-attribute-name-color: @prism-class-color;
+@prism-attribute-value-color: @prism-function-color;
+@prism-selector-color: @prism-keyword-color;
+@prism-value-color: @prism-class-color;
+@prism-heading-color: @prism-function-color;
+@prism-unit-color: @prism-class-color; // keyword
+@prism-bold-color: @prism-class-color; // markup, punctuation
+@prism-italic-color: @prism-keyword-color; // markup, punctuation
+@prism-code-color: @prism-string-color; // markup (inline code)
+@prism-link-text-color: @prism-variable-color; // string
+@prism-link-url-color: @prism-class-color; // meta
+@prism-list-color: @prism-variable-color; // markup
+@prism-quote-color: @prism-class-color; // markup
+@prism-separator-background: #dfe1e8; // meta
+@prism-separator-color: @prism-color; ///meta
+@prism-inserted-color: @prism-string-color; // markup
+@prism-deleted-color: @prism-variable-color; // markup
+@prism-changed-color: @prism-keyword-color; // markup
+@prism-ignored-color: @prism-selection-color; // markup
+@prism-untracked-color: @prism-selection-color; // markup
+@prism-colors-fg: @prism-support-color; // constant
+@prism-regexp-color: @prism-support-color; // string
+@prism-escape-character-color: @prism-support-color; // constant
+@prism-embedded-color: #ab7967; // punctuation
+@prism-invalid-background: @prism-variable-color; // invalid
+@prism-invalid-color: @prism-background; // invalid
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    //text-shadow: 0 1px white;
+    background-color: @prism-background;
+    font-family: @font-family-monospace;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: initial;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    //max-height: 600px;
+    //overflow: auto;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    //text-shadow: none;
+    background: @prism-separator-background;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    //text-shadow: none;
+    background: @prism-separator-background;
+}
+
+/*@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}*/
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    //overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: @prism-background;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+}
+
+.token {
+    &.comment { color: @prism-comment-color; }
+    &.prolog { color: @prism-comment-color; }
+    &.doctype { color: @prism-comment-color; }
+    &.cdata { color: @prism-comment-color; }
+
+    &.punctuation { color: @prism-punctuation-color; }
+
+    &.property { color: @prism-tag-color; }
+    &.tag { color: @prism-tag-color; }
+    &.boolean { color: @prism-boolean-color; }
+    &.number { color: @prism-integer-color; }
+    &.constant { color: @prism-constant-color; }
+    &.symbol { color: @prism-constant-color; } // possible deleted?
+    &.deleted { color: @prism-deleted-color; }
+
+    &.selector { color: @prism-selection-color; }
+    &.attr-name { color: @prism-attribute-name-color; }
+    &.string { color: @prism-string-color; }
+    &.char { color: @prism-escape-character-color; }
+    &.builtin { color: @prism-selection-color; }
+    &.inserted { color: @prism-inserted-color; }
+
+    &.operator { color: @prism-operator-color; }
+    &.entity { color: @prism-tag-color; }
+    &.url { color: @prism-link-url-color; }
+
+    &.atrule { color: @prism-attribute-value-color; }
+    &.attr-value { color: @prism-attribute-value-color; }
+    &.keyword { color: @prism-keyword-color; }
+
+    &.function { color: @prism-function-color; }
+
+    &.regex { color: @prism-regexp-color; }
+    &.important { color: @prism-variable-color; font-weight: bold; }
+    &.variable { color: @prism-variable-color; }
+
+    &.class-name { color: @prism-class-color; }
+    //&.namespace { color: @prism-class-color; }
+    &.package { color: @prism-class-color; }
+    &.this { color: @prism-variable-color; }
+
+    &.bold { font-weight: bold; }
+    &.italic { font-style: italic; }
+
+    &.entity { cursor: help; }
+}
+
+.namespace {
+    .opacity(.7);
+}

@@ -131,4 +131,15 @@ class AuthController extends Controller
         return redirect()->action('AuthController@getLogin')->with('error', $error);
     }
 
+    /**
+     * Log the user out of the application
+     *
+     * @return Response
+     */
+    public function logout()
+    {
+        $this->auth->logout();
+        return redirect()->action('WelcomeController@index');
+    }
+
 }

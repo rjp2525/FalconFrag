@@ -30,9 +30,14 @@ elixir(function(mix) {
             'admin/bootstrap/affix.js',
             'admin/bootstrap/toggle-class.js'
         ], 'public/js/admin/bootstrap.js')
+        .scripts([
+            'admin/vendor/*.js',
+            'admin/core.js'
+        ], 'public/js/admin/core.js')
         .version([
             'css/admin.css',
-            'js/admin/bootstrap.js'
+            'js/admin/bootstrap.js',
+            'js/admin/core.js'
         ])
         .copy('resources/assets/img', 'public/img');
 });

@@ -1,4 +1,4 @@
-<div class="sidebar-menu toggle-others collapsed fixed">
+<div class="sidebar-menu toggle-others collapsed fixed" id="sidebar-menu">
     <div class="sidebar-menu-inner">
         <header class="logo-env">
             <div class="logo">
@@ -86,6 +86,7 @@
                         <li>
                             <a href="#">
                                 <span class="title">Active Orders</span>
+                                <span class="label label-success pull-right">New</span>
                             </a>
                         </li>
                         <li>
