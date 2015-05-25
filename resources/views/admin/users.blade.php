@@ -72,7 +72,7 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="all">
-                <table class="table table-hover members-table middle-align">
+                <table class="table table-hover users-table middle-align">
                     <thead>
                         <tr>
                             <th></th>
@@ -87,7 +87,7 @@
                     @forelse($users as $user)
                         <tr>
                             <td class="user-cb">
-                                <input type="checkbox" class="cbr" name="members-list[]" value="1" />
+                                <input type="checkbox" class="cbr" name="users-list[]" value="1" />
                             </td>
                             <td class="user-image hidden-xs hidden-sm">
                                 <a href="#">
