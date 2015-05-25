@@ -1,5 +1,6 @@
 <?php namespace Falcon\Http\Controllers;
 
+use Auth;
 use Falcon\Http\Controllers\Controller;
 use Falcon\Http\Requests\Auth\LoginRequest;
 use Falcon\Http\Requests\Auth\RegisterRequest;
@@ -26,7 +27,7 @@ class AuthController extends Controller
     public function __construct(Guard $auth)
     {
         $this->auth = $auth;
-        $this->middleware('guest');
+        $this->middleware('guest', ['except' => 'logout']);
     }
 
     /**
@@ -96,6 +97,9 @@ class AuthController extends Controller
         $user->activation_code = sha1(microtime(true) . $request->input('email'));
         $user->save();
 
+        // Attach default client role to user
+        $user->attachRole(1);
+
         // Send the user an activation email
         $activation_code = $user->activation_code;
         $first_name = $user->first_name;
@@ -138,7 +142,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        $this->auth->logout();
+        Auth::logout();
         return redirect()->action('WelcomeController@index');
     }
 

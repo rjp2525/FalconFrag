@@ -1,6 +1,7 @@
 <?php namespace Falcon\Http\Controllers\Admin;
 
 use Falcon\Http\Controllers\Controller;
+use Falcon\Models\User;
 
 class DashboardController extends Controller
 {
@@ -23,6 +24,17 @@ class DashboardController extends Controller
     public function index()
     {
         return view('admin.dashboard');
+    }
+
+    /**
+     * Display a list of registered user accounts
+     *
+     * @return Response
+     */
+    public function userlist(User $user)
+    {
+        $users = $user->paginate(25);
+        return view('admin.users', ['users' => $users]);
     }
 
 }

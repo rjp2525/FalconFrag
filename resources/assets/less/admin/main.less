@@ -55,6 +55,10 @@ html, body {
         vertical-align: top;
         word-break: break-word;
 
+        @media screen and (max-width: @screen-sm-min) {
+            padding: @main-content-padding - 10;
+        }
+
         .boxed-container & {
             background-color: @background-color;
         }

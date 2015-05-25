@@ -37,6 +37,9 @@
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
+                        @role('support|billing|manager|admin')
+                        <li><a href="{{ action('Admin\DashboardController@index') }}">Admin</a></li>
+                        @endrole
                     </ul>
                 </div>
             </div>

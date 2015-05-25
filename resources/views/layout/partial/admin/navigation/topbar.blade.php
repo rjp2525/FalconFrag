@@ -31,7 +31,7 @@
             <a href="#" data-toggle="dropdown">
                 <img src="https://placehold.it/32" alt="user-image" class="img-circle img-inline userpic-32" width="28">
                 <span>
-                    John Doe
+                    {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name[0]) }}.
                     <i class="fa-angle-down"></i>
                 </span>
             </a>

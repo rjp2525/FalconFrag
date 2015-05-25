@@ -22,4 +22,5 @@ Route::get('logout', 'AuthController@logout');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'DashboardController@index');
+    Route::get('users', 'DashboardController@userlist');
 });
