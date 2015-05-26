@@ -118,10 +118,10 @@
                 </table>
                 {!! $users->render() !!}
             </div>
-            <div class="tab-pane active" id="staff">
+            <div class="tab-pane" id="staff">
                 <p class="text-center">Staff</p>
             </div>
-            <div class="tab-pane active" id="clients">
+            <div class="tab-pane" id="clients">
                 <p class="text-center">Clients</p>
             </div>
         </div>

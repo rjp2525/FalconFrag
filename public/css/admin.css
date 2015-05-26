@@ -3883,28 +3883,34 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   max-width: none;
 }
 .nav-tabs {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 0;
 }
 .nav-tabs > li {
-  float: left;
-  margin-bottom: -1px;
+  display: inline-block;
+  float: none;
+  margin-bottom: 0;
 }
 .nav-tabs > li > a {
-  margin-right: 2px;
   line-height: 1.42857143;
-  border: 1px solid transparent;
-  border-radius: 0px 0px 0 0;
+  border: none;
+  background-color: #f4f4f4;
+  margin-right: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .nav-tabs > li > a:hover {
-  border-color: #eeeeee #eeeeee #dddddd;
+  border: none;
+  background-color: #ffffff;
+}
+.nav-tabs > li.active > a {
+  background-color: #ffffff;
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #999999;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
-  border-bottom-color: transparent;
+  border: none;
   cursor: default;
 }
 .nav-tabs.nav-justified {
@@ -10598,67 +10604,83 @@ body.chat-open #chat {
 .dropdown-menu.dropdown-white.no-spacing {
   margin-top: -11px;
 }
-.nav.nav-tabs {
-  border-bottom: 0;
-}
-.nav.nav-tabs > li {
-  display: inline-block;
-  float: none;
-  margin-bottom: 0;
-}
-.nav.nav-tabs > li > a {
-  border: none;
-  background-color: #f4f4f4;
-  margin-right: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-.nav.nav-tabs > li > a:hover {
-  border: none;
-  background-color: #ffffff;
-}
-.nav.nav-tabs > li.active > a {
-  background-color: #fff;
-}
-.nav.nav-tabs.right-aligned {
-  text-align: right;
-}
-.nav.nav-tabs.right-aligned > li {
-  float: none;
-  display: inline-block;
-}
-.nav.nav-tabs.right-aligned > li > a {
-  margin-right: 0;
-  margin-left: 5px;
-}
-.nav.nav-tabs.nav-tabs-justified {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: separate;
-}
-.nav.nav-tabs.nav-tabs-justified:before,
-.nav.nav-tabs.nav-tabs-justified:after {
-  display: none;
-}
-.nav.nav-tabs.nav-tabs-justified > li {
-  display: table-cell;
-  vertical-align: top;
-  width: 1%;
-  text-align: center;
-}
-.nav.nav-tabs.nav-tabs-justified > li:last-child > a {
-  margin-right: 0;
-}
-.nav.nav-tabs + .tab-content {
-  background: #FFF;
-  padding: 30px;
-  margin-bottom: 30px;
-}
-.nav.nav-tabs + .tab-content > p:last-child,
-.nav.nav-tabs + .tab-content * > p:last-child {
-  margin-bottom: 0;
-}
+/*.nav.nav-tabs {
+    border-bottom: 0;
+    
+    > li {
+        display: inline-block;
+        float: none;
+        margin-bottom: 0;
+        
+        > a {
+            border: none;
+            background-color: #f4f4f4;
+            margin-right: @base-padding/2;
+            padding-left: @base-margin;
+            padding-right: @base-margin;
+            
+            &:hover {
+                border: none;
+                background-color: lighten(#f4f4f4, 5%);
+            }
+        }
+        
+        &.active {
+            > a {
+                background-color: #fff;
+            }
+        }
+    }
+    
+    &.right-aligned {
+        text-align: right;
+        
+        > li {
+            float: none;
+            display: inline-block;
+            
+            > a {
+                margin-right: 0;
+                margin-left: @base-padding/2;
+            }
+        }
+    }
+    
+    &.nav-tabs-justified {
+        display: table;
+        width: 100%;        
+        table-layout: fixed;
+        border-collapse: separate;
+        
+        &:before, &:after {
+            display: none;
+        }
+        
+        > li {
+            display: table-cell;
+            vertical-align: top;
+            width: 1%;
+            text-align: center;
+            
+            &:last-child {
+                > a {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+    
+    + .tab-content {
+        background: #FFF;
+        padding: @default-padding;
+        margin-bottom: @default-padding;
+        
+        > p:last-child,
+        * > p:last-child {
+            margin-bottom: 0;
+        }
+    }
+}*/
 .panel-group .panel .panel-heading {
   padding-bottom: 0;
   border-bottom: 0;
