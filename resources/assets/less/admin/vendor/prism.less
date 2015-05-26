@@ -30,6 +30,7 @@
 @prism-tag-color: @prism-variable-color;
 @prism-attribute-name-color: @prism-class-color;
 @prism-attribute-value-color: @prism-function-color;
+@prism-delimiter-color: @prism-function-color;
 @prism-selector-color: @prism-keyword-color;
 @prism-value-color: @prism-class-color;
 @prism-heading-color: @prism-function-color;
@@ -150,6 +151,7 @@ pre[class*="language-"] {
     &.keyword { color: @prism-keyword-color; }
 
     &.function { color: @prism-function-color; }
+    &.delimiter { color: @prism-delimiter-color; }
 
     &.regex { color: @prism-regexp-color; }
     &.important { color: @prism-variable-color; font-weight: bold; }
