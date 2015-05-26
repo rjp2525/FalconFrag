@@ -33,7 +33,7 @@ class DashboardController extends Controller
      */
     public function userlist(User $user)
     {
-        $users = $user->paginate(25);
+        $users = $user->paginate();
         return view('admin.users', ['users' => $users]);
     }
 
