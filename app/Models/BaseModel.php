@@ -14,27 +14,15 @@ abstract class BaseModel extends Model
     public $incrementing = false;
 
     /**
-     * Save the model to the database.
+     * Create a new Eloquent model instance.
      *
-     * @param  array  $options
-     * @return bool
-     */
-    public function save(array $options = array())
-    {
-        $this->generatePrimaryKey();
-        return parent::save($options);
-    }
-
-    /**
-     * Generate a UUID for the user if one doesn't exist
-     *
+     * @param  array $attributes
      * @return void
      */
-    private function generatePrimaryKey()
+    public function __construct(array $attributes = array())
     {
-        if (!$this->{$this->getKeyName()}) {
-            $this->{getKeyName()} = (string) $this->generateUUID();
-        }
+        $this->{$this->getKeyName()} = (string) $this->generateUUID();
+        parent::__construct($attributes);
     }
 
     /**
@@ -42,7 +30,7 @@ abstract class BaseModel extends Model
      *
      * @return \Rhumsaa\Uuid\Uuid
      */
-    private function generateUUID()
+    public function generateUUID()
     {
         return UUID::uuid4();
     }
