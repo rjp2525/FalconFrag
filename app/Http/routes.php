@@ -21,6 +21,6 @@ Route::get('activate/{token}', 'AuthController@getActivate');
 Route::get('logout', 'AuthController@logout');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-    Route::get('/', 'DashboardController@index');
-    Route::get('users', 'DashboardController@userlist');
+    Route::get('/', ['as' => 'admin.dashboard', 'uses' => 'DashboardController@index']);
+    Route::get('users', ['as' => 'admin.clients.index', 'uses' => 'DashboardController@userlist']);
 });

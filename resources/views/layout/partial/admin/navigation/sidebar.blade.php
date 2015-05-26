@@ -22,7 +22,7 @@
         <div class="menu-collapse collapse" id="menu-collapse">
             <ul class="main-menu" id="main-menu">
                 <li>
-                    <a href="#">
+                    <a href="{{ route('admin.dashboard') }}">
                         <i class="fa-line-chart"></i>
                         <span class="title">Dashboard</span>
                     </a>
@@ -34,7 +34,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('admin.clients.index') }}">
                                 <i class="fa-list"></i>
                                 <span class="title">View Clients</span>
                             </a>
