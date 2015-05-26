@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 use Rhumsaa\Uuid\Uuid;
 
-class BaseModel extends Model
+abstract class BaseModel extends Model
 {
 
     /**
@@ -14,21 +14,27 @@ class BaseModel extends Model
     public $incrementing = false;
 
     /**
-     * The "booting" method of the model.
+     * Save the model to the database.
+     *
+     * @param  array  $options
+     * @return bool
+     */
+    public function save(array $options = array())
+    {
+        $this->generatePrimaryKey();
+        return parent::save($options);
+    }
+
+    /**
+     * Generate a UUID for the user if one doesn't exist
      *
      * @return void
      */
-    protected static function boot()
+    private function generatePrimaryKey()
     {
-        parent::boot();
-
-        /**
-         * Attach to the "creating" Model Event to provide a UUID
-         * for the `id` field (provided by $model->getKeyName())
-         */
-        static::creating(function ($model) {
-            $model->{$model->getKeyName()} = (string) $model->generateUUID();
-        });
+        if (!$this->{$this->getKeyName()}) {
+            $this->{getKeyName()} = (string) $this->generateUUID();
+        }
     }
 
     /**
@@ -36,7 +42,7 @@ class BaseModel extends Model
      *
      * @return \Rhumsaa\Uuid\Uuid
      */
-    public function generateUUID()
+    private function generateUUID()
     {
         return UUID::uuid4();
     }
