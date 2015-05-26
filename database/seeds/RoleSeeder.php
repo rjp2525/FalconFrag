@@ -55,7 +55,7 @@ class RoleSeeder extends Seeder
         ]);
 
         // Attach administrator role to seeded user
-        $user = User::find(1)->attachRole($administrator);
+        $user = User::where('email', 'admin@falconfrag.com')->attachRole(5);
     }
 
 }
