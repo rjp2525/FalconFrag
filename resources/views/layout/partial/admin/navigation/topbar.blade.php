@@ -55,31 +55,5 @@
                 <i class="fa-comments-o"></i>
             </a>
         </li>
-
-<!--
-
-        <li class="dropdown user-profile">
-            <a href="#" data-toggle="dropdown">
-                <img src="https://placehold.it/32" alt="Demo Account" class="img-circle img-inline userpic-32">
-                <span>
-                    Reno Philibert
-                    <i class="fa-angle-down"></i>
-                </span>
-            </a>
-            <ul class="dropdown-menu user-profile-menu list-unstyled">
-                <li>
-                    <a href="#">
-                        <i class="fa-cogs"></i>
-                        Settings
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa-sign-out"></i>
-                        Logout
-                    </a>
-                </li>
-            </ul>
-        </li>-->
     </ul>
 </nav>
