@@ -2,18 +2,6 @@ $(function() {
     // Core Variables
     var body = $('body');
 
-    // Loading Overlay
-    var loading = body.find('.page-loading-overlay');
-    if(loading.length) {
-        $(window).load(function() {
-            loading.addClass('loaded');
-        });
-    }
-    // In case something fails
-    window.onerror = function() {
-        loading.addClass('loaded');
-    };
-
     // Save sidebar preferences to cookie
     var sidebar_toggle = $('#sidebar-collapse-toggle');
 
@@ -104,6 +92,18 @@ $(function() {
 
         $this.css({ maxHeight: max_height }).perfectScrollbar({ wheelPropagation: true });
     });
+
+    // Loading Overlay
+    var loading = body.find('.page-loading-overlay');
+    if(loading.length) {
+        $(window).load(function() {
+            loading.addClass('loaded');
+        });
+    }
+    // In case something fails
+    window.onerror = function() {
+        loading.addClass('loaded');
+    };
 
 });
 
