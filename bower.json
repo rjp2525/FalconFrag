@@ -1,0 +1,12 @@
+{
+  "name": "falcon-frag",
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "js-cookie": "~1.5.1",
+    "perfect-scrollbar": "~0.6.2",
+    "jquery-listnav": "~2.4.9"
+  },
+  "devDependencies": {
+    "prism": "*"
+  }
+}
