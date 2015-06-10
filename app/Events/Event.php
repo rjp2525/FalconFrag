@@ -1,7 +1,8 @@
-<?php namespace Falcon\Events;
+<?php
 
-abstract class Event {
+namespace Falcon\Events;
 
-	//
-
+abstract class Event
+{
+    //
 }

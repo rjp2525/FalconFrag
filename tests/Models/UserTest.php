@@ -1,22 +1,16 @@
 <?php
 
-use Falcon\Models\User;
-
 class UserTest extends TestCase
 {
 
-    public function testRegistration()
+    public function testBelongsToRoles()
     {
-        // Create a new user
-        $user = new User;
-        $user->first_name = 'Example';
-        $user->last_name = 'Account';
-        $user->username = 'example';
-        $user->email = 'test@example.com';
-        $user->password = 'password';
+        $this->assertBelongsToMany('Falcon\Models\Vault\Role', 'users');
+    }
 
-        // User should be saved
-        $this->assertTrue($user->save());
+    public function testBelongsToPermissions()
+    {
+        $this->assertBelongsToMany('Falcon\Models\Vault\Permission', 'users');
     }
 
 }

@@ -1,12 +1,12 @@
-<?php namespace Falcon\Http\Middleware;
+<?php
+
+namespace Falcon\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-use Falcon\Http\Controllers\AuthController;
 
 class Authenticate
 {
-
     /**
      * The Guard implementation.
      *
@@ -38,11 +38,10 @@ class Authenticate
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest(action('AuthController@getLogin'));
+                return redirect()->guest('auth/login');
             }
         }
 
         return $next($request);
     }
-
 }

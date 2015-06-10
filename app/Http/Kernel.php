@@ -1,22 +1,23 @@
-<?php namespace Falcon\Http;
+<?php
+
+namespace Falcon\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
-
     /**
      * The application's global HTTP middleware stack.
      *
      * @var array
      */
     protected $middleware = [
-        'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode',
-        'Illuminate\Cookie\Middleware\EncryptCookies',
-        'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
-        'Illuminate\Session\Middleware\StartSession',
-        'Illuminate\View\Middleware\ShareErrorsFromSession',
-        'Falcon\Http\Middleware\PjaxMiddleware',
+        \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        \Falcon\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \Falcon\Http\Middleware\VerifyCsrfToken::class,
     ];
 
     /**
@@ -25,11 +26,8 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => 'Falcon\Http\Middleware\Authenticate',
-        'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-        'guest' => 'Falcon\Http\Middleware\RedirectIfAuthenticated',
-        'csrf' => 'Falcon\Http\Middleware\VerifyCsrfToken',
-        'staff' => 'Falcon\Http\Middleware\VerifyStaffRole',
+        'auth' => \Falcon\Http\Middleware\Authenticate::class,
+        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'guest' => \Falcon\Http\Middleware\RedirectIfAuthenticated::class,
     ];
-
 }

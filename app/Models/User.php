@@ -1,19 +1,18 @@
-<?php namespace Falcon\Models;
+<?php
 
-use Bican\Roles\Contracts\HasRoleAndPermissionContract;
-use Bican\Roles\Traits\HasRoleAndPermission;
-use Falcon\Models\BaseModel;
-use Falcon\Models\Forum\Thread;
+namespace Falcon\Models;
+
+use Falcon\Models\Model;
+use Falcon\Modules\Vault\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
+use Falcon\Modules\Vault\Traits\HasRoleAndPermission;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-//use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User extends BaseModel implements AuthenticatableContract, CanResetPasswordContract, HasRoleAndPermissionContract
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract, HasRoleAndPermissionContract
 {
-
     use Authenticatable, CanResetPassword, SoftDeletes, HasRoleAndPermission;
 
     /**
@@ -28,7 +27,7 @@ class User extends BaseModel implements AuthenticatableContract, CanResetPasswor
      *
      * @var array
      */
-    protected $fillable = ['first_name', 'last_name', 'company', 'username', 'email', 'password', 'activation_code'];
+    protected $fillable = ['name', 'email', 'password'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -43,40 +42,4 @@ class User extends BaseModel implements AuthenticatableContract, CanResetPasswor
      * @var array
      */
     protected $dates = ['deleted_at'];
-
-    public function profile()
-    {
-        return $this->hasOne('Falcon\Models\User\Profile');
-    }
-
-    public function address()
-    {
-        return $this->hasMany('Falcon\Models\User\Address');
-    }
-
-    public function forum_threads()
-    {
-        return $this->hasMany('Falcon\Models\Forum\Thread');
-    }
-
-    public function forum_replies()
-    {
-        return $this->hasMany('Falcon\Models\Forum\Reply');
-    }
-
-    public function getForumThreads(Thread $thread)
-    {
-        $stack = [];
-        foreach ($this->replies as $reply) {
-            array_push($stack, $reply->thread_id);
-        }
-
-        $threads = [];
-        foreach (array_unique($stack) as $id) {
-            array_push($threads, $thread->find($id));
-        }
-
-        return $threads;
-    }
-
 }

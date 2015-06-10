@@ -12,32 +12,6 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('admin.less')
-        .coffee()
-        .scripts([
-            'admin/bootstrap/jquery.js',
-            'admin/bootstrap/transition.js',
-            'admin/bootstrap/alert.js',
-            'admin/bootstrap/button.js',
-            'admin/bootstrap/carousel.js',
-            'admin/bootstrap/collapse.js',
-            'admin/bootstrap/dropdown.js',
-            'admin/bootstrap/modal.js',
-            'admin/bootstrap/tooltip.js',
-            'admin/bootstrap/popover.js',
-            'admin/bootstrap/scrollspy.js',
-            'admin/bootstrap/tab.js',
-            'admin/bootstrap/affix.js',
-            'admin/bootstrap/toggle-class.js'
-        ], 'public/js/admin/bootstrap.js')
-        .scripts([
-            'admin/vendor/*.js',
-            'admin/core.js'
-        ], 'public/js/admin/core.js')
-        .version([
-            'css/admin.css',
-            'js/admin/bootstrap.js',
-            'js/admin/core.js'
-        ])
-        .copy('resources/assets/img', 'public/img');
+    //mix.less('app.less');
+    mix.phpUnit();
 });

@@ -1,17 +1,18 @@
 <?php
 
-class TestCase extends Illuminate\Foundation\Testing\TestCase
+use Falcon\Modules\Testing\TestingTrait;
+use Illuminate\Foundation\Testing\TestCase as LTestCase;
+
+class TestCase extends LTestCase
 {
+    use TestingTrait;
 
     /**
-     * Default preparation for each test
+     * The base URL to use while testing the application.
+     *
+     * @var string
      */
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->prepareForTests();
-    }
+    protected $baseUrl = 'http://localhost';
 
     /**
      * Creates the application.
@@ -20,21 +21,30 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
      */
     public function createApplication()
     {
+        //putenv('DB_CONNECTION=sqlite_testing');
+
         $app = require __DIR__ . '/../bootstrap/app.php';
 
-        $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
+        $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
         return $app;
     }
 
     /**
-     * Migrate the database
-     *
-     * @return void
+     * Default preparation for each test
      */
-    private function prepareForTests()
+    /*public function setUp()
     {
-        Artisan::call('migrate');
-    }
+    parent::setUp();
+    Artisan::call('migrate');
+    }*/
 
+    /*
+     * Reset for each test
+     */
+    /*public function tearDown()
+{
+Artisan::call('migrate:reset');
+parent::tearDown();
+}*/
 }

@@ -26,7 +26,7 @@ return [
     |
      */
 
-    'default' => env('DB_DRIVER', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -48,7 +48,7 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
-            'database' => storage_path() . '/database.sqlite',
+            'database' => storage_path('database.sqlite'),
             'prefix' => '',
         ],
 
@@ -84,9 +84,9 @@ return [
             'prefix' => '',
         ],
 
-        'testing' => [
+        'sqlite_testing' => [
             'driver' => 'sqlite',
-            'database' => ':memory:',
+            'database' => storage_path('testing.sqlite'),
             'prefix' => '',
         ],
 
