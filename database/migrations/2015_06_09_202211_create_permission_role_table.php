@@ -13,7 +13,6 @@ class CreatePermissionRoleTable extends Migration
     public function up()
     {
         Schema::create('permission_role', function (Blueprint $table) {
-            $table->string('id', 36)->primary();
             $table->string('permission_id', 36)->index();
             $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade');
             $table->string('role_id', 36)->index();
