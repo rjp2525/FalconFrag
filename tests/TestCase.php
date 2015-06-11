@@ -1,11 +1,12 @@
 <?php
 
 use Falcon\Modules\Testing\TestingTrait;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\TestCase as LTestCase;
 
 class TestCase extends LTestCase
 {
-    use TestingTrait;
+    use DatabaseMigrations, TestingTrait;
 
     /**
      * The base URL to use while testing the application.
@@ -33,11 +34,15 @@ class TestCase extends LTestCase
     /**
      * Default preparation for each test
      */
-    /*public function setUp()
+    public function setUp()
     {
-    parent::setUp();
-    Artisan::call('migrate');
-    }*/
+        parent::setUp();
+
+        if (!File::exists(storage_path('testing.sqlite'))) {
+            touch(storage_path('testing.sqlite'));
+            Artisan::call('migrate');
+        }
+    }
 
     /*
      * Reset for each test
