@@ -14,7 +14,7 @@ return [
     | Supported: "file", "cookie", "database", "apc",
     |            "memcached", "redis", "array"
     |
-    */
+     */
 
     'driver' => env('SESSION_DRIVER', 'file'),
 
@@ -27,7 +27,7 @@ return [
     | to be allowed to remain idle before it expires. If you want them
     | to immediately expire on the browser closing, set that option.
     |
-    */
+     */
 
     'lifetime' => 120,
 
@@ -42,9 +42,9 @@ return [
     | should be encrypted before it is stored. All encryption will be run
     | automatically by Laravel and you can use the Session like normal.
     |
-    */
+     */
 
-    'encrypt' => false,
+    'encrypt' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     | files may be stored. A default has been set for you but a different
     | location may be specified. This is only needed for file sessions.
     |
-    */
+     */
 
     'files' => storage_path('framework/sessions'),
 
@@ -68,9 +68,9 @@ return [
     | connection that should be used to manage these sessions. This should
     | correspond to a connection in your database configuration options.
     |
-    */
+     */
 
-    'connection' => null,
+    'connection' => 'default',
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +81,7 @@ return [
     | should use to manage the sessions. Of course, a sensible default is
     | provided for you; however, you are free to change this as needed.
     |
-    */
+     */
 
     'table' => 'sessions',
 
@@ -94,7 +94,7 @@ return [
     | rid of old sessions from storage. Here are the chances that it will
     | happen on a given request. By default, the odds are 2 out of 100.
     |
-    */
+     */
 
     'lottery' => [2, 100],
 
@@ -107,9 +107,9 @@ return [
     | instance by ID. The name specified here will get used every time a
     | new session cookie is created by the framework for every driver.
     |
-    */
+     */
 
-    'cookie' => 'laravel_session',
+    'cookie' => 'FFNS',
 
     /*
     |--------------------------------------------------------------------------
@@ -120,7 +120,7 @@ return [
     | be regarded as available. Typically, this will be the root path of
     | your application but you are free to change this when necessary.
     |
-    */
+     */
 
     'path' => '/',
 
@@ -133,9 +133,9 @@ return [
     | in your application. This will determine which domains the cookie is
     | available to in your application. A sensible default has been set.
     |
-    */
+     */
 
-    'domain' => null,
+    'domain' => '.falconfrag.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -146,8 +146,8 @@ return [
     | to the server if the browser has a HTTPS connection. This will keep
     | the cookie from being sent to you if it can not be done securely.
     |
-    */
+     */
 
-    'secure' => false,
+    'secure' => true,
 
 ];

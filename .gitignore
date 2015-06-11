@@ -6,3 +6,5 @@
 composer.lock
 sftp-config.json
 npm-debug.log
+.flooignore
+.floo

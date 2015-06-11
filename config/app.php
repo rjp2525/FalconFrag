@@ -26,7 +26,7 @@ return [
     |
      */
 
-    'url' => 'http://localhost',
+    'url' => env('APP_URL', 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
     |
      */
 
-    'timezone' => 'UTC',
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -150,6 +150,12 @@ return [
         Falcon\Modules\Purifier\PurifierServiceProvider::class,
         Falcon\Modules\Vault\VaultServiceProvider::class,
 
+        /*
+         * Package Service Providers
+         */
+        Dingo\Api\Provider\LaravelServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+
     ],
 
     /*
@@ -202,6 +208,13 @@ return [
          * Module Facades
          */
         'Purifier' => Falcon\Modules\Purifier\Facades\Purifier::class,
+
+        /*
+         * Package Facades
+         */
+        'API' => Dingo\Api\Facade\API::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
     ],
 
 ];

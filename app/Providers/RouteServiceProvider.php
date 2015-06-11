@@ -2,8 +2,8 @@
 
 namespace Falcon\Providers;
 
-use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Routing\Router;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -28,6 +28,13 @@ class RouteServiceProvider extends ServiceProvider
 
         parent::boot($router);
     }
+
+    /*public function register() {
+    parent::register();
+
+    # register the API V1 routes
+    $this->app->register(Falcon\Providers\ApiRouteServiceProvider::class);
+    }*/
 
     /**
      * Define the routes for the application.

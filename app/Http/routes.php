@@ -9,7 +9,28 @@
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the controller to call when that URI is requested.
 |
-*/
+ */
+
+/*$api =
+
+ApiRoute::api(['version' => 'v1', 'namespace' => 'Api\V1'], function () {
+// this is gonna be a nightmare
+Route::get('/', 'Auth\AuthController@getIndex');
+});*/
+
+$api = app('api.router');
+
+$api->version('v1', ['prefix' => 'api/v1', 'namespace' => 'Falcon\Http\Controllers\Api\V1'], function ($api) {
+    $api->group(['prefix' => 'auth'], function ($api) {
+        $api->get('/', 'Auth\AuthController@index');
+        //$api->get('/', 'Auth\AuthController@index');
+    });
+    //$api->get('/', 'Auth\AuthController@index');
+});
+
+/*Route::api(['version' => 'v1', 'namespace' => 'Api\V1'], function () {
+Route::get('/', 'Auth\AuthController@getIndex');
+});*/
 
 Route::get('/', function () {
     return view('welcome');
