@@ -12,6 +12,19 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    //mix.less('app.less');
-    mix.phpUnit();
+    mix.less('style.less')
+       .scripts([
+            '../bower/jquery/dist/jquery.js',
+            '../bower/bootstrap/dist/js/bootstrap.js',
+            '../bower/angular/angular.js',
+            '../bower/angular-ui-router/release/angular-ui-router.js',
+            '../bower/ngstorage/ngStorage.js',
+            '../bower/angular-loading-bar/build/loading-bar.js'
+        ], 'public/js/vendor.js')
+       .scripts([
+            'controllers/*.js',
+            'services/*.js',
+            'application.js'
+        ], 'public/js/application.js')
+       .phpUnit();
 });

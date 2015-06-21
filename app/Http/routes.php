@@ -23,6 +23,7 @@ $api = app('api.router');
 $api->version('v1', ['prefix' => 'api/v1', 'namespace' => 'Falcon\Http\Controllers\Api\V1'], function ($api) {
     $api->group(['prefix' => 'auth'], function ($api) {
         $api->get('/', 'Auth\AuthController@index');
+        $api->post('login', 'Auth\AuthController@login');
         //$api->get('/', 'Auth\AuthController@index');
     });
     //$api->get('/', 'Auth\AuthController@index');
@@ -32,6 +33,8 @@ $api->version('v1', ['prefix' => 'api/v1', 'namespace' => 'Falcon\Http\Controlle
 Route::get('/', 'Auth\AuthController@getIndex');
 });*/
 
-Route::get('/', function () {
+Route::any('{path?}', function () {
     return view('welcome');
-});
+})->where('path', '.+');
+
+//Route::any('{path?}', 'WelcomeController@index')->where("path", ".+");
