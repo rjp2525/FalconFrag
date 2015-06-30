@@ -1,13 +1,14 @@
 <?php
 
-namespace Falcon\Http\Controllers\Api\V1\Auth;
+namespace Falcon\Http\Controllers\Client;
 
-use Falcon\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+use Falcon\Http\Requests;
+use Falcon\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -15,13 +16,6 @@ class AuthController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    public function login(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
-
         //
     }
 

@@ -151,10 +151,8 @@ return [
         Falcon\Modules\Vault\VaultServiceProvider::class,
 
         /*
-         * Package Service Providers
-         */
-        Dingo\Api\Provider\LaravelServiceProvider::class,
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+     * Package Service Providers
+     */
 
     ],
 

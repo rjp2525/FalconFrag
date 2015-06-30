@@ -11,6 +11,27 @@
 |
  */
 
+// Alpha Routes
+Route::group(['domain' => 'alpha.falconfrag.com'], function () {
+    // Client Panel
+    Route::group(['prefix' => 'client'], function () {
+        // Client panel routes
+    });
+
+    // Admin Panel
+    Route::group(['prefix' => 'admin'], function () {
+        // Admin panel routes
+    });
+
+    // Community Area
+    Route::group(['prefix' => 'help'], function () {
+        // Support area routes
+    });
+
+    // All primary routes
+    Route::get('/', ['as' => 'default.home', 'uses' => 'HomeController@index']);
+});
+
 Route::any('{path?}', function () {
     return view('welcome');
 })->where('path', '.+');
