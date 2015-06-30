@@ -11,8 +11,7 @@
         "ramsey/uuid": "^3.0",
         "league/commonmark": "^0.9.0",
         "ezyang/htmlpurifier": "4.6.*",
-        "dingo/api": "0.9.*@dev",
-        "tymon/jwt-auth": "0.5.*"
+        "cartalyst/stripe-laravel": "2.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -210,11 +210,9 @@ return [
         'Purifier' => Falcon\Modules\Purifier\Facades\Purifier::class,
 
         /*
-         * Package Facades
-         */
-        'API' => Dingo\Api\Facade\API::class,
-        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+     * Package Facades
+     */
+
     ],
 
 ];
