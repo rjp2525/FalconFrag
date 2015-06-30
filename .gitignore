@@ -2,6 +2,10 @@
 /node_modules
 /resources/assets/bower
 /public/build
+/public/css
+/public/js
+/public/img
+/public/fonts
 .env
 composer.lock
 sftp-config.json
