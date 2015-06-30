@@ -14,8 +14,9 @@
 // Alpha Routes
 Route::group(['domain' => 'alpha.falconfrag.com'], function () {
     // Client Panel
-    Route::group(['prefix' => 'client'], function () {
+    Route::group(['prefix' => 'client', 'namespace' => 'Client'], function () {
         // Client panel routes
+        Route::get('/', ['as' => 'client.index', 'uses' => 'HomeController@index']);
     });
 
     // Admin Panel

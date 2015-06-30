@@ -151,8 +151,9 @@ return [
         Falcon\Modules\Vault\VaultServiceProvider::class,
 
         /*
-     * Package Service Providers
-     */
+         * Package Service Providers
+         */
+        Collective\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -208,9 +209,10 @@ return [
         'Purifier' => Falcon\Modules\Purifier\Facades\Purifier::class,
 
         /*
-     * Package Facades
-     */
-
+         * Package Facades
+         */
+        'Form' => Collective\Html\FormFacade::class,
+        'HTML' => Collective\Html\HtmlFacade::class,
     ],
 
 ];
