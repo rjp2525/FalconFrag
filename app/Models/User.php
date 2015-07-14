@@ -2,7 +2,6 @@
 
 namespace Falcon\Models;
 
-use Falcon\Models\Model;
 use Falcon\Modules\Vault\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
 use Falcon\Modules\Vault\Traits\HasRoleAndPermission;
 use Illuminate\Auth\Authenticatable;
@@ -10,10 +9,13 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Falcon\Modules\Revisionable\Revisionable;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract, HasRoleAndPermissionContract
+class User extends Revisionable implements AuthenticatableContract, CanResetPasswordContract, HasRoleAndPermissionContract
 {
     use Authenticatable, CanResetPassword, SoftDeletes, HasRoleAndPermission;
+
+    protected $revisionEnabled = true;
 
     /**
      * The database table used by the model.
@@ -37,7 +39,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $hidden = ['password', 'remember_token'];
 
     /**
-     * Set the column to use for soft deleting
+     * Set the column to use for soft deleting.
      *
      * @var array
      */
