@@ -34,17 +34,17 @@
   z-index: @zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
   float: left;
-  min-width: 160px;
+  min-width: 180px;
   padding: 5px 0;
   margin: 2px 0 0; // override default ul
   list-style: none;
   font-size: @font-size-base;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   background-color: @dropdown-bg;
-  border: 1px solid @dropdown-fallback-border; // IE8 fallback
-  border: 1px solid @dropdown-border;
-  border-radius: @border-radius-base;
-  .box-shadow(0 6px 12px rgba(0,0,0,.175));
+  border: 1px solid #ddd; // IE8 fallback
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  .box-shadow(0 10px 30px rgba(0,0,0,.05));
   background-clip: padding-box;
 
   // Aligns the dropdown menu to right
@@ -63,12 +63,49 @@
   // Links within the dropdown menu
   > li > a {
     display: block;
-    padding: 3px 20px;
+    padding: 7px 12px;
     clear: both;
     font-weight: normal;
     line-height: @line-height-base;
     color: @dropdown-link-color;
     white-space: nowrap; // prevent links from randomly breaking onto new lines
+
+    &:hover {
+      background-color: #f9f9f9;
+    }
+
+    i, .badge {
+      &.pull-right {
+        right: 0;
+        margin-top: 3px;
+        margin-left: 10px;
+      }
+
+      &.pull-left {
+        left: 0;
+        margin-top: 3px;
+        margin-right: 10px;
+      }
+    }
+
+    .badge {
+      &.pull-right {
+        margin-top: 1px;
+      }
+
+      &.pull-left {
+        margin-top: 1px;
+      }
+    }
+  }
+
+  > .active > a {
+    &,
+    &:hover,
+    &:focus {
+      color: @text-color-dark;
+      background-color: #f0f0f0;
+    }
   }
 }
 
@@ -151,11 +188,13 @@
 // Dropdown section headers
 .dropdown-header {
   display: block;
-  padding: 3px 20px;
+  padding: 5px 12px 4px;
+  //font-weight: bold; // 600
   font-size: @font-size-small;
   line-height: @line-height-base;
-  color: @dropdown-header-color;
+  color: @gray-dark;
   white-space: nowrap; // as with > li > a
+  text-transform: uppercase;
 }
 
 // Backdrop to catch body clicks on mobile, etc.

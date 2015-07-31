@@ -11,8 +11,10 @@
         "ramsey/uuid": "^3.0",
         "league/commonmark": "^0.9.0",
         "ezyang/htmlpurifier": "4.6.*",
-        "cartalyst/stripe-laravel": "2.0.*",
-        "laravelcollective/html": "5.1.*"
+        "cartalyst/stripe-laravel": "~2.0",
+        "laravelcollective/html": "5.1.*",
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "spatie/laravel-backup": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

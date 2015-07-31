@@ -1,0 +1,54 @@
+.section-title {
+  margin-top: 60px;
+  
+  h3 {
+    text-transform: uppercase;
+    font-family: @font-family-sans-serif;
+    font-weight: 600;
+    color: @color-secondary;
+
+    span {
+      color: @color-primary;
+    }
+  }
+
+  .separator {
+    position: relative;
+    color: @color-primary;
+    width: 180px;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+
+    &:before {
+      right: 0;
+    }
+
+    &:after {
+      left: 0;
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      border-bottom: 1px solid lighten(@color-secondary, 15%);
+      display: block;
+      width: 70px;
+      top: 11px;
+    }
+
+    .separator-image {
+      position: absolute;
+      left: 50%;
+      margin-left: -16px;
+      height: 32px;
+      width: 32px;
+      padding: 0 5px;
+      background: #fff url('/img/logo-icon-gray.svg') no-repeat;
+    }
+  }
+}

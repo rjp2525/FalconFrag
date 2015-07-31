@@ -120,7 +120,15 @@
 
     // Links rendered as pills
     > a {
-      border-radius: @nav-pills-border-radius;
+      //font-weight: bold; // 600
+      color: @text-color;
+      border-radius: 3px;
+
+      &:hover,
+      &:focus {
+        color: @text-color;
+        background-color: @gray-lighter;
+      }
     }
     + li {
       margin-left: 2px;
@@ -131,8 +139,12 @@
       &,
       &:hover,
       &:focus {
-        color: @nav-pills-active-link-hover-color;
-        background-color: @nav-pills-active-link-hover-bg;
+        color: #fff;
+        background-color: @brand-primary;
+      }
+
+      > .badge {
+        color: @brand-primary;
       }
     }
   }

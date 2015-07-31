@@ -1,11 +1,13 @@
 // Core variables and mixins
 @import "admin/variables.less";
 @import "mixins.less";
+@import "mixins/admin.less";
 
 // Reset and dependencies
 @import "admin/core/normalize.less";
 @import "admin/core/print.less";
 @import "admin/fonts/glyphicons.less";
+@import "icons/material-design-iconic-font.less";
 
 // Animate.css Dependency
 @import (inline) "../bower/animate.css/animate.css";
@@ -42,6 +44,13 @@
 @import "admin/elements/wells.less";
 @import "admin/elements/close.less";
 
+// Page Layout
+@import "admin/core/layout.less";
+@import "admin/core/navigation.less";
+@import "admin/elements/blocks.less";
+@import "admin/elements/form-styles.less";
+@import "admin/elements/images.less";
+
 // Components w/ JavaScript
 @import "admin/elements/modals.less";
 @import "admin/elements/tooltip.less";
@@ -51,3 +60,6 @@
 // Utility classes
 @import "admin/core/utilities.less";
 @import "admin/core/responsive-utilities.less";
+
+// Vendor Plugins
+@import "admin/elements/plugins.less";

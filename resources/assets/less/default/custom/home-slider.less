@@ -1,0 +1,130 @@
+// Homepage slider
+.home-slider-fs {
+    margin: 0;
+
+    &.owl-theme {
+        .owl-controls {
+            margin-top: 0;
+            text-align: center;
+
+            .owl-buttons div {
+                background: transparent;
+                border-radius: 10px;
+                color: #e6e6e6;
+                display: inline-block;
+                font-size: 60px;
+                margin: 0;
+                padding: 0;
+                .opacity(.5);
+            }
+        }
+    }
+
+    .owl-buttons {
+        left: 0;
+        margin: 0 auto;
+        position: absolute;
+        right: 0;
+        top: 50%; // 41%
+        width: 87%;
+
+        @media (max-width: @grid-float-breakpoint) {
+          visibility: hidden;
+        }
+    }
+
+    .owl-prev {
+        left: 0;
+        position: absolute;
+    }
+
+    .owl-next {
+        right: 0;
+        position: absolute;
+    }
+
+    .slide {
+        padding: 0 0 220px;
+        position: relative;
+        height: 100vh;
+
+        .slide-background {
+            background-size: cover !important;
+            //background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center center;
+            bottom: 0;
+            //height: 100%;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            //width: 100%;
+        }
+
+        .slide-content {
+            //position: relative;
+            position: absolute;
+            z-index: 9;
+            //padding: 300px 100px 0;
+            text-align: center;
+            top: 40%;
+            width: 100%;
+            //padding: 0 auto;
+
+            &.left {
+              text-align: left;
+            }
+
+            &.right {
+              text-align: right;
+            }
+
+            h3 {
+                color: #fff;
+                font-size: 48px;
+                font-weight: 700;
+                margin: 37px 0;
+
+                @media (max-width: @grid-float-breakpoint) {
+                    margin: 0 0 28px;
+                }
+            }
+
+            p {
+                color: #ddd;
+                font-size: 18px;
+                font-weight: normal;
+                line-height: 36px;
+
+                @media (max-width: @grid-float-breakpoint) {
+                    font-size: 14px;
+                    line-height: 28px;
+                }
+            }
+
+            .btn {
+            //    margin: 30px 0 0;
+                padding: 16px 79px;
+            }
+
+            @media (max-width: @grid-float-breakpoint) {
+                //padding: 150px 75px 0;
+                width: 100%;
+                top: 35%;
+                text-align: center;
+            }
+        }
+    }
+}
+
+body {
+  &:not(.homepage) {
+    padding-top: 107px;
+
+    // 72px
+    @media (max-width: @grid-float-breakpoint) {
+      padding-top: 72px;
+    }
+  }
+}

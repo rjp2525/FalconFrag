@@ -67,6 +67,7 @@
 
 .box-shadow(@shadow) {
   -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+     -moz-box-shadow: @shadow;
           box-shadow: @shadow;
 }
 
@@ -141,13 +142,23 @@
 }
 .translate(@x; @y) {
   -webkit-transform: translate(@x, @y);
-      -ms-transform: translate(@x, @y); // IE9 only
-       -o-transform: translate(@x, @y);
+      -ms-transform: translate(@x, @y);
           transform: translate(@x, @y);
 }
+.translateX(@x) {
+  -webkit-transform: translateX(@x);
+      -ms-transform: translateX(@x);
+          transform: translateX(@x);
+}
+.translateY(@y) {
+  -webkit-transform: translateY(@y);
+      -ms-transform: translateY(@y);
+          transform: translateY(@y);
+}
 .translate3d(@x; @y; @z) {
-  -webkit-transform: translate3d(@x, @y, @z);
-          transform: translate3d(@x, @y, @z);
+  -webkit-transform: translateX(@x) translateY(@y) translateZ(@z);
+      -ms-transform: translateX(@x) translateY(@y);
+          transform: translateX(@x) translateY(@y) translateZ(@z);
 }
 .rotate(@degrees) {
   -webkit-transform: rotate(@degrees);
@@ -177,6 +188,11 @@
      -moz-perspective-origin: @perspective;
           perspective-origin: @perspective;
 }
+.transform(@scale, @rotate) {
+  -webkit-transform: @arguments;
+      -ms-transform: @arguments;
+          transform: @arguments;
+}
 .transform-origin(@origin) {
   -webkit-transform-origin: @origin;
      -moz-transform-origin: @origin;
@@ -194,6 +210,8 @@
 }
 .transition-property(@transition-property) {
   -webkit-transition-property: @transition-property;
+     -moz-transition-property: @transition-property;
+       -o-transition-property: @transition-property;
           transition-property: @transition-property;
 }
 .transition-delay(@transition-delay) {
@@ -224,4 +242,12 @@
      -moz-user-select: @select;
       -ms-user-select: @select; // IE10+
           user-select: @select;
+}
+
+// Background Sizes
+.bg-size(@size) {
+  -webkit-background-size: @size;
+     -moz-background-size: @size;
+       -o-background-size: @size;
+          background-size: @size;
 }

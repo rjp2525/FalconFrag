@@ -9,9 +9,42 @@
 
 .fade {
   opacity: 0;
-  .transition(opacity .15s linear);
+  .transition(~"opacity .15s linear");
   &.in {
     opacity: 1;
+  }
+
+  &&-up {
+    opacity: 0;
+    .transition(~"all .25s ease-out");
+    .translateY(100px);
+
+    &.in {
+      opacity: 1;
+      .translateY(0);
+    }
+  }
+
+  &&-right {
+    opacity: 0;
+    .transition(all .25s ease-out);
+    .translateX(-100px);
+
+    &.in {
+      opacity: 1;
+      .translateX(0);
+    }
+  }
+
+  &&-left {
+    opacity: 0;
+    .transition(all .25s ease-out);
+    .translateX(100px);
+
+    &.in {
+      opacity: 1;
+      .translateX(0);
+    }
   }
 }
 

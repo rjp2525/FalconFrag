@@ -2,10 +2,12 @@
 
 namespace Falcon\Http\Controllers\Auth;
 
-use Falcon\User;
+use Falcon\Models\User;
 use Validator;
 use Falcon\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -24,18 +26,17 @@ class AuthController extends Controller
 
     /**
      * Create a new authentication controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('guest', ['except' => ['getLogout', 'getEdit', 'postEdit', 'history']]);
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -50,7 +51,8 @@ class AuthController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return User
      */
     protected function create(array $data)
@@ -60,5 +62,47 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function getEdit()
+    {
+        return view('auth.edit');
+    }
+
+    public function postEdit(Request $request)
+    {
+        $data = $request->input();
+
+        $validator = Validator::make($data, [
+            'name' => 'max:255',
+            'email' => 'email|max:255|unique:users',
+            'password' => 'min:6',
+        ]);
+
+        if ($validator->passes()) {
+            $user = User::find(Auth::id());
+            if (!empty($data['name'])) {
+                $user->name = $data['name'];
+            }
+            if (!empty($data['email'])) {
+                $user->email = $data['email'];
+            }
+            if (!empty($data['password'])) {
+                $user->password = bcrypt($data['password']);
+            }
+
+            $user->save();
+
+            return redirect('/home');
+        } else {
+            return redirect()->back()->withInput();
+        }
+    }
+
+    public function history()
+    {
+        //$accounts = User::all()->revisionHistory;
+        //dd(Auth::user()->revisionHistory());
+        return view('auth.history');
     }
 }

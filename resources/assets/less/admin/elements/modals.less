@@ -31,9 +31,63 @@
   // When fading in the modal, animate it to slide down
   &.fade .modal-dialog {
     .translate(0, -25%);
-    .transition-transform(~"0.3s ease-out");
+    //.transition-transform(~"0.3s ease-out");
+    .transition(all .12s ease-out);
+
+    &.modal-dialog-popin {
+      .scale(1.1);
+    }
+
+    &.modal-dialog-popout {
+      .scale(.9);
+    }
+
+    &.modal-dialog-slideup {
+      .translate(0, 10%);
+    }
+
+    &.modal-dialog-slideright {
+      .translate(-10%, 0);
+    }
+
+    &.modal-dialog-slideleft {
+      .translate(10%, 0);
+    }
+
+    &.modal-dialog-fromright {
+      -webkit-transform: translateX(25%) rotate(10deg) scale(.9);
+      -ms-transform: translateX(25%) rotate(10deg) scale(.9);
+      transform: translateX(25%) rotate(10deg) scale(.9);
+    }
+
+    &.modal-dialog-fromleft {
+      -webkit-transform: translateX(-25%) rotate(-10deg) scale(.9);
+      -ms-transform: translateX(-25%) rotate(-10deg) scale(.9);
+      transform: translateX(-25%) rotate(-10deg) scale(.9);
+    }
   }
-  &.in .modal-dialog { .translate(0, 0) }
+
+  &.in .modal-dialog {
+    .translate(0, 0);
+
+    &.modal-dialog-popin,
+    &.modal-dialog-popout {
+      .scale(1);
+    }
+
+    &.modal-dialog-slideup,
+    &.modal-dialog-slideright,
+    &.modal-dialog-slideleft {
+      .translate(0, 0);
+    }
+
+    &.modal-dialog-fromright,
+    &.modal-dialog-fromleft {
+      -webkit-transform: translateX(0) rotate(0) scale(1);
+      -ms-transform: translateX(0) rotate(0) scale(1);
+      transform: translateX(0) rotate(0) scale(1);
+    }
+  }
 }
 .modal-open .modal {
   overflow-x: hidden;
@@ -45,16 +99,24 @@
   position: relative;
   width: auto;
   margin: 10px;
+
+  &&-top {
+    margin-top: 0;
+    padding: 0 !important;
+
+    .modal-content {
+      .border-top-radius(0);
+    }
+  }
 }
 
 // Actual modal
 .modal-content {
   position: relative;
   background-color: @modal-content-bg;
-  border: 1px solid @modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
-  border: 1px solid @modal-content-border-color;
-  border-radius: @border-radius-large;
-  .box-shadow(0 3px 9px rgba(0,0,0,.5));
+  border: none;
+  border-radius: 0;
+  .box-shadow(none);
   background-clip: padding-box;
   // Remove focus outline from opened modal
   outline: 0;
@@ -71,14 +133,14 @@
   background-color: @modal-backdrop-bg;
   // Fade for backdrop
   &.fade { .opacity(0); }
-  &.in { .opacity(@modal-backdrop-opacity); }
+  &.in { .opacity(.25); }
 }
 
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {
-  padding: @modal-title-padding;
-  border-bottom: 1px solid @modal-header-border-color;
+  padding: 18px 20px;
+  border-bottom: 1px solid #eee;
   min-height: (@modal-title-padding + @modal-title-line-height);
 }
 // Close icon
@@ -90,20 +152,21 @@
 .modal-title {
   margin: 0;
   line-height: @modal-title-line-height;
+  font-weight: normal;
 }
 
 // Modal body
 // Where all modal content resides (sibling of .modal-header and .modal-footer)
 .modal-body {
   position: relative;
-  padding: @modal-inner-padding;
+  padding: 20px;
 }
 
 // Footer (for actions)
 .modal-footer {
-  padding: @modal-inner-padding;
+  padding: 12px 20px;
   text-align: right; // right align buttons
-  border-top: 1px solid @modal-footer-border-color;
+  border-top: 1px solid #eee;
   &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
 
   // Properly space out buttons

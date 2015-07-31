@@ -2,84 +2,93 @@
 
 namespace Falcon\Http\Controllers\Client;
 
-use Illuminate\Http\Request;
-
-use Falcon\Http\Requests;
 use Falcon\Http\Controllers\Controller;
+use Falcon\Models\User;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Validator;
 
 class AuthController extends Controller
 {
+    use AuthenticatesAndRegistersUsers;
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * Create a new authentication controller instance.
      */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('guest', ['except' => ['getLogout']]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Get a validator for an incoming registration request.
      *
-     * @return Response
+     * @param array $data
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function create()
+    protected function validator(array $data)
     {
-        //
+        return Validator::make($data, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6',
+        ]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create a new user instance after a valid registration.
      *
-     * @return Response
+     * @param array $data
+     *
+     * @return User
      */
-    public function store()
+    protected function create(array $data)
     {
-        //
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
     }
 
     /**
-     * Display the specified resource.
+     * Show the application register form.
      *
-     * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getRegister()
     {
-        //
+        return view('client.auth.register');
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Get the path to the login route.
      *
-     * @param  int  $id
-     * @return Response
+     * @return string
      */
-    public function edit($id)
+    public function loginPath()
     {
-        //
+        return route('client.auth.login');
     }
 
     /**
-     * Update the specified resource in storage.
+     * Log the user out of the application.
      *
-     * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function getLogout()
     {
-        //
+        Auth::logout();
+        return redirect()->route('client.auth.login');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Get the post register / login redirect path.
      *
-     * @param  int  $id
-     * @return Response
+     * @return string
      */
-    public function destroy($id)
+    public function redirectPath()
     {
-        //
+        return route('client.overview');
     }
 }

@@ -1,0 +1,147 @@
+// About page
+.about-logo-lg {
+  padding-top: 30px;
+
+  @media (max-width: @screen-md-min) {
+    display: none;
+  }
+}
+
+.staff-v2 {
+
+  .staff-detail {
+    text-align: center;
+    margin-top: 20%;
+
+    h3 {
+      font-size: 18px;
+      color: #555;
+      font-weight: normal;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    span {
+      font-size: 13px;
+      color: #999;
+      font-weight: 300;
+      font-style: italic;
+      display: block;
+      text-align: center;
+    }
+  }
+
+  .staff-social {
+    display: table;
+    margin: 20px auto;
+
+    li {
+      display: inline-block;
+      margin: 0;
+      text-align: center;
+      padding: 0;
+      float: left;
+      position: relative;
+
+      i {
+        font-size: @font-size-base;
+        color: #ACAEB7;
+        margin-right: 5px;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        .transition(~"all .3s ease-in-out");
+      }
+
+      .gi-twitter {
+        background-color: #00abf0;
+        color: #fff;
+      }
+
+      .gi-facebook {
+        background-color: #39579a;
+        color: #fff;
+      }
+
+      .gi-google-plus {
+        background-color: #eb8984;
+        color: #fff;
+      }
+
+      .gi-skype {
+        background-color: #0080ff;
+        color: #fff;
+      }
+    }
+  }
+
+  .mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    background: none;
+    color: #fff;
+    background: fade(#fff, 90%);
+    .transition(~"all 300ms ease-in-out");
+    .opacity(0);
+  }
+
+  &:hover .mask {
+    .opacity(1);
+  }
+}
+
+.staff {
+  .staff-photo {
+    .box-shadow(~"3px 3px 0px 0px #f2f2f2");
+  }
+
+  .staff-detail {
+    text-align: center;
+
+    .staff-info {
+      padding-right: 20px;
+
+      h4 {
+        margin-top: 20px;
+        margin-bottom: 3px;
+        //text-align: center;
+        //display: inline-block;
+
+        strong {
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+
+      .title {
+        //text-align: center;
+
+        span {
+          text-transform: uppercase;
+          font-size: 11px;
+          color: #ccc;
+          margin-bottom: 13px;
+          //float: right;
+          //margin-top: 23px;
+          margin-top: -3px;
+        }
+      }
+
+      p {
+        margin: auto auto 1.5em;
+        /*padding: 10px;
+        //color: #777;
+        font-size: 12px;
+        max-height: 100px;
+        overflow: hidden;
+        height: 100px;
+        line-height: 130%;*/
+      }
+    }
+  }
+}

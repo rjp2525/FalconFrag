@@ -8,6 +8,7 @@
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
+  margin: 0;
   font-family: @headings-font-family;
   font-weight: @headings-font-weight;
   line-height: @headings-line-height;
@@ -15,7 +16,8 @@ h1, h2, h3, h4, h5, h6,
 
   small,
   .small {
-    font-weight: normal;
+    font-weight: @headings-font-weight;
+    font-size: 85%;
     line-height: 1;
     color: @headings-small-color;
   }
@@ -24,8 +26,9 @@ h1, h2, h3, h4, h5, h6,
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-  margin-top: @line-height-computed;
-  margin-bottom: (@line-height-computed / 2);
+  //margin-top: @line-height-computed;
+  //margin-bottom: (@line-height-computed / 2);
+  //margin: 0;
 
   small,
   .small {
@@ -35,8 +38,8 @@ h3, .h3 {
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  margin-top: (@line-height-computed / 2);
-  margin-bottom: (@line-height-computed / 2);
+  //margin-top: (@line-height-computed / 2);
+  //margin-bottom: (@line-height-computed / 2);
 
   small,
   .small {
@@ -99,45 +102,204 @@ mark,
 .text-capitalize     { text-transform: capitalize; }
 
 // Contextual colors
-.text-muted {
-  color: @text-muted;
-}
-.text-primary {
-  .text-emphasis-variant(@brand-primary);
-}
-.text-success {
-  .text-emphasis-variant(@state-success-text);
-}
-.text-info {
-  .text-emphasis-variant(@state-info-text);
-}
-.text-warning {
-  .text-emphasis-variant(@state-warning-text);
-}
-.text-danger {
-  .text-emphasis-variant(@state-danger-text);
+// Emphasis
+.text {
+  &-muted {
+    .text-emphasis-variant(@gray-dark);
+  }
+
+  &-primary {
+    .text-emphasis-variant(@brand-primary);
+  }
+
+  &-primary-dark {
+    .text-emphasis-variant(@brand-dark);
+  }
+
+  &-primary-darker {
+    .text-emphasis-variant(@brand-darker);
+  }
+
+  &-primary-light {
+    .text-emphasis-variant(@brand-light);
+  }
+
+  &-primary-lighter {
+    .text-emphasis-variant(@brand-lighter);
+  }
+
+  &-success {
+    .text-emphasis-variant(@brand-success);
+  }
+
+  &-warning {
+    .text-emphasis-variant(@brand-warning);
+  }
+
+  &-info {
+    .text-emphasis-variant(@brand-info);
+  }
+
+  &-danger {
+    .text-emphasis-variant(@brand-danger);
+  }
+
+  &-success-light {
+    .text-emphasis-variant(@brand-success-light);
+  }
+
+  &-warning-light {
+    .text-emphasis-variant(@brand-warning-light);
+  }
+
+  &-info-light {
+    .text-emphasis-variant(@brand-info-light);
+  }
+
+  &-danger-light {
+    .text-emphasis-variant(@brand-danger-light);
+  }
+
+  &-white {
+    .text-emphasis-variant(#fff);
+  }
+
+  &-white-op {
+    .text-emphasis-variant(rgba(255,255,255,.85));
+  }
+
+  &-black {
+    .text-emphasis-variant(#000);
+  }
+
+  &-black-op {
+    .text-emphasis-variant(rgba(0,0,0,.5));
+  }
+
+  &-gray {
+    .text-emphasis-variant(@gray-base);
+  }
+
+  &-gray-dark {
+    .text-emphasis-variant(@gray-dark);
+  }
+
+  &-gray-darker {
+    .text-emphasis-variant(@gray-darker);
+  }
+
+  &-gray-light {
+    .text-emphasis-variant(@gray-light);
+  }
+
+  &-gray-lighter {
+    .text-emphasis-variant(@gray-lighter);
+  }
 }
 
 // Contextual backgrounds
 // For now we'll leave these alongside the text classes until v4 when we can
 // safely shift things around (per SemVer rules).
-.bg-primary {
-  // Given the contrast here, this is the only class to have its color inverted
-  // automatically.
-  color: #fff;
-  .bg-variant(@brand-primary);
-}
-.bg-success {
-  .bg-variant(@state-success-bg);
-}
-.bg-info {
-  .bg-variant(@state-info-bg);
-}
-.bg-warning {
-  .bg-variant(@state-warning-bg);
-}
-.bg-danger {
-  .bg-variant(@state-danger-bg);
+.bg {
+  &-muted {
+     .bg-variant(@gray-dark);
+  }
+
+  &-primary {
+     .bg-variant(@brand-primary);
+  }
+
+  &-primary-op {
+     .bg-variant(fade(@brand-primary, 75%));
+  }
+
+  &-primary-dark {
+     .bg-variant(@brand-dark);
+  }
+
+  &-primary-dark-op {
+     .bg-variant(fade(@brand-dark, 83%));
+  }
+
+  &-primary-darker {
+     .bg-variant(@brand-darker);
+  }
+
+  &-primary-light {
+     .bg-variant(@brand-light);
+  }
+
+  &-primary-lighter {
+     .bg-variant(@brand-lighter);
+  }
+
+  &-success {
+     .bg-variant(@brand-success);
+  }
+
+  &-warning {
+     .bg-variant(@brand-warning);
+  }
+
+  &-info {
+     .bg-variant(@brand-info);
+  }
+
+  &-danger {
+     .bg-variant(@brand-danger);
+  }
+
+  &-success-light {
+     .bg-variant(@brand-success-light);
+  }
+
+  &-warning-light {
+     .bg-variant(@brand-warning-light);
+  }
+
+  &-info-light {
+     .bg-variant(@brand-info-light);
+  }
+
+  &-danger-light {
+     .bg-variant(@brand-danger-light);
+  }
+
+  &-white {
+     .bg-variant(#fff);
+  }
+
+  &-white-op {
+     background-color: rgba(255,255,255,.075);
+  }
+
+  &-black {
+     .bg-variant(#000);
+  }
+
+  &-black-op {
+    background-color: rgba(0,0,0,.4);
+  }
+
+  &-gray {
+     .bg-variant(@gray-base);
+  }
+
+  &-gray-dark {
+     .bg-variant(@gray-dark);
+  }
+
+  &-gray-darker {
+     .bg-variant(@gray-darker);
+  }
+
+  &-gray-light {
+     .bg-variant(@gray-light);
+  }
+
+  &-gray-lighter {
+     .bg-variant(@gray-lighter);
+  }
 }
 
 
@@ -150,6 +312,60 @@ mark,
   border-bottom: 1px solid @page-header-border-color;
 }
 
+.page-heading {
+    color: @text-color-dark;
+    font-size: 28px;
+    font-weight: 400;
+
+    small {
+        margin-top: 5px;
+        display: block;
+        color: #777;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.4;
+
+        @media screen and (min-width: @screen-sm-min) {
+            margin-top: 0;
+            display: inline;
+            line-height: inherit;
+        }
+    }
+}
+
+.content-heading {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 15px;
+  color: darken(@gray-dark, 5%);
+  text-transform: uppercase;
+
+  small {
+    font-size: 13px;
+    font-weight: normal;
+    color: @gray-dark;
+    text-transform: none;
+  }
+
+  @media screen and (min-width: @screen-sm-min) {
+      margin-top: 25px;
+  }
+}
+
+// Font Weight Variants
+.font-w300 { font-weight: 300 !important; }
+.font-w400 { font-weight: 400 !important; }
+.font-w600 { font-weight: 600 !important; }
+.font-w700 { font-weight: 700 !important; }
+
+.font-s12 { font-size: 12px !important; }
+.font-s13 { font-size: 13px !important; }
+.font-s36 { font-size: 36px !important; }
+.font-s48 { font-size: 48px !important; }
+.font-s64 { font-size: 64px !important; }
+.font-s96 { font-size: 96px !important; }
+.font-s128 { font-size: 128px !important; }
 
 // Lists
 // -------------------------
@@ -299,4 +515,13 @@ address {
   margin-bottom: @line-height-computed;
   font-style: normal;
   line-height: @line-height-base;
+}
+
+p {
+  line-height: @line-height-base;
+
+  &.nice-copy,
+  .nice-copy & {
+    line-height: 1.8;
+  }
 }

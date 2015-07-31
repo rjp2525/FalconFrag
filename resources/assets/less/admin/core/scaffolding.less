@@ -24,12 +24,25 @@ html {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: @font-family-base;
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @text-color;
   background-color: @body-bg;
+}
+
+.no-focus *:focus {
+  // Disabling focus outline is not a good practice for accessibility reasons
+  // It is disabled for better demostrating template's design by making it simpler
+  // Elements have their own focus styles but consider enabling the outline in
+  // production by removing .no-focus class from <html> tag
+  outline: 0 !important;
 }
 
 // Reset fonts for relevant elements
@@ -48,15 +61,50 @@ textarea {
 a {
   color: @link-color;
   text-decoration: none;
+  .transition(color .12s ease-out);
+
+  &.link-effect {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      content: "";
+      background-color: @link-hover-color;
+      visibility: hidden;
+      .scaleX(0);
+      .transition-transform(.12s ease-out);
+    }
+  }
 
   &:hover,
   &:focus {
     color: @link-hover-color;
     text-decoration: @link-hover-decoration;
+
+    &.link-effect:before {
+      visibility: visible;
+      .scaleX(1);
+    }
   }
 
   &:focus {
     .tab-focus();
+  }
+
+  &:active {
+    color: @link-color;
+  }
+
+  &.inactive {
+    cursor: not-allowed;
+
+    &:focus {
+      background-color: transparent !important;
+    }
   }
 }
 
@@ -80,6 +128,7 @@ img {
 // Responsive images (ensure images don't scale beyond their parents)
 .img-responsive {
   .img-responsive();
+  //width: 100%;
 }
 
 // Rounded corners

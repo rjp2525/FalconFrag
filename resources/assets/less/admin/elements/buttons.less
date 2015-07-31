@@ -17,6 +17,7 @@
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
   white-space: nowrap;
+  .transition(all .15s ease-out);
   .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
   .user-select(none);
 
@@ -40,7 +41,7 @@
   &.active {
     outline: 0;
     background-image: none;
-    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+    .box-shadow(none);
   }
 
   &.disabled,
@@ -51,6 +52,49 @@
     .opacity(.65);
     .box-shadow(none);
   }
+
+  &.btn-square {
+    border-radius: 0;
+  }
+
+  &.btn-rounded {
+    border-radius: 20px;
+  }
+
+  &.btn-minw {
+    min-width: 110px;
+  }
+
+  &.btn-noborder {
+    border: none !important;
+  }
+
+  &.btn-image {
+    position: relative;
+    padding-left: 40px;
+
+    > img {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      display: block;
+      width: 26px;
+      height: 26px;
+      border-radius: 3px;
+    }
+  }
+
+  > i {
+    &.pull-left {
+      margin-top: 3px;
+      margin-right: 5px;
+    }
+
+    &.pull-right {
+      margin-top: 3px;
+      margin-left: 5px;
+    }
+  }
 }
 
 
@@ -58,26 +102,27 @@
 // --------------------------------------------------
 
 .btn-default {
-  .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
+  .button-variant(@text-color-dark; #f5f5f5; #e9e9e9);
 }
+
 .btn-primary {
-  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+  .button-variant(#fff; @brand-primary; darken(@brand-primary, 10%));
 }
-// Success appears as green
+
 .btn-success {
-  .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+  .button-variant(#fff; @brand-success; darken(@brand-success, 10%));
 }
-// Info appears as blue-green
+
 .btn-info {
-  .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
+  .button-variant(#fff; @brand-info; darken(@brand-info, 10%));
 }
-// Warning appears as orange
+
 .btn-warning {
-  .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
+  .button-variant(#fff; @brand-warning; darken(@brand-warning, 10%));
 }
-// Danger and error appear as red
+
 .btn-danger {
-  .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+  .button-variant(#fff; @brand-danger; darken(@brand-danger, 10%));
 }
 
 
@@ -102,6 +147,7 @@
   &:hover,
   &:focus,
   &:active {
+    text-decoration: none;
     border-color: transparent;
   }
   &:hover,

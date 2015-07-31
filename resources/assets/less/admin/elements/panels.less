@@ -8,8 +8,8 @@
   margin-bottom: @line-height-computed;
   background-color: @panel-bg;
   border: 1px solid transparent;
-  border-radius: @panel-border-radius;
-  .box-shadow(0 1px 1px rgba(0,0,0,.05));
+  border-radius: 3px;
+  .box-shadow(none);
 }
 
 // Panel contents
@@ -219,10 +219,10 @@
   // Tighten up margin so it's only between panels
   .panel {
     margin-bottom: 0;
-    border-radius: @panel-border-radius;
+    border-radius: 3px;
 
     + .panel {
-      margin-top: 5px;
+      margin-top: 10px;
     }
   }
 
@@ -246,20 +246,25 @@
 
 // Contextual variations
 .panel-default {
-  .panel-variant(@panel-default-border; @panel-default-text; @panel-default-heading-bg; @panel-default-border);
+  .panel-variant(#f0f0f0; @text-color; #f9f9f9; #f0f0f0);
 }
+
 .panel-primary {
-  .panel-variant(@panel-primary-border; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
+  .panel-variant(@brand-lighter; @brand-primary; lighten(@brand-lighter, 7%); @brand-lighter);
 }
+
 .panel-success {
-  .panel-variant(@panel-success-border; @panel-success-text; @panel-success-heading-bg; @panel-success-border);
+  .panel-variant(darken(@brand-success-light, 5%); @brand-success; @brand-success-light; darken(@brand-success-light, 5%));
 }
+
 .panel-info {
-  .panel-variant(@panel-info-border; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
+  .panel-variant(darken(@brand-info-light, 5%); @brand-info; @brand-info-light; darken(@brand-info-light, 5%));
 }
+
 .panel-warning {
-  .panel-variant(@panel-warning-border; @panel-warning-text; @panel-warning-heading-bg; @panel-warning-border);
+  .panel-variant(darken(@brand-warning-light, 5%); @brand-warning; @brand-warning-light; darken(@brand-warning-light, 5%));
 }
+
 .panel-danger {
-  .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
+  .panel-variant(darken(@brand-danger-light, 5%); @brand-danger; @brand-danger-light; darken(@brand-danger-light, 5%));
 }

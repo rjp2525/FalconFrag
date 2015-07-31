@@ -30,17 +30,25 @@ th {
     > tr {
       > th,
       > td {
-        padding: @table-cell-padding;
+        padding: 12px 10px;
         line-height: @line-height-base;
         vertical-align: top;
-        border-top: 1px solid @table-border-color;
+        border-top: 1px solid #f0f0f0;
+      }
+
+      > th {
+        padding: 16px 10px 12px;
+        font-family: @headings-font-family;
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
       }
     }
   }
   // Bottom align for column headings
   > thead > tr > th {
     vertical-align: bottom;
-    border-bottom: 2px solid @table-border-color;
+    border-bottom: 1px solid #ddd;
   }
   // Remove top border from thead by default
   > caption + thead,
@@ -55,7 +63,7 @@ th {
   }
   // Account for multiple tbody instances
   > tbody + tbody {
-    border-top: 2px solid @table-border-color;
+    border-top: 1px solid #ddd;
   }
 
   // Nesting
@@ -74,7 +82,7 @@ th {
     > tr {
       > th,
       > td {
-        padding: @table-condensed-cell-padding;
+        padding: 6px 8px;
       }
     }
   }
@@ -86,21 +94,22 @@ th {
 // Add borders all around the table and between all the columns.
 
 .table-bordered {
-  border: 1px solid @table-border-color;
+  border: 1px solid #e9e9e9;
   > thead,
   > tbody,
   > tfoot {
     > tr {
       > th,
       > td {
-        border: 1px solid @table-border-color;
+        border: 1px solid #f0f0f0;
       }
     }
   }
   > thead > tr {
     > th,
     > td {
-      border-bottom-width: 2px;
+      border-bottom-width: 1px;
+      border-bottom-color: #e9e9e9;
     }
   }
 }
@@ -112,7 +121,7 @@ th {
 
 .table-striped {
   > tbody > tr:nth-of-type(odd) {
-    background-color: @table-bg-accent;
+    background-color: #f9f9f9;
   }
 }
 
@@ -123,7 +132,7 @@ th {
 
 .table-hover {
   > tbody > tr:hover {
-    background-color: @table-bg-hover;
+    background-color: #f5f5f5;
   }
 }
 
@@ -155,11 +164,11 @@ table {
 // inheritance to nested tables.
 
 // Generate the contextual variants
-.table-row-variant(active; @table-bg-active);
-.table-row-variant(success; @state-success-bg);
-.table-row-variant(info; @state-info-bg);
-.table-row-variant(warning; @state-warning-bg);
-.table-row-variant(danger; @state-danger-bg);
+.table-row-variant(active; #f9f9f9);
+.table-row-variant(success; @brand-success-light);
+.table-row-variant(info; @brand-info-light);
+.table-row-variant(warning; @brand-warning-light);
+.table-row-variant(danger; @brand-danger-light);
 
 
 // Responsive tables
@@ -171,6 +180,7 @@ table {
 .table-responsive {
   overflow-x: auto;
   min-height: 0.01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
+  -webkit-overflow-scrolling: touch;
 
   @media screen and (max-width: @screen-xs-max) {
     width: 100%;
@@ -229,6 +239,86 @@ table {
         }
       }
 
+    }
+  }
+}
+
+
+// Borderless Table
+.table-borderless {
+  border: none;
+
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border: none;
+      }
+    }
+  }
+
+  > thead > tr {
+    > th,
+    > td {
+      border-bottom: 1px solid #ddd;
+    }
+  }
+}
+
+// Vertically Centered Table
+.table-vcenter {
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+// Table Header Background
+.table-header-bg {
+  > thead > tr {
+    > th,
+    > td {
+      color: #fff;
+      background-color: @brand-primary;
+      border-bottom-color: @brand-primary;
+    }
+  }
+}
+
+// Table Tools
+.js-table-checkable tbody tr,
+.js-table-sections-header > tr {
+  cursor: pointer;
+}
+
+.js-table-sections-header {
+  > tr > td:first-child > i {
+    .transition-transform(.15s ease-out);
+  }
+
+  + tbody {
+    display: none;
+  }
+
+  &.open {
+    > tr {
+      background-color: #f9f9f9;
+    }
+
+    > tr > td:first-child > i {
+      .rotate(90deg);
+    }
+
+    + tbody {
+      display: table-row-group;
     }
   }
 }

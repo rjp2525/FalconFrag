@@ -12,3 +12,18 @@
     color: darken(@text-color, 10%);
   }
 }
+
+// Alerts
+
+.admin-alert-variant(@background; @text-color) {
+  background-color: @background;
+  color: @text-color;
+  .box-shadow(0 2px darken(@background, 5%));
+
+  hr {
+    border-top-color: darken(@background, 5%);
+  }
+  .alert-link {
+    color: darken(@text-color, 10%);
+  }
+}

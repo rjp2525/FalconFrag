@@ -5,21 +5,19 @@ namespace Falcon\Models;
 use Illuminate\Database\Eloquent\Model as LModel;
 use Ramsey\Uuid\Uuid;
 
-abstract class Model extends LModel
+class Model extends LModel
 {
-
     /**
-     * Indicates if the IDs are auto-incrementing
+     * Indicates if the IDs are auto-incrementing.
      *
-     * @var boolean
+     * @var bool
      */
     public $incrementing = false;
 
     /**
      * Create a new Eloquent model instance.
      *
-     * @param  array $attributes
-     * @return void
+     * @param array $attributes
      */
     public function __construct(array $attributes = array())
     {

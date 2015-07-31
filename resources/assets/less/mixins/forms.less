@@ -83,3 +83,51 @@
     height: auto;
   }
 }
+
+// Material Form Inputs
+.form-control-material-focus-variant(@color) {
+    &:focus {
+        .box-shadow(0 2px 0 @color);
+
+        + label {
+            color: @color;
+        }
+
+        ~ .input-group-addon {
+            color: @color;
+            .box-shadow(0 2px 0 @color);
+        }
+    }
+}
+
+.form-control-material-state-variant(@color) {
+    > .form-control {
+        .box-shadow(0 1px 0 @color);
+
+        &:focus {
+            .box-shadow(0 2px 0 @color);
+
+            + label {
+                color: @color;
+            }
+
+            ~ .input-group-addon {
+                color: @color;
+                .box-shadow(0 2px 0 @color);
+            }
+        }
+
+        & + label {
+            color: @color;
+        }
+
+        ~ .input-group-addon {
+            color: @color;
+            .box-shadow(0 1px 0 @color);
+        }
+    }
+
+    > .help-block {
+        color: @color;
+    }
+}

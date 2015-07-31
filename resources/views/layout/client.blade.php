@@ -9,10 +9,25 @@
 
     <meta name="description" content="">
 
-    {!! HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css') !!}
+    {!! HTML::style(elixir('css/style.css')) !!}
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="header-top">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-6 col-md-offset-6 text-right">
+                      <ul class="header-top-links">
+                          <li><a href="#">Network Status</a></li>
+                          <li><a href="#">Support</a></li>
+                          <li><a href="#">Client Portal</a></li>
+                          <li><a href="#">Partners</a></li>
+                          <li><a href="#">Contact</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+        </div>
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -54,5 +69,8 @@
             </div>
         </div>
     </nav>
+    @yield('content')
+
+    {!! HTML::script(elixir('js/application.js')) !!}
 </body>
 </html>

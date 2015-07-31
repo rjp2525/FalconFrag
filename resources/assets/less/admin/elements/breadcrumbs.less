@@ -4,19 +4,28 @@
 
 
 .breadcrumb {
-  padding: @breadcrumb-padding-vertical @breadcrumb-padding-horizontal;
-  margin-bottom: @line-height-computed;
+  padding: 0;
+  margin-bottom: 0;
   list-style: none;
-  background-color: @breadcrumb-bg;
+  text-transform: uppercase;
+  font-size: 12px;
+  //font-weight: bold; // 600
+  color: @gray-dark;
+  background-color: transparent;
   border-radius: @border-radius-base;
 
   > li {
     display: inline-block;
 
     + li:before {
-      content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
-      padding: 0 5px;
-      color: @breadcrumb-color;
+      display: inline-block;
+      //content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
+      padding: 0;
+      font-family: "FontAwesome";
+      color: fade(#000, 50%);
+      content: "\f105";
+      width: 20px;
+      text-align: center;
     }
   }
 

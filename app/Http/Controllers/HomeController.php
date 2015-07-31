@@ -2,8 +2,6 @@
 
 namespace Falcon\Http\Controllers;
 
-use Falcon\Http\Controllers\Controller;
-
 class HomeController extends Controller
 {
     /**
@@ -13,7 +11,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return 'Home';
+        return view('default.index');
+    }
+
+    /**
+     * Display the about us page.
+     *
+     * @return Response
+     */
+    public function about()
+    {
+        return view('default.about');
     }
 
     /**
@@ -39,7 +47,8 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Response
      */
     public function show($id)
@@ -50,7 +59,8 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Response
      */
     public function edit($id)
@@ -61,7 +71,8 @@ class HomeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Response
      */
     public function update($id)
@@ -72,7 +83,8 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return Response
      */
     public function destroy($id)

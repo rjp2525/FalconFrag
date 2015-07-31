@@ -2,6 +2,8 @@
 // Typography
 // --------------------------------------------------
 
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800');
 
 // Headings
 // -------------------------
@@ -56,7 +58,9 @@ h6, .h6 { font-size: @font-size-h6; }
 // -------------------------
 
 p {
-  margin: 0 0 (@line-height-computed / 2);
+  margin: 0 0 @line-height-computed; // Divide by two?
+  line-height: @line-height-computed + 2;
+  font-size: @font-size-base - 1;
 }
 
 .lead {
@@ -157,12 +161,16 @@ mark,
 // Unordered and Ordered lists
 ul,
 ol {
-  margin-top: 0;
-  margin-bottom: (@line-height-computed / 2);
-  ul,
+  //margin-top: 0;
+  //margin-bottom: (@line-height-computed / 2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  /*ul,
   ol {
     margin-bottom: 0;
-  }
+  }*/
 }
 
 // List options

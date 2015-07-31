@@ -1,0 +1,87 @@
+.page-head {
+  position: relative;
+  background-color: #f0f0f0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  color: @gray-light;
+  //text-align: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  //margin-bottom: 60px;
+  .bg-size(cover);
+
+  &.text-white {
+    color: #f0f0f0;
+  }
+
+  &.servers {
+    // http://www.computer-plus.com/wp-content/uploads/2014/05/servers-support_banner1.jpg
+    background-image: url('/img/page-headers/servers-support_banner1.jpg');
+
+    .page-head-title,
+    .breadcrumbs ul li a:hover,
+    .breadcrumbs ul li span {
+      color: #f0f0f0;
+    }
+
+    .breadcrumbs ul li a {
+      color: #ccc;
+    }
+  }
+
+  .page-head-title {
+    font-size: 24px;
+    line-height: 33px;
+    font-weight: 300;
+    margin-bottom: 0;
+
+    @media (max-width: @grid-float-breakpoint) {
+      text-align: center;
+    }
+  }
+
+  .breadcrumbs {
+    margin-top: 20px;
+    text-align: right;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: inline-block;
+
+        a {
+          .transition(~"all .2s ease-in-out");
+
+          &:after {
+            content: '\f2fb';
+            font-family: 'Material Icons';
+            margin: 0 10px;
+          }
+        }
+      }
+    }
+
+    @media (max-width: @grid-float-breakpoint) {
+      text-align: center;
+    }
+  }
+
+  .container {
+    z-index: 2;
+    position: relative;
+  }
+
+  .overlay {
+    background-color: fade(#000, 50%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+}

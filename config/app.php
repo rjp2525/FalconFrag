@@ -149,11 +149,14 @@ return [
          */
         Falcon\Modules\Purifier\PurifierServiceProvider::class,
         Falcon\Modules\Vault\VaultServiceProvider::class,
+        Falcon\Modules\Cart\CartServiceProvider::class,
+        Falcon\Modules\Active\ActiveServiceProvider::class,
 
         /*
          * Package Service Providers
          */
         Collective\Html\HtmlServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
 
     ],
 
@@ -207,6 +210,8 @@ return [
          * Module Facades
          */
         'Purifier' => Falcon\Modules\Purifier\Facades\Purifier::class,
+        'Cart' => Falcon\Modules\Cart\Facades\Cart::class,
+        'Active' => Falcon\Modules\Active\Facades\Active::class,
 
         /*
          * Package Facades

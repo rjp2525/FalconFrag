@@ -1,0 +1,38 @@
+// Call to actions
+.call-to {
+  background: @color-primary;
+  padding-top: 40px;
+  padding-bottom: 35px;
+  margin: 0;
+
+  h2 {
+    color: #fff;
+    //font-weight: 300;
+  }
+
+  p {
+    color: #fff;
+    line-height: 24px;
+	  padding-top: 6px;
+  }
+
+  .button {
+    padding-top: 33px;
+    text-align: center;
+
+    .btn {
+      color: #fff;
+      background: transparent;
+      border: 1px solid #fff;
+      font-size: 20px;
+      padding: 5px 12px 5px 12px;
+      .transition(~"all .2s ease-in-out");
+      float: none;
+      bottom: 0px;
+    }
+  }
+
+  @media (max-width: @grid-float-breakpoint) {
+    text-align: center;
+  }
+}
