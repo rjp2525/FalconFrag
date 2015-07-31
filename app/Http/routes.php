@@ -52,3 +52,8 @@ Route::group(['domain' => 'falconfrag.com'], function () {
         return view('welcome');
     })->where('path', '.+');
 });
+
+// Default site homepage
+Route::get('/', function () {
+    return view('welcome');
+});
