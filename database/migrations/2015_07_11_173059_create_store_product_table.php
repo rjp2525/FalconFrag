@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateStoreProductTable extends Migration
 {
@@ -30,6 +30,6 @@ class CreateStoreProductTable extends Migration
      */
     public function down()
     {
-        Schema::drop('products');
+        Schema::drop('store_products');
     }
 }
