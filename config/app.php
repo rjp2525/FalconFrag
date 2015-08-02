@@ -157,6 +157,8 @@ return [
          */
         Collective\Html\HtmlServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
+        LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
+        LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
 
     ],
 
@@ -218,6 +220,7 @@ return [
          */
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
+        'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
     ],
 
 ];

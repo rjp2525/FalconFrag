@@ -2,6 +2,16 @@
 
 // Alpha Routes
 Route::group(['domain' => 'alpha.falconfrag.com'], function () {
+    // API Endpoints
+    Route::group(['prefix' => 'api/v1', 'namespace' => 'Api\V1'], function () {
+        Route::group(['prefix' => 'account', 'namespace' => 'Account', 'middleware' => 'oauth'], function () {
+            Route::get('profile', ['as' => 'api.v1.account.profile', 'uses' => 'ProfileController@getProfile']);
+        });
+
+        Route::get('/', ['as' => 'api.v1.index', 'uses' => 'BaseController@index']);
+        Route::post('oauth/access_token', ['as' => 'api.v1.oauth.access_token', 'uses' => 'OAuthController@issueToken']);
+    });
+
     // Client Panel
     Route::group(['prefix' => 'client', 'namespace' => 'Client'], function () {
         // Client panel routes
