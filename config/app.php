@@ -144,21 +144,18 @@ return [
         Falcon\Providers\EventServiceProvider::class,
         Falcon\Providers\RouteServiceProvider::class,
 
-        /*
-         * Module Service Providers
-         */
-        Falcon\Modules\Purifier\PurifierServiceProvider::class,
-        Falcon\Modules\Vault\VaultServiceProvider::class,
-        Falcon\Modules\Cart\CartServiceProvider::class,
-        Falcon\Modules\Active\ActiveServiceProvider::class,
-
-        /*
-         * Package Service Providers
+        /**
+         * Third Party Service Providers
          */
         Collective\Html\HtmlServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
         LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
         LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
+        Mews\Purifier\PurifierServiceProvider::class,
+        Sofa\Revisionable\Laravel\ServiceProvider::class,
+        HieuLe\Active\ActiveServiceProvider::class,
+        Bican\Roles\RolesServiceProvider::class,
+        ArtemSchander\L5Modular\ModuleServiceProvider::class,
 
     ],
 
@@ -211,16 +208,18 @@ return [
         /*
          * Module Facades
          */
-        'Purifier' => Falcon\Modules\Purifier\Facades\Purifier::class,
-        'Cart' => Falcon\Modules\Cart\Facades\Cart::class,
-        'Active' => Falcon\Modules\Active\Facades\Active::class,
+        //'Purifier' => Falcon\Modules\Purifier\Facades\Purifier::class,
+        //'Cart' => Falcon\Modules\Cart\Facades\Cart::class,
+        //'Active' => Falcon\Modules\Active\Facades\Active::class,
 
         /*
-         * Package Facades
+         * Third Party Facades
          */
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
         'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
+        'Purifier' => Mews\Purifier\Facades\Purifier::class,
+        'Active' => HieuLe\Active\Facades\Active::class,
     ],
 
 ];

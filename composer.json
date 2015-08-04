@@ -15,7 +15,12 @@
         "laravelcollective/html": "5.1.*",
         "league/flysystem-aws-s3-v3": "~1.0",
         "spatie/laravel-backup": "dev-master",
-        "lucadegasperi/oauth2-server-laravel": "5.0.*@dev"
+        "lucadegasperi/oauth2-server-laravel": "5.0.*@dev",
+        "mews/purifier": "~2.0",
+        "sofa/revisionable": "~1.0@dev",
+        "hieu-le/active": "~2.0",
+        "bican/roles": "2.1.*",
+        "artem-schander/l5-modular": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
