@@ -2,6 +2,9 @@
 
 namespace Falcon\Exceptions;
 
+use Bican\Roles\Exceptions\LevelDeniedException;
+use Bican\Roles\Exceptions\PermissionDeniedException;
+use Bican\Roles\Exceptions\RoleDeniedException;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -38,6 +41,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if ($e instanceof RoleDeniedException
+            || $e instanceof PermissionDeniedException
+            || $e instanceof LevelDeniedException) {
+            //return redirect()->back();
+            abort(404);
+        }
+
         return parent::render($request, $e);
     }
 }
