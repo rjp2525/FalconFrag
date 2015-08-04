@@ -11,7 +11,7 @@
 
     {!! HTML::style(elixir('css/style.css')) !!}
 </head>
-<body {{ active_route('default.home', 'homepage') }}>
+<body {!! Active::route('default.home', 'class="homepage"') !!}>
   <nav class="navbar navbar-default navbar-fixed-top down" role="navigation">
       <div class="header-top">
           <div class="container">
@@ -45,10 +45,10 @@
           </div>
           <div class="collapse navbar-collapse" id="navbar">
               <ul class="nav navbar-nav navbar-right">
-                  <li {{ active_route('default.home') }}>
+                  <li {!! Active::route('default.home', 'class="active"') !!}>
                       <a href="{{ route('default.home') }}">Home</a>
                   </li>
-                  <li {{ active_route('default.about') }}>
+                  <li {!! Active::route('default.about', 'class="active"') !!}>
                       <a href="{{ route('default.about') }}">About</a>
                   </li>
                   <li class="dropdown">
