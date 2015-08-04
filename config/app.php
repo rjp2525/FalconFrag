@@ -155,7 +155,7 @@ return [
         Sofa\Revisionable\Laravel\ServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Bican\Roles\RolesServiceProvider::class,
-        ArtemSchander\L5Modular\ModuleServiceProvider::class,
+        Pingpong\Modules\ModulesServiceProvider::class,
 
     ],
 
@@ -220,6 +220,7 @@ return [
         'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
         'Active' => HieuLe\Active\Facades\Active::class,
+        'Module' => Pingpong\Modules\Facades\Module::class,
     ],
 
 ];

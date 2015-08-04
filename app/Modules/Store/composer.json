@@ -1,0 +1,15 @@
+{
+	"name": "falconfrag-modules/store",
+	"description": "",
+	"authors": [
+		{
+			"name": "Reno Philibert",
+			"email": "me@renophilibert.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Falcon\\Modules\\Store\\": ""
+		}
+	}
+}
