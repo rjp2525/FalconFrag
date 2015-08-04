@@ -20,7 +20,7 @@
         "sofa/revisionable": "~1.0@dev",
         "hieu-le/active": "~2.0",
         "bican/roles": "2.1.*",
-        "pingpong/modules": "~2.0"
+        "artem-schander/l5-modular": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

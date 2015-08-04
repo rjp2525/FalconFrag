@@ -155,7 +155,7 @@ return [
         Sofa\Revisionable\Laravel\ServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Bican\Roles\RolesServiceProvider::class,
-        Pingpong\Modules\ModulesServiceProvider::class,
+        ArtemSchander\L5Modular\ModuleServiceProvider::class,
 
     ],
 
@@ -203,14 +203,11 @@ return [
         'Storage' => Illuminate\Support\Facades\Storage::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
-        'View' => Illuminate\Support\Facades\View::class,
 
         /*
          * Module Facades
          */
-        //'Purifier' => Falcon\Modules\Purifier\Facades\Purifier::class,
-        //'Cart' => Falcon\Modules\Cart\Facades\Cart::class,
-        //'Active' => Falcon\Modules\Active\Facades\Active::class,
+        // Will be added soon
 
         /*
          * Third Party Facades
@@ -220,7 +217,6 @@ return [
         'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
         'Active' => HieuLe\Active\Facades\Active::class,
-        'Module' => Pingpong\Modules\Facades\Module::class,
     ],
 
 ];
