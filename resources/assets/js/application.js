@@ -27,10 +27,12 @@ var app = function() {
     // Listen for scroll event
     jQuery(window).on('scroll', function() {
       // Add or remove scroll class
-      if (jQuery(window).scrollTop() > 100) {
-        jQuery('.navbar').removeClass('down').addClass('up');
-      } else {
-        jQuery('.navbar').removeClass('up').addClass('down');
+      if(jQuery(window).width() > 768) {
+        if (jQuery(window).scrollTop() > 100) {
+          jQuery('.navbar').removeClass('down').addClass('up');
+        } else {
+          jQuery('.navbar').removeClass('up').addClass('down');
+        }
       }
     });
   };
@@ -49,7 +51,8 @@ var app = function() {
       pagination: false,
       autoPlay: true,
       slideSpeed: 600,
-      animateOut: 'fadeOut'
+      animateOut: 'fadeOut',
+      autoHeight: true
     });
   };
 
