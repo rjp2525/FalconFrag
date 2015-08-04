@@ -30,8 +30,15 @@ class Kernel extends HttpKernel
         'auth' => \Falcon\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \Falcon\Http\Middleware\RedirectIfAuthenticated::class,
+
+        // OAuth2
         'oauth' => \LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware::class,
         'oauth-owner' => \LucaDegasperi\OAuth2Server\Middleware\OAuthOwnerMiddleware::class,
         'check-authorization-params' => \LucaDegasperi\OAuth2Server\Middleware\CheckAuthCodeRequestMiddleware::class,
+
+        // Roles
+        'role' => \Bican\Roles\Middleware\VerifyRole::class,
+        'permission' => \Bican\Roles\Middleware\VerifyPermission::class,
+        'level' => \Bican\Roles\Middleware\VerifyLevel::class,
     ];
 }
