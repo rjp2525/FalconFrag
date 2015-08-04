@@ -2,20 +2,26 @@
 
 namespace Falcon\Models;
 
-use Falcon\Modules\Vault\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
-use Falcon\Modules\Vault\Traits\HasRoleAndPermission;
+use Bican\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
+//use Falcon\Modules\Vault\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
+//use Falcon\Modules\Vault\Traits\HasRoleAndPermission;
+use Bican\Roles\Traits\HasRoleAndPermission;
+use Falcon\Models\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Falcon\Modules\Revisionable\Revisionable;
+use Sofa\Revisionable\Laravel\RevisionableTrait;
+use Sofa\Revisionable\Revisionable;
 
-class User extends Revisionable implements AuthenticatableContract, CanResetPasswordContract, HasRoleAndPermissionContract
+//use Falcon\Modules\Revisionable\Revisionable;
+
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract, HasRoleAndPermissionContract, Revisionable
 {
-    use Authenticatable, CanResetPassword, SoftDeletes, HasRoleAndPermission;
+    use Authenticatable, CanResetPassword, SoftDeletes, HasRoleAndPermission, RevisionableTrait;
 
-    protected $revisionEnabled = true;
+    //protected $revisionEnabled = true;
 
     /**
      * The database table used by the model.
