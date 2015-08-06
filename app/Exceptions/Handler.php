@@ -6,6 +6,7 @@ use Bican\Roles\Exceptions\LevelDeniedException;
 use Bican\Roles\Exceptions\PermissionDeniedException;
 use Bican\Roles\Exceptions\RoleDeniedException;
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -43,7 +44,8 @@ class Handler extends ExceptionHandler
     {
         if ($e instanceof RoleDeniedException
             || $e instanceof PermissionDeniedException
-            || $e instanceof LevelDeniedException) {
+            || $e instanceof LevelDeniedException
+            || $e instanceof ModelNotFoundException) {
             //return redirect()->back();
             abort(404);
         }
