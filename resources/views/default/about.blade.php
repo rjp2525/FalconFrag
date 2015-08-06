@@ -21,7 +21,7 @@
     </div>
     <div class="overlay"></div>
 </div>
-<section>
+<section class="ph-first">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
