@@ -1,6 +1,20 @@
 @extends('layout.client')
 
 @section('content')
+<!--<section class="client-login-page">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel form-steps">
+					<div class="form-progress">
+						<div class="form-progress-indicator"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>-->
+<!--
 <div style="padding-top: 200px;"></div>
 <div class="container">
 	<div class="row">
@@ -63,4 +77,6 @@
 		</div>
 	</div>
 </div>
+-->
+<p class="text-center">Registration is currently disabled.</p>
 @endsection

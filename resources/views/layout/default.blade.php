@@ -39,8 +39,6 @@
               <a href="{{ route('default.home') }}" class="navbar-brand">
                 <div class="nav-logo"></div>
                 <p class="sr-only">Falcon Frag</p>
-                <!--<img src="img/logo-color.svg" alt="Falcon Frag" style="height: 30px; width: 200px;">-->
-                  <!--<img src="img/nav-logo.png" alt="Falcon Frag">-->
               </a>
           </div>
           <div class="collapse navbar-collapse" id="navbar">
@@ -51,30 +49,27 @@
                   <li {!! Active::route('default.about', 'class="active"') !!}>
                       <a href="{{ route('default.about') }}">About</a>
                   </li>
-                  <li class="dropdown">
-                      <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                  <li class="dropdown {!! Active::route(['product.index', 'product.category', 'product.detail']) !!}">
+                      <a href="{{ route('product.index') }}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
                           Hosting Services <span class="caret"></span>
                       </a>
                       <ul class="dropdown-menu" role="menu">
+                        @forelse($product_categories as $product_category)
                           <li>
-                              <a href="#">Game &amp; Voice</a>
+                            <a href="{{ route('product.category', $product_category->slug) }}">{{ $product_category->title }}</a>
                           </li>
+                        @empty
                           <li>
-                              <a href="#">Web &amp; Email</a>
+                            <a>No services</a>
                           </li>
-                          <li>
-                              <a href="#">Dedicated Servers</a>
-                          </li>
-                          <li>
-                              <a href="#">Virtual Private Servers</a>
-                          </li>
+                        @endforelse
                       </ul>
                   </li>
                   <li>
                       <a href="#">Network</a>
                   </li>
                   <li>
-                      <a href="forum.html">Community</a>
+                      <a href="#">Community</a>
                   </li>
               </ul>
           </div>

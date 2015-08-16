@@ -21,7 +21,7 @@
     </div>
     <div class="overlay"></div>
 </div>
-<section class="ph-first">
+<section>
     <div class="container">
         <div class="row">
             <div class="col-md-9">
@@ -30,12 +30,12 @@
                 <p>Nam aliquam, dui id porta consectetur, tellus orci cursus neque, ut venenatis ante dolor feugiat metus. In dignissim lectus eu dictum interdum. Vestibulum facilisis nibh nisi, at tincidunt eros pulvinar vel. In cursus orci eu turpis vestibulum, ac tincidunt leo dictum. Ut ligula quam, sollicitudin at malesuada quis, dictum sit amet turpis. Maecenas vel vehicula massa. Vestibulum eget molestie justo.</p>
             </div>
             <div class="col-md-3 about-logo-lg">
-                <img src="https://placehold.it/512x512&text=Hello+there!" alt="Falcon Frag" class="img-responsive img-circle">
+                <img src="https://placehold.it/512x512&amp;text=Hello+there!" alt="Falcon Frag" class="img-responsive img-circle">
             </div>
         </div>
     </div>
 </section>
-<section class="bg-alt">
+<section class="bg-dark">
     <div class="container">
         <div class="row">
             <div class="col-md-5 about-logo-lg">
