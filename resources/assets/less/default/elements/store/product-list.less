@@ -1,0 +1,101 @@
+// Product list views
+/*.category-product-list {
+    .product-list-item {
+        margin-top: 18px;
+        margin-bottom: 18px;
+        background: #fff;
+        border-radius: 4px;
+        padding: 20px;
+        border: 1px solid #ddd;
+
+        .product-icon {
+            width: 72px;
+            margin-right: 40px;
+            border-radius: 50%;
+            float: left;
+        }
+
+        .product-title {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: bold;
+            color: @color-primary;
+            margin-bottom: 8px;
+            line-height: 20px;
+            .transition(~"all .2s linear");
+        }
+
+        .product-description {
+            margin: 0;
+        }
+
+        @media (max-width: @grid-float-breakpoint-max) {
+            text-align: center;
+
+            .product-icon {
+                float: none;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .product-title {
+                display: block;
+                margin-bottom: 8px;
+            }
+        }
+    }
+}*/
+.category-product-list-grid {
+    padding-top: 20px;
+    padding-bottom: 10px;
+
+    .product-list-item-container {
+        padding: 100px 0 0 0;
+
+        .product-list-item {
+            position: relative;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            text-align: center;
+            padding: 80px 20px 20px 20px;
+            .transition(~"all .3s ease-in-out");
+
+            .product-icon {
+                position: absolute;
+                top: -64px;
+                left: 50%;
+                margin-left: -64px;
+                text-align: center;
+
+                img {
+                    width: 128px;
+                    height: auto;
+                    border-radius: 100%;
+                }
+            }
+
+            .product-title {
+                display: block;
+                font-size: 18px;
+                font-weight: bold;
+                color: @color-primary;
+                margin-bottom: 8px;
+                line-height: 32px;
+                .transition(~"all .2s linear");
+            }
+
+            .product-description {
+                margin: 0;
+            }
+        }
+    }
+}
+
+// Pagination temporary fix
+.pagination-cres {
+    text-align: right;
+
+    @media (max-width: @grid-float-breakpoint-max) {
+        text-align: center;
+    }
+}

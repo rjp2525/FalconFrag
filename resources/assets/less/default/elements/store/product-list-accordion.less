@@ -1,0 +1,53 @@
+.panel-accordion-group {
+    .panel-accordion {
+        .product-title-toggle[aria-expanded="true"] {
+            .panel-heading {
+                color: #fff;
+                background-color: @color-primary;
+                border-color: @color-primary;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+
+        .panel-heading {
+            font-size: 18px;
+            color: #7a7a7a;
+            background-color: #fff;
+            border-color: #e6ebed;
+            border-radius: 2px;
+            padding: 10px 0 10px 20px;
+
+            h3 {
+                display: inline-block;
+            }
+
+            span {
+                display: inline-block;
+                padding-right: 25px;
+                padding-top: 4px;
+                float: right;
+
+                &.mi-plus {
+                    height: 2px;
+                    width: 14px;
+                    color: #bec6cb;
+                }
+            }
+        }
+
+        .panel-collapse {
+            .panel-body {
+                padding: 30px;
+                border-radius: 2px;
+                .box-shadow(~"0 -2px 0 rgba(0, 0, 0, 0.133) inset");
+                background-color: #fff;
+            }
+
+            &.in .panel-body {
+                border-top-left-radius: 0;
+                bottom: ;order-top-right-radius: 0;
+            }
+        }
+    }
+}
