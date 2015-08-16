@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \Falcon\Console\Commands\Inspire::class,
+        \Falcon\Console\Commands\RefreshDatabase::class,
     ];
 
     /**
@@ -25,6 +26,6 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('inspire')
-                 ->hourly();
+            ->hourly();
     }
 }

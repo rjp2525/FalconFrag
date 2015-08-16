@@ -16,6 +16,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call('BaseUserRoleSeeder');
         $this->call('OAuthTableSeeder');
+        $this->call('ProductCategoryTableSeeder');
+        $this->call('ProductTableSeeder');
+        $this->call('ReviewTableSeeder');
+        $this->call('CountryTableSeeder');
 
         Model::reguard();
     }

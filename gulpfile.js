@@ -55,6 +55,7 @@ elixir(function(mix) {
             '../bower/OwlCarouselBower/owl-carousel/owl.carousel.js',
             '../bower/jquery-validation/dist/jquery.validate.js',
             '../bower/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js',
+            '../bower/readmore/readmore.js',
             'vendor/jquery.smoothscroll.js',
             'application.js'
         ], 'public/js/application.js')

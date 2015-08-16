@@ -9,5 +9,17 @@ class Cart extends Model implements CartInterface
 {
     use CartTrait, CalculationTrait;
 
-    //
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'store_carts';
+
+    /**
+     * Fillable attributes for mass assignment.
+     *
+     * @var array
+     */
+    protected $fillable = ['user_id'];
 }

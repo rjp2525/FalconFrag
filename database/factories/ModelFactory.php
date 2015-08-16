@@ -53,3 +53,24 @@ $factory->define(Falcon\Models\Vault\Permission::class, function ($faker) {
         'description' => $faker->text(60),
     ];
 });
+
+$factory->define(Falcon\Models\Store\Product::class, function ($faker) {
+    $types = ['text', 'boolean', 'list'];
+
+    for ($i = 0; $i < $faker->randomDigitNotNull; $i++) {
+        $word = $faker->word;
+
+        $options[$word] = [
+            'type' => $faker->randomElement($types),
+            'name' => ucfirst($word),
+            'required' => $faker->boolean(),
+        ];
+    }
+
+    return [
+        'title' => ucfirst($faker->word),
+        'description_short' => $faker->text(120),
+        'description_long' => '<p>' . $faker->paragraph(8) . '</p><p>' . $faker->paragraph(8) . '</p><p>' . $faker->paragraph(8) . '</p>',
+        'config_options' => $options,
+    ];
+});

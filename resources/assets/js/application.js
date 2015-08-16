@@ -333,6 +333,16 @@ var app = function() {
         });
     };
 
+    // Initialize product review readmore
+    var initProductReviewReadmore = function() {
+        jQuery('.text-readmore').readmore({
+            collapsedHeight: 63,
+            moreLink: '<a href="#">More</a>',
+            lessLink: '<a href="#">Less</a>',
+            blockCSS: 'display: inline-block;'
+        });
+    };
+
   return {
     init: function() {
       initBasic();
@@ -340,6 +350,7 @@ var app = function() {
       homeSlider();
       forms();
       initWizardValidation();
+      initProductReviewReadmore();
     }
   };
 }();

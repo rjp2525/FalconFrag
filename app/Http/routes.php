@@ -37,22 +37,24 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
         // Support area routes
     });
 
+    Route::group(['namespace' => 'Store'], function () {
+        Route::get('products', ['as' => 'product.index', 'uses' => 'ProductController@index']);
+        Route::get('products/{category}', ['as' => 'product.category', 'uses' => 'ProductController@getCategory']);
+        Route::get('products/{category}/{subcategory}/{service?}', ['as' => 'product.detail', 'uses' => 'ProductController@getProduct']);
+    });
+
     // All primary routes
     Route::get('/', ['as' => 'default.home', 'uses' => 'HomeController@index']);
+
+    Route::get('test', function () {
+        return \Falcon\Models\Account\Country::all();
+    });
 
     Route::get('about', ['as' => 'default.about', 'uses' => 'HomeController@about']);
 
     Route::get('home', ['as' => 'client.home', 'uses' => 'Auth\AuthController@history']);
     Route::get('edit', ['as' => 'client.edit', 'uses' => 'Auth\AuthController@getEdit']);
     Route::post('edit', ['as' => 'client.edit.submit', 'uses' => 'Auth\AuthController@postEdit']);
-
-    Route::get('s3', function () {
-        //$upload = Storage::disk('s3')->put('nav-logo.png', file_get_contents(public_path('img/nav-logo.png')));
-        $file = Storage::disk('s3')->get('nav-logo.png');
-
-        //$url = '<img src="'.Storage::disk('s3')->getAdapter()->getClient()->getObjectUrl(env('S3_BUCKET'), env('S3_KEY')).'/'.$file.'">';
-        return '<img src="' . Storage::disk('s3')->getAdapter()->getClient()->getObjectUrl(env('S3_BUCKET'), 'nav-logo.png') . '">';
-    });
 });
 
 // Primary domain routes

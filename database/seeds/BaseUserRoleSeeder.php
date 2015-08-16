@@ -1,8 +1,8 @@
 <?php
 
+use Falcon\Models\Permission;
+use Falcon\Models\Role;
 use Falcon\Models\User;
-use Falcon\Models\Vault\Permission;
-use Falcon\Models\Vault\Role;
 use Illuminate\Database\Seeder;
 
 class BaseUserRoleSeeder extends Seeder
@@ -24,7 +24,7 @@ class BaseUserRoleSeeder extends Seeder
         // Create a role for administrators
         $admin = Role::create([
             'name' => 'Administrator',
-            'node' => 'staff.administrator',
+            'slug' => 'staff.administrator',
             'description' => 'Access to all protected areas.',
             'level' => 5,
         ]);
@@ -32,21 +32,21 @@ class BaseUserRoleSeeder extends Seeder
         // Create a sample permission for the role
         $perm_user_list = Permission::create([
             'name' => 'View Accounts',
-            'node' => 'staff.user.list',
+            'slug' => 'staff.user.list',
             'description' => 'View list of all user accounts.',
         ]);
 
         // Create a sample permission to edit users
         $perm_user_edit = Permission::create([
             'name' => 'Edit Account',
-            'node' => 'staff.user.edit',
+            'slug' => 'staff.user.edit',
             'description' => 'Modify a user account.',
         ]);
 
         // Create a sample permission for the user
         $perm_user_delete = Permission::create([
             'name' => 'Delete Account',
-            'node' => 'staff.user.delete',
+            'slug' => 'staff.user.delete',
             'description' => 'Delete a user account.',
         ]);
 

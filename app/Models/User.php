@@ -6,6 +6,7 @@ use Bican\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
 //use Falcon\Modules\Vault\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
 //use Falcon\Modules\Vault\Traits\HasRoleAndPermission;
 use Bican\Roles\Traits\HasRoleAndPermission;
+use Falcon\Models\Account\Address;
 use Falcon\Models\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -50,4 +51,94 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Get the votes cast by a user
+     *
+     * @return Collection
+     */
+    public function votes()
+    {
+        return $this->hasMany('Falcon\Models\Vote');
+    }
+
+    /**
+     * Get the addresses for a user
+     *
+     * @return Collection
+     */
+    public function addresses()
+    {
+        return $this->morphMany(Address::class, 'addressable');
+    }
+
+    /**
+     * Update the primary address for an account
+     *
+     * @param  string $address
+     * @return mixed
+     */
+    public function primaryAddress($address)
+    {
+        if (!empty($address)) {
+            $address->update([
+                'is_primary' => true,
+                'is_billing' => false,
+            ]);
+        }
+
+        return $this->addresses()->orderBy('is_primary', 'desc')->firstOrFail();
+    }
+
+    /**
+     * Update the billing address for an account
+     *
+     * @param  string $address
+     * @return mixed
+     */
+    public function billingAddress($address)
+    {
+        if (!empty($address)) {
+            $address->update([
+                'is_primary' => false,
+                'is_billing' => true,
+            ]);
+        }
+
+        return $this->addresses()->orderBy('is_billing', 'desc')->firstOrFail();
+    }
+
+    /**
+     * Create a new address for an account
+     *
+     * @param  array $data
+     * @return mixed
+     */
+    public function createAddress($data)
+    {
+        return $this->addresses()->save(new Address($data));
+    }
+
+    /**
+     * Update an existing address for an account
+     *
+     * @param  string  $address
+     * @param  array   $data
+     * @return mixed
+     */
+    public function editAddress($address, $data)
+    {
+        return $address->update($data);
+    }
+
+    /**
+     * Delete an address for an account
+     *
+     * @param  string $address
+     * @return bool
+     */
+    public function deleteAddress($address)
+    {
+        return $address->delete();
+    }
 }

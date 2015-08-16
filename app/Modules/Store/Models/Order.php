@@ -9,5 +9,16 @@ class Order extends Model implements OrderInterface
 {
     use OrderTrait, CalculationTrait;
 
-    //
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'orders';
+    /**
+     * Fillable attributes for mass assignment.
+     *
+     * @var array
+     */
+    protected $fillable = ['user_id', 'status_code'];
 }

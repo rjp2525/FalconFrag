@@ -143,6 +143,7 @@ return [
         Falcon\Providers\AppServiceProvider::class,
         Falcon\Providers\EventServiceProvider::class,
         Falcon\Providers\RouteServiceProvider::class,
+        Falcon\Providers\ComposerServiceProvider::class,
 
         /**
          * Third Party Service Providers
@@ -156,7 +157,8 @@ return [
         HieuLe\Active\ActiveServiceProvider::class,
         Bican\Roles\RolesServiceProvider::class,
         ArtemSchander\L5Modular\ModuleServiceProvider::class,
-
+        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        Propaganistas\LaravelPhone\LaravelPhoneServiceProvider::class,
     ],
 
     /*
