@@ -158,7 +158,7 @@ return [
         Bican\Roles\RolesServiceProvider::class,
         ArtemSchander\L5Modular\ModuleServiceProvider::class,
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
-        Propaganistas\LaravelPhone\LaravelPhoneServiceProvider::class,
+        Propaganistas\LaravelPhone\LaravelPhoneServiceProvider::class
     ],
 
     /*
@@ -218,7 +218,7 @@ return [
         'HTML'       => Collective\Html\HtmlFacade::class,
         'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
         'Purifier'   => Mews\Purifier\Facades\Purifier::class,
-        'Active'     => HieuLe\Active\Facades\Active::class,
-    ],
+        'Active'     => HieuLe\Active\Facades\Active::class
+    ]
 
 ];
