@@ -18,8 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->rememberToken();
-            $table->softDeletes();
+            $table->string('confirmation_code')->nullable();
+            $table->boolean('confirmed')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

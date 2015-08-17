@@ -16,38 +16,39 @@ class BaseUserRoleSeeder extends Seeder
     {
         // Create an administrator account
         $user = User::create([
-            'name' => 'John Doe',
-            'email' => 'admin@falconfrag.com',
-            'password' => bcrypt('Falcon1'),
+            'name'              => 'John Doe',
+            'email'             => 'admin@falconfrag.com',
+            'password'          => bcrypt('Falcon1'),
+            'confirmation_code' => hash_hmac('sha256', str_random(40), config('app.key'))
         ]);
 
         // Create a role for administrators
         $admin = Role::create([
-            'name' => 'Administrator',
-            'slug' => 'staff.administrator',
+            'name'        => 'Administrator',
+            'slug'        => 'staff.administrator',
             'description' => 'Access to all protected areas.',
-            'level' => 5,
+            'level'       => 5
         ]);
 
         // Create a sample permission for the role
         $perm_user_list = Permission::create([
-            'name' => 'View Accounts',
-            'slug' => 'staff.user.list',
-            'description' => 'View list of all user accounts.',
+            'name'        => 'View Accounts',
+            'slug'        => 'staff.user.list',
+            'description' => 'View list of all user accounts.'
         ]);
 
         // Create a sample permission to edit users
         $perm_user_edit = Permission::create([
-            'name' => 'Edit Account',
-            'slug' => 'staff.user.edit',
-            'description' => 'Modify a user account.',
+            'name'        => 'Edit Account',
+            'slug'        => 'staff.user.edit',
+            'description' => 'Modify a user account.'
         ]);
 
         // Create a sample permission for the user
         $perm_user_delete = Permission::create([
-            'name' => 'Delete Account',
-            'slug' => 'staff.user.delete',
-            'description' => 'Delete a user account.',
+            'name'        => 'Delete Account',
+            'slug'        => 'staff.user.delete',
+            'description' => 'Delete a user account.'
         ]);
 
         // Attach relationships

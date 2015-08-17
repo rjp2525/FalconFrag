@@ -21,6 +21,7 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
         Route::post('register', ['as' => 'client.register.submit', 'uses' => 'AuthController@postRegister']);
         Route::get('login', ['as' => 'client.login', 'uses' => 'AuthController@getLogin']);
         Route::post('login', ['as' => 'client.login.submit', 'uses' => 'AuthController@postLogin']);
+        Route::get('confirm/{token?}', ['as' => 'client.confirm', 'uses' => 'AuthController@getConfirm']);
 
         Route::get('overview', ['as' => 'client.overview', 'uses' => 'HomeController@index']);
     });

@@ -3,10 +3,10 @@
 namespace Falcon\Models;
 
 use Bican\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
-//use Falcon\Modules\Vault\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
-//use Falcon\Modules\Vault\Traits\HasRoleAndPermission;
 use Bican\Roles\Traits\HasRoleAndPermission;
 use Falcon\Models\Account\Address;
+//use Falcon\Modules\Vault\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
+//use Falcon\Modules\Vault\Traits\HasRoleAndPermission;
 use Falcon\Models\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -53,16 +53,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $dates = ['deleted_at'];
 
     /**
-     * Get the votes cast by a user
-     *
-     * @return Collection
-     */
-    public function votes()
-    {
-        return $this->hasMany('Falcon\Models\Vote');
-    }
-
-    /**
      * Get the addresses for a user
      *
      * @return Collection
@@ -70,24 +60,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function addresses()
     {
         return $this->morphMany(Address::class, 'addressable');
-    }
-
-    /**
-     * Update the primary address for an account
-     *
-     * @param  string $address
-     * @return mixed
-     */
-    public function primaryAddress($address)
-    {
-        if (!empty($address)) {
-            $address->update([
-                'is_primary' => true,
-                'is_billing' => false,
-            ]);
-        }
-
-        return $this->addresses()->orderBy('is_primary', 'desc')->firstOrFail();
     }
 
     /**
@@ -101,11 +73,23 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         if (!empty($address)) {
             $address->update([
                 'is_primary' => false,
-                'is_billing' => true,
+                'is_billing' => true
             ]);
         }
 
         return $this->addresses()->orderBy('is_billing', 'desc')->firstOrFail();
+    }
+
+    /**
+     * Confirm the current user
+     *
+     * @return string
+     */
+    public function confirm()
+    {
+        $this->confirmation_code = null;
+        $this->confirmed = true;
+        $this->save();
     }
 
     /**
@@ -117,6 +101,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function createAddress($data)
     {
         return $this->addresses()->save(new Address($data));
+    }
+
+    /**
+     * Delete an address for an account
+     *
+     * @param  string $address
+     * @return bool
+     */
+    public function deleteAddress($address)
+    {
+        return $address->delete();
     }
 
     /**
@@ -132,13 +127,94 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
-     * Delete an address for an account
+     * Update the primary address for an account
      *
      * @param  string $address
+     * @return mixed
+     */
+    public function primaryAddress($address)
+    {
+        if (!empty($address)) {
+            $address->update([
+                'is_primary' => true,
+                'is_billing' => false
+            ]);
+        }
+
+        return $this->addresses()->orderBy('is_primary', 'desc')->firstOrFail();
+    }
+
+    /**
+     * Query scope to only return confirmed accounts
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOnlyConfirmed($query)
+    {
+        return $query->whereConfirmed(true)->whereNull('confirmation_code');
+    }
+
+    /**
+     * Get the votes cast by a user
+     *
+     * @return Collection
+     */
+    public function votes()
+    {
+        return $this->hasMany('Falcon\Models\Vote');
+    }
+
+    /**
+     * Query scope to only return unconfirmed accounts
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOnlyUnconfirmed($query)
+    {
+        return $query->whereConfirmed(false)->whereNotNull('confirmation_code');
+    }
+
+    /**
+     * Check whether the current account is confirmed
+     *
      * @return bool
      */
-    public function deleteAddress($address)
+    public function confirmed()
     {
-        return $address->delete();
+        return is_null($this->confirmation_code) && intval($this->confirmed) == 1;
+    }
+
+    /**
+     * Check whether the current account is unconfirmed
+     * TODO: Pointless function?
+     *
+     * @return bool
+     */
+    public function unconfirmed()
+    {
+        return !$this->confirmed();
+    }
+
+    /**
+     * Accessor for the confirmation_url attribute
+     *
+     * @return string
+     */
+    public function getConfirmationUrlAttribute()
+    {
+        return route('client.confirm', $this->confirmation_code);
+    }
+
+    /**
+     * Retrieve a user by the provided confirmation token
+     *
+     * @param  string $token
+     * @return \Falcon\Models\
+     */
+    public function getByConfirmation($token)
+    {
+        return $this->whereConfirmationCode($token)->whereConfirmed(false)->firstOrFail();
     }
 }

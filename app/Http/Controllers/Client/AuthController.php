@@ -29,9 +29,9 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'name'     => 'required|max:255',
+            'email'    => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6'
         ]);
     }
 
@@ -45,9 +45,9 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'name'     => $data['name'],
+            'email'    => $data['email'],
+            'password' => bcrypt($data['password'])
         ]);
     }
 
@@ -90,5 +90,24 @@ class AuthController extends Controller
     public function redirectPath()
     {
         return route('client.overview');
+    }
+
+    /**
+     * Display the confirmation page if there is no token provided
+     * in the request, otherwise process/validate the confirmation
+     *
+     * @param  string|null $token
+     * @return mixed
+     */
+    public function getConfirm($token = null, User $user)
+    {
+        if ($token) {
+            $account = $user->getByConfirmation($token);
+            $account->confirm();
+            return response()->json($account);
+            //return response()->json($token);
+        }
+
+        return 'Confirm your account';
     }
 }
