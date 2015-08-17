@@ -15,23 +15,46 @@ class Vote extends Model
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     /**
-     * Get all of the owning voteable models.
+     * Get all of the votes on a model
      *
-     * @return mixed
+     * @param  Model  $voteable
+     * @return int
      */
-    public function voteable()
+    public static function count(Model $voteable)
     {
-        return $this->morphTo();
+        return $voteable->votes()->count();
     }
 
     /**
-     * Get the users for a relationship
+     * Cast a negative vote on a model
      *
-     * @return mixed
+     * @param  Model  $voteable
+     * @return bool
      */
-    public function users()
+    public static function negative(Model $voteable)
     {
-        return $this->belongsTo('Falcon\Models\User');
+        return (new static )->cast($voteable, -1);
+    }
+
+    /**
+     * Cast a positive vote on a model
+     *
+     * @param  Model  $voteable
+     * @return bool
+     */
+    public static function positive(Model $voteable)
+    {
+        return (new static )->cast($voteable, 1);
+    }
+
+    /**
+     * Set the value attribute
+     *
+     * @param $value
+     */
+    public function setValueAttribute($value)
+    {
+        $this->attributes['value'] = ($value == -1) ? -1 : 1;
     }
 
     /**
@@ -46,36 +69,23 @@ class Vote extends Model
     }
 
     /**
-     * Get all of the votes on a model
+     * Get the users for a relationship
      *
-     * @param  Model  $voteable
-     * @return int
+     * @return mixed
      */
-    public static function count(Model $voteable)
+    public function users()
     {
-        return $voteable->votes()->count();
+        return $this->belongsTo('Falcon\Models\User');
     }
 
     /**
-     * Get all of the positive votes on a model
+     * Get all of the owning voteable models.
      *
-     * @param  Model  $voteable
-     * @return int
+     * @return mixed
      */
-    public static function votesPositive(Model $voteable)
+    public function voteable()
     {
-        return $voteable->votes()->where('value', 1)->count();
-    }
-
-    /**
-     * Get all of the negative votes on a model
-     *
-     * @param  Model  $voteable
-     * @return int
-     */
-    public static function votesNegative(Model $voteable)
-    {
-        return $voteable->votes()->where('value', -1)->count();
+        return $this->morphTo();
     }
 
     /**
@@ -97,7 +107,7 @@ class Vote extends Model
         } else {
             $range = [
                 (new Carbon($from))->startOfDay(),
-                (new Carbon($to))->endOfDay(),
+                (new Carbon($to))->endOfDay()
             ];
         }
 
@@ -105,35 +115,25 @@ class Vote extends Model
     }
 
     /**
-     * Cast a positive vote on a model
+     * Get all of the negative votes on a model
      *
      * @param  Model  $voteable
-     * @return bool
+     * @return int
      */
-    public static function positive(Model $voteable)
+    public static function votesNegative(Model $voteable)
     {
-        return (new static )->cast($voteable, 1);
+        return $voteable->votes()->where('value', -1)->count();
     }
 
     /**
-     * Cast a negative vote on a model
+     * Get all of the positive votes on a model
      *
      * @param  Model  $voteable
-     * @return bool
+     * @return int
      */
-    public static function negative(Model $voteable)
+    public static function votesPositive(Model $voteable)
     {
-        return (new static )->cast($voteable, -1);
-    }
-
-    /**
-     * Set the value attribute
-     *
-     * @param $value
-     */
-    public function setValueAttribute($value)
-    {
-        $this->attributes['value'] = ($value == -1) ? -1 : 1;
+        return $voteable->votes()->where('value', 1)->count();
     }
 
     /**
@@ -154,4 +154,5 @@ class Vote extends Model
 
         return $vote->voteable()->associate($voteable)->save();
     }
+
 }

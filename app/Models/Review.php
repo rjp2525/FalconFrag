@@ -13,14 +13,17 @@ class Review extends Model
      */
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    /**
-     * Get all of the owning voteable models.
-     *
-     * @return mixed
-     */
-    public function reviewable()
+    public function addReview(Model $reviewable, $data, Model $author)
     {
-        return $this->morphTo();
+        $review = new static();
+        $review->fill(array_merge($data, [
+            'author_id'   => $author->id,
+            'author_type' => get_class($author)
+        ]));
+
+        $reviewable->reviews()->save($review);
+
+        return $review;
     }
 
     public function author()
@@ -28,17 +31,9 @@ class Review extends Model
         return $this->morphTo('author');
     }
 
-    public function addReview(Model $reviewable, $data, Model $author)
+    public function deleteReview($id)
     {
-        $review = new static();
-        $review->fill(array_merge($data, [
-            'author_id' => $author->id,
-            'author_type' => get_class($author),
-        ]));
-
-        $reviewable->reviews()->save($review);
-
-        return $review;
+        return static::find($id)->delete();
     }
 
     public function editReview($id, $data)
@@ -49,8 +44,13 @@ class Review extends Model
         return $review;
     }
 
-    public function deleteReview($id)
+    /**
+     * Get all of the owning voteable models.
+     *
+     * @return mixed
+     */
+    public function reviewable()
     {
-        return static::find($id)->delete();
+        return $this->morphTo();
     }
 }
