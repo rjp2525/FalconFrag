@@ -45,14 +45,14 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root'   => storage_path('app')
         ],
 
         'ftp' => [
-            'driver' => 'ftp',
-            'host' => 'ftp.example.com',
+            'driver'   => 'ftp',
+            'host'     => 'ftp.example.com',
             'username' => 'your-username',
-            'password' => 'your-password',
+            'password' => 'your-password'
 
             // Optional FTP Settings...
             // 'port'     => 21,
@@ -64,22 +64,22 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('S3_KEY', 'your-key'),
+            'key'    => env('S3_KEY', 'your-key'),
             'secret' => env('S3_SECRET', 'your-secret'),
             'region' => env('S3_REGION', 'your-region'),
-            'bucket' => env('S3_BUCKET', 'your-bucket'),
+            'bucket' => env('S3_BUCKET', 'your-bucket')
         ],
 
         'rackspace' => [
-            'driver' => 'rackspace',
-            'username' => 'your-username',
-            'key' => 'your-key',
+            'driver'    => 'rackspace',
+            'username'  => 'your-username',
+            'key'       => 'your-key',
             'container' => 'your-container',
-            'endpoint' => 'https://identity.api.rackspacecloud.com/v2.0/',
-            'region' => 'IAD',
-            'url_type' => 'publicURL',
-        ],
+            'endpoint'  => 'https://identity.api.rackspacecloud.com/v2.0/',
+            'region'    => 'IAD',
+            'url_type'  => 'publicURL'
+        ]
 
-    ],
+    ]
 
 ];
