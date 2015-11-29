@@ -2,6 +2,10 @@
 
 namespace Falcon\Http\Controllers;
 
+use Falcon\Modules\Servers\Multicraft\Multicraft;
+
+//use Auth;
+//
 class HomeController extends Controller
 {
     /**
@@ -24,4 +28,8 @@ class HomeController extends Controller
         return view('default.index');
     }
 
+    public function test(Multicraft $multicraft)
+    {
+        return $multicraft->create('test');
+    }
 }

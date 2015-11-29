@@ -8,6 +8,12 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
             Route::get('profile', ['as' => 'api.v1.account.profile', 'uses' => 'ProfileController@getProfile']);
         });
 
+        Route::group(['prefix' => 'servers', 'namespace' => 'Servers'], function () {
+            Route::get('minecraft/dl/jar', ['as' => 'servers.minecraft.dl.jar', 'uses' => 'Minecraft\DaemonController@downloadJarFile']);
+            Route::get('minecraft/dl/conf', ['as' => 'servers.minecraft.dl.conf', 'uses' => 'Minecraft\DaemonController@downloadCfgFile']);
+            Route::get('minecraft/test', ['as' => 'servers.minecraft.test', 'uses' => 'Minecraft\DaemonController@test']);
+        });
+
         Route::get('/', ['as' => 'api.v1.index', 'uses' => 'BaseController@index']);
         Route::post('oauth/access_token', ['as' => 'api.v1.oauth.access_token', 'uses' => 'OAuthController@issueToken']);
     });
@@ -31,6 +37,10 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
         // Admin panel routes
         Route::get('dash', ['as' => 'admin.dashboard', 'uses' => 'DashboardController@index']);
         Route::get('clients', ['as' => 'admin.clients.index', 'uses' => 'ClientController@index']);
+
+        Route::group(['prefix' => 'theme'], function () {
+            Route::get('/', 'ThemeController@index');
+        });
     });
 
     // Community Area
@@ -46,10 +56,6 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
 
     // All primary routes
     Route::get('/', ['as' => 'default.home', 'uses' => 'HomeController@index']);
-
-    Route::get('test', function () {
-        return \Falcon\Models\Account\Country::all();
-    });
 
     Route::get('about', ['as' => 'default.about', 'uses' => 'HomeController@about']);
 
