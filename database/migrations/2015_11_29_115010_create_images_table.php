@@ -20,7 +20,6 @@ class CreateImagesTable extends Migration
             $table->string('extension');
             $table->string('mime_type')->nullable();
             $table->integer('size')->nullable();
-            $table->string('filename');
             $table->json('meta')->nullable();
             $table->morphs('imageable');
             $table->timestamps();
