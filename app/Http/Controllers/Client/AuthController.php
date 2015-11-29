@@ -4,6 +4,7 @@ namespace Falcon\Http\Controllers\Client;
 
 use Falcon\Http\Controllers\Controller;
 use Falcon\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Validator;
 
@@ -102,10 +103,14 @@ class AuthController extends Controller
     public function getConfirm($token = null, User $user)
     {
         if ($token) {
-            $account = $user->getByConfirmation($token);
-            $account->confirm();
-            return response()->json($account);
-            //return response()->json($token);
+            try {
+                $account = $user->getByConfirmation($token);
+                $account->confirm();
+                return response()->json($account);
+                //return response()->json($token);
+            } catch (ModelNotFoundException $e) {
+                return response()->json(['error' => true, 'message' => 'The confirmation code entered was invalid or has expired.'], 404);
+            }
         }
 
         return 'Confirm your account';
