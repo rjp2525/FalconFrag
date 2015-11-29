@@ -49,6 +49,13 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $dates = ['deleted_at'];
 
     /**
+     * The fields that will not be tracked for revisions.
+     *
+     * @var array
+     */
+    protected $dontKeepRevisionOf = ['remember_token'];
+
+    /**
      * Get the addresses for a user
      *
      * @return Collection

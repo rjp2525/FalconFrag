@@ -12,7 +12,11 @@
 						<div class="list-group">
 							@foreach(Auth::user()->revisionHistory as $history)
 								<a href="#" class="list-group-item">
-									<small class="text-danger">{{ $history->ip_address }}</small> modified {{ $history->fieldName() }}
+									@if($history->key == 'created_at' && !$history->old_value)
+										Account created at  {{ $history->newValue() }}
+									@else
+										<small class="text-danger">{{ $history->userResponsible()['name'] }}</small> changed {{ $history->fieldName() }} from {{ $history->oldValue() }} to {{ $history->newValue() }}
+									@endif
 									<span class="pull-right">
 										<small>{{ $history->updated_at->diffForHumans() }}</small>
 									</span>
@@ -22,16 +26,6 @@
 					@else
 						<p>No history!</p>
 					@endif
-
-
-					<!--<p class="text-center"><code>{{ Auth::id() }}</code></p>
-					@if(Auth::user()->revisionHistory)
-						@foreach(Auth::user()->revisionHistory as $history)
-							<li><code>{{ substr($history->userResponsible()->id, -10) }}</code> changed <code>{{ $history->fieldName() }}</code> from <code>{{ $history->oldValue() }}</code> to <code>{{ $history->newValue() }}</code></li>
-						@endforeach
-					@else
-						<p>No history!</p>
-					@endif-->
 				</div>
 			</div>
 		</div>

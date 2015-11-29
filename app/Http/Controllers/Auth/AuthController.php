@@ -118,11 +118,4 @@ class AuthController extends Controller
             return redirect()->back()->withInput();
         }
     }
-
-    public function history()
-    {
-        //$accounts = User::all()->revisionHistory;
-        //dd(Auth::user()->revisionHistory());
-        return view('auth.history');
-    }
 }

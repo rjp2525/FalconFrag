@@ -2,6 +2,7 @@
 
 namespace Falcon\Http\Controllers\Client;
 
+use Auth;
 use Falcon\Http\Controllers\Controller;
 use Falcon\Models\Account\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -17,7 +18,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => ['getLogout']]);
+        $this->middleware('guest', ['except' => ['getLogout', 'history']]);
     }
 
     /**
@@ -80,7 +81,7 @@ class AuthController extends Controller
     public function getLogout()
     {
         Auth::logout();
-        return redirect()->route('client.auth.login');
+        return redirect()->route('client.login');
     }
 
     /**
@@ -114,5 +115,12 @@ class AuthController extends Controller
         }
 
         return 'Confirm your account';
+    }
+
+    public function history()
+    {
+        //$accounts = User::all()->revisionHistory;
+        //dd(Auth::user()->revisionHistory());
+        return view('auth.history');
     }
 }

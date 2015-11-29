@@ -28,8 +28,10 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
         Route::get('login', ['as' => 'client.login', 'uses' => 'AuthController@getLogin']);
         Route::post('login', ['as' => 'client.login.submit', 'uses' => 'AuthController@postLogin']);
         Route::get('confirm/{token?}', ['as' => 'client.confirm', 'uses' => 'AuthController@getConfirm']);
+        Route::get('logout', ['as' => 'client.logout', 'uses' => 'AuthController@getLogout']);
 
         Route::get('overview', ['as' => 'client.overview', 'uses' => 'HomeController@index']);
+        Route::get('history', ['as' => 'client.home', 'uses' => 'AuthController@history']);
     });
 
     // Admin Panel
@@ -59,7 +61,6 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
 
     Route::get('about', ['as' => 'default.about', 'uses' => 'HomeController@about']);
 
-    Route::get('home', ['as' => 'client.home', 'uses' => 'Auth\AuthController@history']);
     Route::get('edit', ['as' => 'client.edit', 'uses' => 'Auth\AuthController@getEdit']);
     Route::post('edit', ['as' => 'client.edit.submit', 'uses' => 'Auth\AuthController@postEdit']);
 });
