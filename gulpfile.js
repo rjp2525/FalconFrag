@@ -38,7 +38,7 @@ elixir.extend('fonts', function(src, dest) {
 });
 
 // Always run in production mode
-elixir.config.production = true;
+//elixir.config.production = true;
 
 // The main Elixir "run" function
 elixir(function(mix) {
