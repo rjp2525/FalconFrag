@@ -11,7 +11,7 @@ return [
     | framework when an event needs to be broadcast. You may set this to
     | any of the connections defined in the "connections" array below.
     |
-    */
+     */
 
     'default' => env('BROADCAST_DRIVER', 'pusher'),
 
@@ -24,26 +24,33 @@ return [
     | to broadcast events to other systems or over websockets. Samples of
     | each available type of connection are provided inside this array.
     |
-    */
+     */
 
     'connections' => [
 
         'pusher' => [
             'driver' => 'pusher',
-            'key' => env('PUSHER_KEY'),
+            'key'    => env('PUSHER_KEY'),
             'secret' => env('PUSHER_SECRET'),
-            'app_id' => env('PUSHER_APP_ID'),
+            'app_id' => env('PUSHER_APP_ID')
         ],
 
         'redis' => [
-            'driver' => 'redis',
-            'connection' => 'default',
+            'driver'     => 'redis',
+            'connection' => 'default'
         ],
 
         'log' => [
-            'driver' => 'log',
+            'driver' => 'log'
         ],
 
-    ],
+        'pushstream' => [
+            'driver'     => 'pushstream',
+            'base_url'   => env('PUSHSTREAM_URL', 'http://localhost'),
+            'access_key' => md5('foo'),
+            'cert'       => null
+        ]
+
+    ]
 
 ];
