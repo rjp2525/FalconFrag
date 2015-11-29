@@ -2,13 +2,13 @@
 
 namespace Falcon\Models\Shared;
 
-//use Illuminate\Database\Eloquent\Model as LModel;
+use Illuminate\Database\Eloquent\Model as LModel;
 use Ramsey\Uuid\Uuid;
-use Venturecraft\Revisionable\Revisionable;
+use Venturecraft\Revisionable\RevisionableTrait;
 
-class Model extends Revisionable
+class Model extends LModel
 {
-    //use RevisionableTrait;
+    use RevisionableTrait;
 
     /**
      * Revision history for newly created records is disabled by default,
