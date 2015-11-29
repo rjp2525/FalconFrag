@@ -4,7 +4,7 @@ namespace Falcon\Http\Controllers\Auth;
 
 use Auth;
 use Falcon\Http\Controllers\Controller;
-use Falcon\Models\User;
+use Falcon\Models\Account\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
 use Validator;
@@ -44,23 +44,23 @@ class AuthController extends Controller
         return Validator::make($data, [
             // Personal
             'first_name' => 'required|min:2|max:255|alpha',
-            'last_name' => 'required|min:2|max:255|alpha',
-            'username' => 'required|min:3|max:20|alpha_dash',
-            'email' => 'required|email|max:255|unique:users',
-            'company' => 'max:255',
-            'phone' => 'required|phone',
-            'password' => 'required|confirmed|min:8',
+            'last_name'  => 'required|min:2|max:255|alpha',
+            'username'   => 'required|min:3|max:20|alpha_dash',
+            'email'      => 'required|email|max:255|unique:users',
+            'company'    => 'max:255',
+            'phone'      => 'required|phone',
+            'password'   => 'required|confirmed|min:8',
 
             // Address
             'address1' => 'required|min:4|max:255',
             'address2' => 'min:4|max:255',
-            'city' => 'required|min:3|max:255',
-            'state' => 'required',
-            'country' => 'required|max:2',
+            'city'     => 'required|min:3|max:255',
+            'state'    => 'required',
+            'country'  => 'required|max:2',
             'postcode' => 'required|min:2|max:20',
 
             // Miscellaneous
-            'terms' => 'accepted',
+            'terms' => 'accepted'
 
             //'name' => 'required|max:255',
             //'email' => 'required|email|max:255|unique:users',
@@ -78,9 +78,9 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'name'     => $data['name'],
+            'email'    => $data['email'],
+            'password' => bcrypt($data['password'])
         ]);
     }
 
@@ -94,9 +94,9 @@ class AuthController extends Controller
         $data = $request->input();
 
         $validator = Validator::make($data, [
-            'name' => 'max:255',
-            'email' => 'email|max:255|unique:users',
-            'password' => 'min:6',
+            'name'     => 'max:255',
+            'email'    => 'email|max:255|unique:users',
+            'password' => 'min:6'
         ]);
 
         if ($validator->passes()) {

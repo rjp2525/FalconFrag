@@ -5,7 +5,7 @@ namespace Falcon\Models;
 use Bican\Roles\Contracts\RoleHasRelations as RoleHasRelationsContract;
 use Bican\Roles\Traits\RoleHasRelations;
 use Bican\Roles\Traits\Slugable;
-use Falcon\Models\Model;
+use Falcon\Models\Shared\Model;
 
 class Role extends Model implements RoleHasRelationsContract
 {

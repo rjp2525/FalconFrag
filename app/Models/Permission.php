@@ -5,7 +5,7 @@ namespace Falcon\Models;
 use Bican\Roles\Contracts\PermissionHasRelations as PermissionHasRelationsContract;
 use Bican\Roles\Traits\PermissionHasRelations;
 use Bican\Roles\Traits\Slugable;
-use Falcon\Models\Model;
+use Falcon\Models\Shared\Model;
 
 class Permission extends Model implements PermissionHasRelationsContract
 {

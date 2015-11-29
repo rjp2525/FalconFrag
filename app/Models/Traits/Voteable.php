@@ -2,7 +2,7 @@
 
 namespace Falcon\Models\Traits;
 
-use Falcon\Models\Vote;
+use Falcon\Models\Shared\Vote;
 
 trait Voteable
 {

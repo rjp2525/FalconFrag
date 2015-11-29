@@ -2,7 +2,7 @@
 
 namespace Falcon\Modules\Vault\Contracts;
 
-use Falcon\Models\Model;
+use Falcon\Models\Shared\Model;
 
 interface HasRoleAndPermission
 {

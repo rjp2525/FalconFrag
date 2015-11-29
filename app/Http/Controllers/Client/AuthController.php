@@ -3,7 +3,7 @@
 namespace Falcon\Http\Controllers\Client;
 
 use Falcon\Http\Controllers\Controller;
-use Falcon\Models\User;
+use Falcon\Models\Account\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Validator;

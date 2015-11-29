@@ -2,7 +2,7 @@
 
 namespace Falcon\Models\Vault;
 
-use Falcon\Models\Model;
+use Falcon\Models\Shared\Model;
 use Falcon\Modules\Vault\Contracts\RoleHasRelations as RoleHasRelationsContract;
 use Falcon\Modules\Vault\Traits\RoleHasRelations;
 use Falcon\Modules\Vault\Traits\Sluggable;

@@ -154,7 +154,6 @@ return [
         LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
         LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
-        Sofa\Revisionable\Laravel\ServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Bican\Roles\RolesServiceProvider::class,
         ArtemSchander\L5Modular\ModuleServiceProvider::class,

@@ -2,7 +2,7 @@
 
 namespace Falcon\Models\Store;
 
-use Falcon\Models\Model;
+use Falcon\Models\Shared\Model;
 
 class Category extends Model
 {

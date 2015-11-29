@@ -43,7 +43,7 @@ class Report extends Model
      * Retrieve the user who "judged" the report and gave the
      * associated conclusion.
      *
-     * @return \Falcon\Models\User
+     * @return \Falcon\Models\Account\User
      */
     public function judge()
     {
@@ -54,7 +54,7 @@ class Report extends Model
      * Set the conclusion for a reported item.
      *
      * @param  array $data
-     * @param  \Falcon\Models\User $judge
+     * @param  \Falcon\Models\Account\User $judge
      * @return \Falcon\Models\Shared\Conclusion
      */
     public function conclude($data, $judge)

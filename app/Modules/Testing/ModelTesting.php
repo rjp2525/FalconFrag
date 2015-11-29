@@ -2,13 +2,12 @@
 
 namespace Falcon\Modules\Testing;
 
-use Falcon\Models\Model;
+use Falcon\Models\Shared\Model;
 use Illuminate\Support\Str;
 use Mockery;
 
 trait ModelTesting
 {
-
     /**
      * Reset the model events and then re-register them.
      *
@@ -775,36 +774,36 @@ trait ModelTesting
         switch (count($args)) {
             case 1:
                 $class->shouldReceive($type)
-                      ->once()
-                      ->with('/' . str_singular($relationship) . '/i')
-                      ->andReturn(Mockery::self());
+                    ->once()
+                    ->with('/' . str_singular($relationship) . '/i')
+                    ->andReturn(Mockery::self());
                 break;
 
             case 2:
                 $class->shouldReceive($type)
-                      ->once()
-                      ->with('/' . str_singular($relationship) . '/i', $args[1])
-                      ->andReturn(Mockery::self());
+                    ->once()
+                    ->with('/' . str_singular($relationship) . '/i', $args[1])
+                    ->andReturn(Mockery::self());
                 break;
 
             case 3:
                 $class->shouldReceive($type)
-                      ->once()
-                      ->with('/' . str_singular($relationship) . '/i', $args[1], $args[2])
-                      ->andReturn(Mockery::self());
+                    ->once()
+                    ->with('/' . str_singular($relationship) . '/i', $args[1], $args[2])
+                    ->andReturn(Mockery::self());
                 break;
 
             case 4:
                 $class->shouldReceive($type)
-                      ->once()
-                      ->with('/' . str_singular($relationship) . '/i', $args[1], $args[2], $args[3])
-                      ->andReturn(Mockery::self());
+                    ->once()
+                    ->with('/' . str_singular($relationship) . '/i', $args[1], $args[2], $args[3])
+                    ->andReturn(Mockery::self());
                 break;
 
             default:
                 $class->shouldReceive($type)
-                      ->once()
-                      ->andReturn(Mockery::self());
+                    ->once()
+                    ->andReturn(Mockery::self());
                 break;
         }
 
@@ -828,11 +827,11 @@ trait ModelTesting
         $args = [];
 
         $mocked->shouldReceive($type)
-               ->once()
-               ->andReturnUsing(function () use (&$args) {
-                   $args = func_get_args();
-                   return Mockery::self();
-               });
+            ->once()
+            ->andReturnUsing(function () use (&$args) {
+                $args = func_get_args();
+                return Mockery::self();
+            });
 
         $mocked->$relationship();
 

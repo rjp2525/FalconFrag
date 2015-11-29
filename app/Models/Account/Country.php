@@ -2,7 +2,7 @@
 
 namespace Falcon\Models\Account;
 
-use Falcon\Models\Model;
+use Falcon\Models\Shared\Model;
 
 class Country extends Model
 {
@@ -26,7 +26,7 @@ class Country extends Model
      * @var array
      */
     protected $casts = [
-        'currency' => 'array',
-        'calling_code' => 'array',
+        'currency'     => 'array',
+        'calling_code' => 'array'
     ];
 }

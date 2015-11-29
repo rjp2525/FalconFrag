@@ -27,7 +27,7 @@ class Review extends Model
      * @param \Falcon\Models\Shared\Model  $author
      * @param array $data
      */
-    public function addReview(Model $reviewable, Model $author, $data)
+    public function addReview(Model $reviewable, $data, Model $author)
     {
         $review = new static();
         $review->fill(array_merge($data, [

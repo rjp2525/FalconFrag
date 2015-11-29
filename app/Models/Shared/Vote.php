@@ -3,8 +3,8 @@
 namespace Falcon\Models\Shared;
 
 use Carbon\Carbon;
+use Falcon\Models\Account\User;
 use Falcon\Models\Shared\Model;
-use Falcon\Models\User;
 
 class Vote extends Model
 {

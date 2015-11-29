@@ -2,7 +2,7 @@
 
 namespace Falcon\Modules\Vault\Traits;
 
-use Falcon\Models\Model;
+use Falcon\Models\Shared\Model;
 use Falcon\Models\Vault\Permission;
 
 trait HasRoleAndPermission

@@ -2,7 +2,7 @@
 
 namespace Falcon\Models\Servers\Minecraft;
 
-use Falcon\Models\Model;
+use Falcon\Models\Shared\Model;
 
 class Daemon extends Model
 {

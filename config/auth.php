@@ -28,7 +28,7 @@ return [
     |
      */
 
-    'model' => Falcon\Models\User::class,
+    'model' => Falcon\Models\Account\User::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -59,9 +59,9 @@ return [
      */
 
     'password' => [
-        'email' => 'emails.password',
-        'table' => 'password_resets',
-        'expire' => 60,
-    ],
+        'email'  => 'emails.password',
+        'table'  => 'password_resets',
+        'expire' => 60
+    ]
 
 ];

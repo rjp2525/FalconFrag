@@ -2,7 +2,7 @@
 
 namespace Falcon\Models\Servers\Multicraft;
 
-use Falcon\Models\Model;
+use Falcon\Models\Shared\Model;
 
 class CommandCache extends Model
 {

@@ -1,8 +1,8 @@
 <?php
 
+use Falcon\Models\Account\User;
 use Falcon\Models\Permission;
 use Falcon\Models\Role;
-use Falcon\Models\User;
 use Illuminate\Database\Seeder;
 
 class BaseUserRoleSeeder extends Seeder

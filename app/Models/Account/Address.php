@@ -3,7 +3,7 @@
 namespace Falcon\Models\Account;
 
 use Falcon\Models\Account\Country;
-use Falcon\Models\Model;
+use Falcon\Models\Shared\Model;
 
 class Address extends Model
 {

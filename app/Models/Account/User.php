@@ -1,26 +1,24 @@
 <?php
 
-namespace Falcon\Models;
+namespace Falcon\Models\Account;
 
 use Bican\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
 use Bican\Roles\Traits\HasRoleAndPermission;
 use Falcon\Models\Account\Address;
-use Falcon\Models\Model;
+use Falcon\Models\Shared\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\Access\Authorizable;
-use Sofa\Revisionable\Laravel\RevisionableTrait;
-use Sofa\Revisionable\Revisionable;
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract, HasRoleAndPermissionContract, Revisionable
+// TODO: Authorizable causes conflict with Bican\Roles package and can() method
+//use Illuminate\Foundation\Auth\Access\Authorizable;
+
+class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract, HasRoleAndPermissionContract
 {
-    use Authenticatable, Authorizable, CanResetPassword, SoftDeletes, HasRoleAndPermission, RevisionableTrait;
-
-    //protected $revisionEnabled = true;
+    use Authenticatable, CanResetPassword, SoftDeletes, HasRoleAndPermission;
 
     /**
      * The database table used by the model.
@@ -151,16 +149,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function scopeOnlyConfirmed($query)
     {
         return $query->whereConfirmed(true)->whereNull('confirmation_code');
-    }
-
-    /**
-     * Get the votes cast by a user
-     *
-     * @return Collection
-     */
-    public function votes()
-    {
-        return $this->hasMany('Falcon\Models\Vote');
     }
 
     /**

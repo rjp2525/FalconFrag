@@ -2,11 +2,22 @@
 
 namespace Falcon\Models\Shared;
 
-use Illuminate\Database\Eloquent\Model as LModel;
+//use Illuminate\Database\Eloquent\Model as LModel;
 use Ramsey\Uuid\Uuid;
+use Venturecraft\Revisionable\Revisionable;
 
-class Model extends LModel
+class Model extends Revisionable
 {
+    //use RevisionableTrait;
+
+    /**
+     * Revision history for newly created records is disabled by default,
+     * so enable it in the main extending class for all models.
+     *
+     * @var bool
+     */
+    protected $revisionCreationsEnabled = true;
+
     /**
      * Indicates if the IDs are auto-incrementing.
      *

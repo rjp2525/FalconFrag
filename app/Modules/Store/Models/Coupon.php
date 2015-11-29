@@ -1,6 +1,7 @@
-<?php namespace Falcon\Modules\Store\Models;
+<?php
+namespace Falcon\Modules\Store\Models;
 
-use Falcon\Models\Model;
+use Falcon\Models\Shared\Model;
 use Falcon\Modules\Store\Contracts\CouponInterface;
 use Falcon\Modules\Store\Traits\CouponTrait;
 

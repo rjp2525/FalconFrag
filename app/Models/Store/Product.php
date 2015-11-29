@@ -4,9 +4,9 @@ namespace Falcon\Models\Store;
 
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
-use Falcon\Models\Model;
-use Falcon\Models\Review;
-use Falcon\Models\Vote;
+use Falcon\Models\Shared\Model;
+use Falcon\Models\Shared\Review;
+use Falcon\Models\Shared\Vote;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model implements SluggableInterface
@@ -26,10 +26,10 @@ class Product extends Model implements SluggableInterface
      * @var array
      */
     protected $casts = [
-        'hidden' => 'boolean',
+        'hidden'         => 'boolean',
         'config_options' => 'array',
-        'upgrades' => 'array',
-        'downgrades' => 'array',
+        'upgrades'       => 'array',
+        'downgrades'     => 'array'
     ];
 
     /**
@@ -44,7 +44,7 @@ class Product extends Model implements SluggableInterface
         'config_options' => 'array',
         'hidden',
         'upgrades',
-        'downgrades',
+        'downgrades'
     ];
 
     /**
@@ -54,9 +54,9 @@ class Product extends Model implements SluggableInterface
      */
     protected $sluggable = [
         'build_from' => 'title',
-        'save_to' => 'slug',
-        'unique' => false,
-        'on_update' => true,
+        'save_to'    => 'slug',
+        'unique'     => false,
+        'on_update'  => true
     ];
 
     /**

@@ -3,7 +3,7 @@
 namespace Falcon\Http\Controllers\Api\V1\Account;
 
 use Falcon\Http\Controllers\Controller;
-use Falcon\Models\User;
+use Falcon\Models\Account\User;
 use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 
 class ProfileController extends Controller
