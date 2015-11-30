@@ -1,7 +1,7 @@
 <?php
 
-use Falcon\Models\Store\Category;
-use Falcon\Models\Store\Product;
+use Falcon\Models\Shop\Category;
+use Falcon\Models\Shop\Product;
 use Illuminate\Database\Seeder;
 
 class ProductTableSeeder extends Seeder
@@ -21,11 +21,11 @@ class ProductTableSeeder extends Seeder
         $vps_products = factory(Product::class, 9)->make();
 
         // Find the categories
-        $gaming = Category::bySlug('gaming');
-        $mc = Category::bySlug('gaming')->children()->bySlug('minecraft');
-        $web = Category::bySlug('web');
-        $dedicated = Category::bySlug('dedicated');
-        $vps = Category::bySlug('vps');
+        $gaming = Category::bySlug('gaming')->first();
+        $mc = Category::bySlug('gaming')->first()->children()->bySlug('minecraft')->first();
+        $web = Category::bySlug('web')->first();
+        $dedicated = Category::bySlug('dedicated')->first();
+        $vps = Category::bySlug('vps')->first();
 
         // Attach the products to their relevant categories
         $gaming->products()->saveMany($gaming_products);

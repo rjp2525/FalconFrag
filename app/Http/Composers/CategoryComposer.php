@@ -2,7 +2,7 @@
 
 namespace Falcon\Http\Composers;
 
-use Falcon\Models\Store\Category;
+use Falcon\Models\Shop\Category;
 use Illuminate\Contracts\View\View;
 
 class CategoryComposer
@@ -10,7 +10,7 @@ class CategoryComposer
     /**
      * The list of unhidden product categories
      *
-     * @var \Falcon\Models\Store\Category
+     * @var \Falcon\Models\Shop\Category
      */
     protected $categories;
 

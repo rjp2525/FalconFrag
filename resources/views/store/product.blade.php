@@ -4,7 +4,7 @@
 <div class="page-head servers">
     <div class="container">
         <div class="col-xs-12 col-sm-6">
-            <h4 class="page-head-title">{{ $product->title }}</h4>
+            <h4 class="page-head-title">{{ $product->name }}</h4>
         </div>
         <div class="col-xs-12 col-sm-6">
             <div class="breadcrumbs">
@@ -25,7 +25,7 @@
                         </li>
                     @endif
                     <li>
-                        <span>{{ $product->title }}</span>
+                        <span>{{ $product->name }}</span>
                     </li>
                 </ul>
             </div>
@@ -36,8 +36,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <p>{{ $product->title }}</p>
-            <p>{!! $product->description_long !!}</p>
+            <p>{{ $product->name }}</p>
+            <p>{!! $product->description !!}</p>
         </div>
     </div>
 </div>

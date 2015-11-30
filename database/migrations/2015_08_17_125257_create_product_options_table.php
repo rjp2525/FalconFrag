@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateProductOptionsTable extends Migration
 {
@@ -13,7 +13,16 @@ class CreateProductOptionsTable extends Migration
     public function up()
     {
         Schema::create('product_options', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('id', 36)->primary();
+            $table->string('product_id', 36);
+            $table->string('field_id');
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->enum('type', ['checkbox', 'email', 'password', 'radio', 'text', 'url', 'dropdown'])->default('text');
+            $table->json('options')->nullable();
+            $table->boolean('hidden')->default(false);
+            $table->boolean('required')->default(false);
+            $table->integer('display_order')->default(0);
             $table->timestamps();
         });
     }

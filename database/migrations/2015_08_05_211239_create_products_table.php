@@ -15,6 +15,14 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->string('id', 36)->primary();
             $table->string('category_id', 36);
+            $table->string('name');
+            $table->string('slug');
+            $table->string('description_short', 140);
+            $table->text('description');
+            $table->integer('display_order')->default(0);
+            $table->boolean('hidden')->default(false);
+
+            /*$table->string('category_id', 36);
             $table->string('slug');
             $table->string('title');
             $table->string('description_short');
@@ -22,7 +30,7 @@ class CreateProductsTable extends Migration
             $table->text('config_options');
             $table->boolean('hidden')->default(false);
             $table->text('upgrades')->nullable();
-            $table->text('downgrades')->nullable();
+            $table->text('downgrades')->nullable();*/
             $table->timestamps();
             $table->softDeletes();
         });

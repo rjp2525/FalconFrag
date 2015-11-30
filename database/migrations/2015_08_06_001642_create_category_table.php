@@ -12,7 +12,7 @@ class CreateCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('store_categories', function (Blueprint $table) {
             $table->string('id', 36)->primary();
             $table->string('parent_id', 36)->nullable();
             $table->string('slug');

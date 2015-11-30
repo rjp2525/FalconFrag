@@ -3,8 +3,8 @@
 namespace Falcon\Http\Controllers\Store;
 
 use Falcon\Http\Controllers\Controller;
-use Falcon\Models\Store\Category;
-use Falcon\Models\Store\Product;
+use Falcon\Models\Shop\Category;
+use Falcon\Models\Shop\Product;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ProductController extends Controller
@@ -12,8 +12,8 @@ class ProductController extends Controller
     /**
      * Initialize the controller
      *
-     * @param \Falcon\Models\Store\Category $category
-     * @param \Falcon\Models\Store\Product  $product
+     * @param \Falcon\Models\Shop\Category $category
+     * @param \Falcon\Models\Shop\Product  $product
      */
     public function __construct(Category $category, Product $product)
     {
@@ -40,7 +40,7 @@ class ProductController extends Controller
      */
     public function getCategory($slug, $subcategory = null)
     {
-        $category = $this->category->bySlug($slug);
+        $category = $this->category->bySlug($slug)->first();
         return view('store.category', compact('category'));
     }
 
@@ -57,19 +57,26 @@ class ProductController extends Controller
         // If there's 3 route parameters, assume there's a subcategory
         if ($product_slug != null) {
             try {
-                $product = $this->category->bySlug($category_slug)->children()->bySlug($sub_slug)->products()->bySlug($product_slug);
+                $product = $this->category->bySlug($category_slug)->first()->children()->bySlug($sub_slug)->first()->products()->bySlug($product_slug)->first();
                 return view('store.product', compact('product'));
             } catch (ModelNotFoundException $e) {}
         }
 
         // Check to see if second parameter is a subcategory
         try {
-            $category = $this->category->bySlug($category_slug)->children()->bySlug($sub_slug);
-            return view('store.category', compact('category'));
+            $category = $this->category->bySlug($category_slug)->first()->children()->bySlug($sub_slug)->first();
+            //return view('store.category', compact('category'));
         } catch (ModelNotFoundException $e) {}
-
         // If second parameter is not a subcategory, try displaying a product
-        $product = $this->category->bySlug($category_slug)->products()->bySlug($sub_slug);
-        return view('store.product', compact('product'));
+        $product = $this->category->bySlug($category_slug)->first()->products()->bySlug($sub_slug)->first();
+        //return view('store.product', compact('product'));
+
+        if ($category) {
+            return view('store.category', compact('category'));
+        } else if ($product) {
+            return view('store.product', compact('product'));
+        } else {
+            return '404 Not Found';
+        }
     }
 }

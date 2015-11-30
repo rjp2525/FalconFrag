@@ -1,7 +1,7 @@
 <?php
 
 use Falcon\Models\Account\User;
-use Falcon\Models\Store\Category;
+use Falcon\Models\Shop\Category;
 use Illuminate\Database\Seeder;
 
 class ReviewTableSeeder extends Seeder
@@ -14,7 +14,7 @@ class ReviewTableSeeder extends Seeder
     public function run()
     {
         $user = User::first();
-        $product = Category::bySlug('gaming')->products()->first();
+        $product = Category::bySlug('gaming')->first()->products()->first();
 
         $review = $product->review([
             'title'  => 'Sample Review Title',
