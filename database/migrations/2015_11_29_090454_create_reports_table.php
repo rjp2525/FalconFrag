@@ -14,7 +14,7 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->string('id', 36)->primary();
-            $table->morphs('reportable');
+            //$table->morphs('reportable');
             $table->string('reportable_id', 36);
             $table->string('reportable_type');
             //$table->morphs('reporter');
