@@ -15,7 +15,9 @@ class CreatePricesTable extends Migration
         Schema::create('prices', function (Blueprint $table) {
             $table->string('id', 36)->primary();
             //$table->string('product_id', 36);
-            $table->morphs('priceable');
+            //$table->morphs('priceable');
+            $table->string('priceable_id', 36);
+            $table->string('priceable_type');
             $table->boolean('prorated_billing')->default(false);
             $table->integer('prorata_date')->default(1);
             $table->decimal('setup_monthly', 10, 2)->default(0.00);

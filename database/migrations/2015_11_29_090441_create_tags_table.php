@@ -21,7 +21,9 @@ class CreateTagsTable extends Migration
 
         Schema::create('taggables', function (Blueprint $table) {
             $table->string('tag_id', 36);
-            $table->morphs('taggable');
+            //$table->morphs('taggable');
+            $table->string('taggable_id', 36);
+            $table->string('taggable_type');
             $table->timestamps();
         });
     }

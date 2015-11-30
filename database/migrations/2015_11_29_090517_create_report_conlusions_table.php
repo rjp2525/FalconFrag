@@ -15,7 +15,8 @@ class CreateReportConlusionsTable extends Migration
         Schema::create('report_conclusions', function (Blueprint $table) {
             $table->string('id', 36)->primary();
             $table->string('report_id')->index();
-            $table->morphs('judge');
+            $table->string('judge_id', 36);
+            $table->string('judge_type');
             $table->text('conclusion');
             $table->text('action_taken');
             $table->json('meta')->nullable();

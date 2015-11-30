@@ -21,7 +21,8 @@ class CreateImagesTable extends Migration
             $table->string('mime_type')->nullable();
             $table->integer('size')->nullable();
             $table->json('meta')->nullable();
-            $table->morphs('imageable');
+            $table->string('imageable_id', 36);
+            $table->string('imageable_type');
             $table->timestamps();
         });
     }
