@@ -41,6 +41,10 @@ class TestCase extends LTestCase
         if (!File::exists(storage_path('testing.sqlite'))) {
             touch(storage_path('testing.sqlite'));
             Artisan::call('migrate');
+        } else {
+            File::delete(storage_path('testing.sqlite'));
+            touch(storage_path('testing.sqlite'));
+            Artisan::call('migrate');
         }
     }
 
