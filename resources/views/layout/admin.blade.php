@@ -13,6 +13,8 @@
     <meta name="description" content="">
 
     {!! HTML::style('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700') !!}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     {!! HTML::style(elixir('css/admin.css')) !!}
 </head>
 <body>

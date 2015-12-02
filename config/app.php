@@ -221,7 +221,8 @@ return [
         'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
         'Purifier'   => Mews\Purifier\Facades\Purifier::class,
         'Active'     => HieuLe\Active\Facades\Active::class,
-        'Twitter'    => Thujohn\Twitter\Facades\Twitter::class
+        'Twitter'    => Thujohn\Twitter\Facades\Twitter::class,
+        'Carbon'     => Carbon\Carbon::class
     ]
 
 ];

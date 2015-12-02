@@ -40,6 +40,11 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
         Route::get('dash', ['as' => 'admin.dashboard', 'uses' => 'DashboardController@index']);
         Route::get('clients', ['as' => 'admin.clients.index', 'uses' => 'ClientController@index']);
 
+        Route::group(['prefix' => 'twitter'], function () {
+            Route::get('/', ['as' => 'admin.social.twitter.index', 'uses' => 'TwitterController@getIndex']);
+            Route::get('/{id}', ['as' => 'admin.social.twitter.tweet.view', 'uses' => 'TwitterController@getTweet']);
+        });
+
         Route::group(['prefix' => 'theme'], function () {
             Route::get('/', 'ThemeController@index');
         });
@@ -63,6 +68,20 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
 
     Route::get('edit', ['as' => 'client.edit', 'uses' => 'Auth\AuthController@getEdit']);
     Route::post('edit', ['as' => 'client.edit.submit', 'uses' => 'Auth\AuthController@postEdit']);
+
+    Route::group(['prefix' => 'twitter'], function () {
+        Route::get('post', function () {
+            return response()->json(Twitter::postTweet(['status' => 'This Tweet was sent from a Falcon Frag administrator at ' . \Carbon\Carbon::now()->toDateTimeString()]));
+        });
+
+        Route::get('mentions', function () {
+            return response()->json(Twitter::getMentionsTimeline(['count' => 100]));
+        });
+
+        Route::get('cache', function () {
+            return Falcon\Models\Admin\Tweet::all();
+        });
+    });
 });
 
 // Primary domain routes

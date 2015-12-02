@@ -40,6 +40,41 @@
             <p>{!! $product->description !!}</p>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Duration</th>
+                        <th>Price per Slot</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monthly</td>
+                        <td>{{ money_format('$%i', $product->prices()->first()->monthly) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Quarterly</td>
+                        <td>{{ money_format('$%i', $product->prices()->first()->quarterly) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Semi-Annual</td>
+                        <td>{{ money_format('$%i', $product->prices()->first()->semiannual) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Annual</td>
+                        <td>{{ money_format('$%i', $product->prices()->first()->annual) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Biennial</td>
+                        <td>{{ money_format('$%i', $product->prices()->first()->biennial) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--<p>{!! $product->options()->get() !!}</p>-->
+        </div>
+    </div>
 </div>
 <section class="bg-gray product-reviews">
     <div class="container">

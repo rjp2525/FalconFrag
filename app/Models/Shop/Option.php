@@ -52,4 +52,20 @@ class Option extends Model
     {
         return $query->orderBy('display_order', 'asc');
     }
+
+    /**
+     * Build an option HTML element
+     *
+     * @return mixed
+     */
+    public function buildElement()
+    {
+        if (!$this->hidden) {
+            return;
+        }
+
+        if ($this->type == 'text') {
+            return '<input type="text" id="' . $this->field_id . '" name="' . $this->field_id . '" class="form-input">';
+        }
+    }
 }

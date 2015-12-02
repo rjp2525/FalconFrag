@@ -53,6 +53,15 @@
                             <span class="sidebar-mini-hide">Email Clients</span>
                         </a>
                     </li>
+                    <li class="nav-main-heading">
+                        <span class="sidebar-mini-hide">Social Media</span>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.social.twitter.index') }}">
+                            <i class="gi gi-twitter"></i>
+                            <span class="sidebar-mini-hide">Twitter</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

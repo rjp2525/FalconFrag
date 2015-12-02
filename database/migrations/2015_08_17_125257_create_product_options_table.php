@@ -20,6 +20,8 @@ class CreateProductOptionsTable extends Migration
             $table->string('description')->nullable();
             $table->enum('type', ['checkbox', 'email', 'password', 'radio', 'text', 'url', 'dropdown'])->default('text');
             $table->json('options')->nullable();
+            $table->string('default_value')->nullable();
+            $table->json('validation')->nullable();
             $table->boolean('hidden')->default(false);
             $table->boolean('required')->default(false);
             $table->integer('display_order')->default(0);

@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \Falcon\Console\Commands\Inspire::class,
         \Falcon\Console\Commands\RefreshDatabase::class,
+        \Falcon\Console\Commands\CacheTweets::class
     ];
 
     /**
