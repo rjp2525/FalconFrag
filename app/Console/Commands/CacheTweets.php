@@ -2,7 +2,8 @@
 
 namespace Falcon\Console\Commands;
 
-use Falcon\Models\Admin\Tweet as CacheStore;
+use Carbon\Carbon;
+use Falcon\Models\Admin\Tweet;
 use Illuminate\Console\Command;
 use Twitter;
 
@@ -27,9 +28,9 @@ class CacheTweets extends Command
      *
      * @return void
      */
-    public function __construct(CacheStore $twitter)
+    public function __construct(Tweet $tweets)
     {
-        $this->twitter = $twitter;
+        $this->tweets = $tweets;
         parent::__construct();
     }
 
@@ -41,18 +42,16 @@ class CacheTweets extends Command
     public function handle()
     {
         $mentions = Twitter::getMentionsTimeline();
-        foreach ($mentions as $mention) {
-            if (!CacheStore::where('tweet_id', $mention->id_str)->get()) {
-                $this->info('Tweet ' . $mention->id_str . ' not found in cache, adding..');
 
-                $item = new CacheStore([
+        foreach ($mentions as $mention) {
+            if (!($this->tweets->tweetExists($mention->id))) {
+                $this->tweets->create([
                     'tweet_id' => $mention->id_str,
-                    'data'     => $mention,
+                    'data'     => json_encode($mention),
                     'mention'  => true
                 ]);
-                $item->save();
 
-                $this->info('Tweet ' . $mention->id_str . ' has been added to cache.');
+                $this->info('[' . Carbon::now()->toDateTimeString() . '] Tweet ' . $mention->id_str . ' has been cached.');
             }
         }
     }

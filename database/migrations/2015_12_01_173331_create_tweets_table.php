@@ -15,6 +15,7 @@ class CreateTweetsTable extends Migration
         Schema::create('tweets', function (Blueprint $table) {
             $table->string('id', 36)->primary();
             $table->string('tweet_id');
+            $table->string('reply_to_tweet_id')->nullable();
             $table->json('data');
             $table->boolean('mention')->default(false);
             $table->boolean('reply')->default(false);

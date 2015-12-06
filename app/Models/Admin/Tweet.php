@@ -21,20 +21,32 @@ class Tweet extends Model
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = ['data' => 'object'];
+
+    /**
      * Check if a specific tweet exists in the database.
      *
      * @param  int $id
      * @return bool
      */
-    public function scopeTweetExists($query, $id)
+    public function tweetExists($id)
     {
-        return $query->where('tweet_id', $id)->first();
-
-        /*if ($this->tweet_id == $id) {
-    return true;
+        return $this->where('tweet_id', $id)->first();
     }
 
-    return false;*/
+    /**
+     * Retrieve any replies to mentions.
+     *
+     * @param  int $id
+     * @return bool
+     */
+    public function getReplies($id)
+    {
+        return $this->where('reply_to_tweet_id', $id)->get();
     }
 
     /**

@@ -22,11 +22,11 @@
                 <a class="block block-rounded block-link-hover3" href="{{ route('admin.social.twitter.tweet.view', $mention->id) }}">
                     <div class="block-content block-content-full clearfix">
                         <div class="text-right pull-right push-10-t">
-                            <div class="font-w600 push-5">{{ $mention->user->name }} <small><i>{{ $mention->user->screen_name }}</i></small></div>
-                            <div class="text-muted">{{ $mention->text }}</div>
+                            <div class="font-w600 push-5">{{ $mention->data->user->name }} <small><i>{{ $mention->data->user->screen_name }}</i></small></div>
+                            <div class="text-muted">{{ $mention->data->text }}</div>
                         </div>
                         <div class="pull-left">
-                            <img class="img-avatar" src="{{ $mention->user->profile_image_url_https }}" alt="">
+                            <img class="img-avatar" src="{{ $mention->data->user->profile_image_url_https }}" alt="">
                         </div>
                     </div>
                 </a>

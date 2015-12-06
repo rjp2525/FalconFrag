@@ -43,6 +43,7 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
         Route::group(['prefix' => 'twitter'], function () {
             Route::get('/', ['as' => 'admin.social.twitter.index', 'uses' => 'TwitterController@getIndex']);
             Route::get('/{id}', ['as' => 'admin.social.twitter.tweet.view', 'uses' => 'TwitterController@getTweet']);
+            Route::post('/{id}/reply', ['as' => 'admin.social.twitter.tweet.reply', 'uses' => 'TwitterController@replyTweet']);
         });
 
         Route::group(['prefix' => 'theme'], function () {
