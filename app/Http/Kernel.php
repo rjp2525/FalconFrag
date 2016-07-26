@@ -18,6 +18,7 @@ class Kernel extends HttpKernel
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \LucaDegasperi\OAuth2Server\Middleware\OAuthExceptionHandlerMiddleware::class,
+        \Falcon\Http\Middleware\PermittedAddress::class
     ];
 
     /**
@@ -26,19 +27,19 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'csrf' => \Falcon\Http\Middleware\VerifyCsrfToken::class,
-        'auth' => \Falcon\Http\Middleware\Authenticate::class,
+        'csrf'       => \Falcon\Http\Middleware\VerifyCsrfToken::class,
+        'auth'       => \Falcon\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest' => \Falcon\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest'      => \Falcon\Http\Middleware\RedirectIfAuthenticated::class,
 
         // OAuth2
-        'oauth' => \LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware::class,
-        'oauth-owner' => \LucaDegasperi\OAuth2Server\Middleware\OAuthOwnerMiddleware::class,
+        'oauth'                      => \LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware::class,
+        'oauth-owner'                => \LucaDegasperi\OAuth2Server\Middleware\OAuthOwnerMiddleware::class,
         'check-authorization-params' => \LucaDegasperi\OAuth2Server\Middleware\CheckAuthCodeRequestMiddleware::class,
 
         // Roles
-        'role' => \Bican\Roles\Middleware\VerifyRole::class,
+        'role'       => \Bican\Roles\Middleware\VerifyRole::class,
         'permission' => \Bican\Roles\Middleware\VerifyPermission::class,
-        'level' => \Bican\Roles\Middleware\VerifyLevel::class,
+        'level'      => \Bican\Roles\Middleware\VerifyLevel::class
     ];
 }
