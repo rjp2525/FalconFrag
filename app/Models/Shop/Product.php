@@ -7,10 +7,11 @@ use Falcon\Models\Shared\Price;
 use Falcon\Models\Shared\Traits\Reviewable;
 use Falcon\Models\Shop\Category;
 use Falcon\Models\Shop\Option;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use Reviewable;
+    use Reviewable, SoftDeletes;
 
     /**
      * The database table used by the model.

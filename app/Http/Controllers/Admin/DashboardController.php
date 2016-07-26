@@ -2,7 +2,9 @@
 
 namespace Falcon\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use Falcon\Http\Controllers\Controller;
+use Venturecraft\Revisionable\Revision;
 
 class DashboardController extends Controller
 {
@@ -11,9 +13,10 @@ class DashboardController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Revision $revisions)
     {
-        return view('admin.dashboard');
+        $history = $revisions->where('created_at', '>=', Carbon::now()->subDay())->orderBy('created_at', 'desc')->get();
+        return view('admin.dashboard', compact('history'));
     }
 
     /**

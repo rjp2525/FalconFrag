@@ -4,9 +4,13 @@ namespace Falcon\Models\Shop;
 
 use Falcon\Models\Shared\Model;
 use Falcon\Models\Shop\Product;
+use Falcon\Models\Traits\Nestable as NestableTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
+    use NestableTrait, SoftDeletes;
+
     /**
      * The database table used by the model.
      *

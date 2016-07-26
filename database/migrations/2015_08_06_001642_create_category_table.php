@@ -24,6 +24,7 @@ class CreateCategoryTable extends Migration
             $table->string('image_icon')->nullable();
             $table->string('image_main')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
