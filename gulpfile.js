@@ -2,6 +2,8 @@ var gulp = require('gulp')
     imagemin = require('gulp-imagemin')
     elixir = require('laravel-elixir');
 
+//require('laravel-elixir-mjml');
+
 // Minify and compress images
 elixir.extend('images', function(src, dest) {
     // Slight modifications to directories
@@ -38,7 +40,7 @@ elixir.extend('fonts', function(src, dest) {
 });
 
 // Always run in production mode
-//elixir.config.production = true;
+elixir.config.production = true;
 
 // The main Elixir "run" function
 elixir(function(mix) {
@@ -67,15 +69,26 @@ elixir(function(mix) {
             '../bower/easy-pie-chart/dist/jquery.easypiechart.js',
             '../bower/jquery-validation/dist/jquery.validate.js',
             '../bower/jquery.maskedinput/dist/jquery.maskedinput.js',
+            '../bower/bootstrap-treeview/src/js/bootstrap-treeview.js',
+            '../bower/remarkable-bootstrap-notify/dist/bootstrap-notify.js',
+            '../bower/datatables/media/js/jquery.dataTables.js',
+            '../bower/jquery-slimscroll/jquery.slimscroll.js',
             'admin/application.js'
         ], 'public/js/admin/application.js')
+       .scripts('admin/pages/dashboard.js', 'public/js/admin/pages/dashboard.js')
+       .scripts('admin/pages/products/categories.js', 'public/js/admin/pages/products/categories.js')
+       .scripts('admin/pages/products/index.js', 'public/js/admin/pages/products/index.js')
        .images('img/**/*', 'public/img')
        .fonts('fonts/**/*', 'public/fonts')
+       //.mjml('mjml/**/*.mjml', 'resources/views/emails/**/*.blade.php')
        .version([
             'public/css/style.css',
             'public/css/admin.css',
             'public/js/application.js',
-            'public/js/admin/application.js'
+            'public/js/admin/application.js',
+            'public/js/admin/pages/dashboard.js',
+            'public/js/admin/pages/products/categories.js',
+            'public/js/admin/pages/products/index.js'
         ]);
        // Will uncomment later
        //.phpUnit();
