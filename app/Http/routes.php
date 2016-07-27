@@ -104,6 +104,29 @@ Route::group(['prefix' => 'api/v1', 'namespace' => 'Api\V1'], function () {
 
 Route::group(['prefix' => 'account', 'namespace' => 'Client'], function () {
     // Client Area Routes
+    Route::get('/', ['as' => 'client.dashboard', 'uses' => 'DashboardController@index']);
+
+    // Authentication Routes
+    //Route::get('login', ['as' => 'client.auth.login', 'uses' => 'AuthController@login']);
+    //Route::get('register', ['as' => 'client.auth.register', 'uses' => 'AuthController@register']);
+    //Route::get('forgot', ['as' => 'client.auth.forgot', 'uses' => 'AuthController@forgot']);
+    //Route::get('reset/{token}', ['as' => 'client.auth.reset', 'uses' => 'AuthController@reset']); // POST?
+
+    // Support Tickets
+    Route::get('tickets', ['as' => 'client.tickets.index', 'uses' => 'TicketController@index']);
+    Route::get('ticket/{id}', ['as' => 'client.tickets.detail', 'uses' => 'TicketController@detail']);
+
+    Route::get('settings', ['as' => 'client.account.settings', 'uses' => 'AccountController@settings']);
+    Route::get('settings/profile', ['as' => 'client.account.settings.profile', 'uses' => 'AccountController@profile']);
+    Route::get('security', ['as' => 'client.account.security', 'uses' => 'AccountController@security']);
+
+    // Billing Routes
+    Route::get('invoices', ['as' => 'client.invoice.index', 'uses' => 'InvoiceController@index']);
+    Route::get('invoice/{id}', ['as' => 'client.invoice.detail', 'uses' => 'InvoiceController@detail']);
+
+    // Service Routes
+    Route::get('services', ['as' => 'client.service.index', 'uses' => 'ServiceController@index']);
+    Route::get('service/{id}', ['as' => 'client.service.detail', 'uses' => 'ServiceController@detail']);
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
