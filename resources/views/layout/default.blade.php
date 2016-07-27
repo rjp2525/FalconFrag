@@ -103,7 +103,7 @@
                 <a href="#">Privacy Policy</a>
               </li>
               <li>
-                <a href="#">Terms of Service</a>
+                <a href="{{ route('default.legal.tos') }}">Terms of Service</a>
               </li>
             </ul>
           </div>
@@ -159,7 +159,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-sm-12">
-            <span>Copyright &copy; 2013-2015 <a href="{{ route('default.home') }}">Falcon Frag</a>. All Rights Reserved.</span>
+            <span>Copyright &copy; 2013-2016 <a href="{{ route('default.home') }}">Falcon Frag</a>. All Rights Reserved.</span>
           </div>
           <div class="col-md-6 col-sm-12">
             <ul class="legal-links">
@@ -167,7 +167,7 @@
                 <a href="#">Privacy Policy</a>
               </li>
               <li>
-                <a href="#">Terms of Service</a>
+                <a href="{{ route('default.legal.tos') }}">Terms of Service</a>
               </li>
             </ul>
           </div>

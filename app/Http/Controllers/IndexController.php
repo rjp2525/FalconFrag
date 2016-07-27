@@ -37,4 +37,24 @@ class IndexController extends Controller
     {
         return view('default.network');
     }
+
+    /**
+     * Display the static terms of service page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function tos()
+    {
+        return view('default.terms');
+    }
+
+    /**
+     * Display the static privacy policy page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function privacy()
+    {
+        return view('default.privacy');
+    }
 }

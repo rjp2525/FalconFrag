@@ -118,6 +118,8 @@ Route::group(['prefix' => 'help', 'namespace' => 'Help'], function () {
 Route::get('/', ['as' => 'default.home', 'uses' => 'IndexController@index']);
 Route::get('about', ['as' => 'default.about', 'uses' => 'IndexController@about']);
 Route::get('network', ['as' => 'default.network', 'uses' => 'IndexController@network']);
+Route::get('legal/tos', ['as' => 'default.legal.tos', 'uses' => 'IndexController@tos']);
+Route::get('legal/privacy', ['as' => 'default.legal.privacy', 'uses' => 'IndexController@privacy']);
 
 // Catch any routes not defined and display the homepage
 // TODO: Change this to a 404 page
