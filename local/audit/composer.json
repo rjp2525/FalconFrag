@@ -1,0 +1,23 @@
+{
+    "name": "rjp2525/audit",
+    "description": "A security audit and history logging package for Laravel 5.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Reno Philibert",
+            "email": "me@renophilibert.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "~5.0|~5.1"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-4": {
+            "rjp2525\\Audit\\": "src/"
+        }
+    }
+}
