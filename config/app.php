@@ -157,7 +157,7 @@ return [
         HieuLe\Active\ActiveServiceProvider::class,
         Bican\Roles\RolesServiceProvider::class,
         ArtemSchander\L5Modular\ModuleServiceProvider::class,
-        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
         Propaganistas\LaravelPhone\LaravelPhoneServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class
     ],
