@@ -14,7 +14,7 @@
                 <ul class="nav-main">
                     <li>
                         <a href="#" class="active">
-                            <i class="gi gi-view-dashboard gi-fw"></i>
+                            <i class="fa fa-dashboard gi-fw"></i>
                             <span class="sidebar-mini-hide">Dashboard</span>
                         </a>
                     </li>
@@ -23,13 +23,13 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="gi gi-accounts"></i>
+                            <i class="fa fa-users"></i>
                             <span class="sidebar-mini-hide">View Clients</span>
                         </a>
                     </li>
                     <li>
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#">
-                            <i class="gi gi-format-list-bulleted"></i>
+                            <i class="fa fa-list"></i>
                             <span class="sidebar-mini-hide">Products &amp; Services</span>
                         </a>
                         <ul>
@@ -49,7 +49,7 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="gi gi-email"></i>
+                            <i class="fa fa-envelope"></i>
                             <span class="sidebar-mini-hide">Email Clients</span>
                         </a>
                     </li>
@@ -58,7 +58,7 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.social.twitter.index') }}">
-                            <i class="gi gi-twitter"></i>
+                            <i class="fa fa-twitter"></i>
                             <span class="sidebar-mini-hide">Twitter</span>
                         </a>
                     </li>

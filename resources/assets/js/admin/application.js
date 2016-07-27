@@ -59,13 +59,13 @@ var app = function() {
         var $resizeTimeout;
 
         if ($lMain.length) {
-            uiHandleMain();
+            resizeMain();
 
             jQuery(window).on('resize orientationchange', function(){
                 clearTimeout($resizeTimeout);
 
                 $resizeTimeout = setTimeout(function(){
-                    uiHandleMain();
+                    resizeMain();
                 }, 150);
             });
         }

@@ -26,5 +26,6 @@
         </div>
     </div>
     {!! HTML::script(elixir('js/admin/application.js')) !!}
+    @yield('scripts')
 </body>
 </html>

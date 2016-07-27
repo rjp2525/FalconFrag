@@ -35,15 +35,26 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
     });
 
     // Admin Panel
-    Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
         // Admin panel routes
-        Route::get('dash', ['as' => 'admin.dashboard', 'uses' => 'DashboardController@index']);
+        Route::get('/', ['as' => 'admin.dashboard', 'uses' => 'DashboardController@index']);
         Route::get('clients', ['as' => 'admin.clients.index', 'uses' => 'ClientController@index']);
+        Route::get('products', ['as' => 'admin.products.index', 'uses' => 'ProductController@getProducts']);
+        Route::get('products/categories', ['as' => 'admin.products.categories', 'uses' => 'ProductController@getCategories']);
+        Route::post('products/categories', ['as' => 'admin.products.categories.create', 'uses' => 'ProductController@createCategory']);
+        Route::post('products/categories/{id}/edit', ['as' => 'admin.products.categories.edit', 'uses' => 'ProductController@editCategory']);
+        Route::get('products/categories/{id}/edit', ['as' => 'admin.products.categories.edit.modal', 'uses' => 'ProductController@getEditCategory']);
+        Route::post('products/categories/{id}/delete', ['as' => 'admin.products.categories.delete', 'uses' => 'ProductController@deleteCategory']);
 
         Route::group(['prefix' => 'twitter'], function () {
             Route::get('/', ['as' => 'admin.social.twitter.index', 'uses' => 'TwitterController@getIndex']);
             Route::get('/{id}', ['as' => 'admin.social.twitter.tweet.view', 'uses' => 'TwitterController@getTweet']);
             Route::post('/{id}/reply', ['as' => 'admin.social.twitter.tweet.reply', 'uses' => 'TwitterController@replyTweet']);
+        });
+
+        Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
+            Route::get('products/categories', 'ProductController@getProductCategories');
+            Route::get('products/category/{id}', 'ProductController@getProductCategory');
         });
 
         Route::group(['prefix' => 'theme'], function () {
@@ -63,9 +74,9 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
     });
 
     // All primary routes
-    Route::get('/', ['as' => 'default.home', 'uses' => 'HomeController@index']);
+    //Route::get('/', ['as' => 'default.home', 'uses' => 'HomeController@index']);
 
-    Route::get('about', ['as' => 'default.about', 'uses' => 'HomeController@about']);
+    //Route::get('about', ['as' => 'default.about', 'uses' => 'HomeController@about']);
 
     Route::get('edit', ['as' => 'client.edit', 'uses' => 'Auth\AuthController@getEdit']);
     Route::post('edit', ['as' => 'client.edit.submit', 'uses' => 'Auth\AuthController@postEdit']);
@@ -85,15 +96,31 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
     });
 });
 
-// Primary domain routes
-Route::group(['domain' => 'falconfrag.com'], function () {
-    // Catch all urls on main domain, return coming soon
-    Route::any('{path?}', function () {
-        return view('welcome');
-    })->where('path', '.+');
+// ------------------------------------------------------------------------------------------------------
+
+Route::group(['prefix' => 'api/v1', 'namespace' => 'Api\V1'], function () {
+    // API Routes
 });
 
-// Default site homepage
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'account', 'namespace' => 'Client'], function () {
+    // Client Area Routes
 });
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    // Admin Panel Routes
+});
+
+Route::group(['prefix' => 'help', 'namespace' => 'Help'], function () {
+    // Support Routes
+    Route::get('/', ['as' => 'help.index', 'uses' => 'IndexController@index']);
+});
+
+Route::get('/', ['as' => 'default.home', 'uses' => 'IndexController@index']);
+Route::get('about', ['as' => 'default.about', 'uses' => 'IndexController@about']);
+Route::get('network', ['as' => 'default.network', 'uses' => 'IndexController@network']);
+
+// Catch any routes not defined and display the homepage
+// TODO: Change this to a 404 page
+Route::any('{path?}', function () {
+    return view('welcome');
+})->where('path', '.+');

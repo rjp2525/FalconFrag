@@ -62,8 +62,8 @@
                     <h3 class="block-title">Weekly Overview</h3>
                 </div>
                 <div class="block-content block-content-full bg-gray-lighter text-center">
-                    <div style="height: 374px;">
-                        <canvas class="js-dash-chartjs-lines"></canvas>
+                    <div style="height: 425px;">
+                        <canvas class="dashboard-income-chart"></canvas>
                     </div>
                 </div>
                 <div class="block-content text-center">
@@ -191,6 +191,54 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="block">
+                <div class="block-header">
+                    <ul class="block-options">
+                        <li>
+                            <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo">
+                                <i class="gi gi-refresh"></i>
+                            </button>
+                        </li>
+                    </ul>
+                    <h3 class="block-title">Security <small class="text-muted">({{ count($history) }} audits in the past 24 hours)</small></h3>
+                </div>
+                <div class="block-content">
+                <div class="block-content block-content-full">
+                    <div data-toggle="slimscroll">
+                        <ul class="list list-activity push">
+                            @forelse($history as $item)
+                                <li>
+                                    @if($item->key == 'created_at' && !$item->old_value)
+                                        <i class="fa fa-plus text-success"></i>
+                                        <div class="font-w600">{{ $item->userResponsible()->name or 'System' }} created a resource</div>
+                                        <div><a href="javascript:void(0)">{{ $item->revisionable_type }}</a></div>
+                                        <div><small title="{{ $item->created_at }}" class="text-muted">{{ $item->created_at->diffForHumans() }}</small></div>
+                                    @elseif($item->key == 'deleted_at' || is_null($item->new_value))
+                                        <i class="fa fa-times text-danger"></i>
+                                        <div class="font-w600">{{ $item->userResponsible()->name or 'System' }} deleted a resource</div>
+                                        <div><a href="javascript:void(0)">{{ $item->revisionable_type }}</a></div>
+                                        <div><small title="{{ $item->created_at }}" class="text-muted">{{ $item->created_at->diffForHumans() }}</small></div>
+                                    @else
+                                        <i class="fa fa-pencil text-primary"></i>
+                                        <div class="font-w600">{{ $item->userResponsible()->name or 'System' }} edited a resource</div>
+                                        <div><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="" data-original-title="Modified '{{ $item->fieldName() }}' field">{{ $item->revisionable_type }}</a></div>
+                                        <div><small title="{{ $item->created_at }}" class="text-muted">{{ $item->created_at->diffForHumans() }}</small></div>
+                                    @endif
+                                </li>
+                            @empty
+                                <li>
+                                    <i class="fa fa-exclamation-triangle text-warning"></i>
+                                    <div class="font-w600">No history available for the past 24 hours.</div>
+                                </li>
+                            @endforelse
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -360,4 +408,8 @@
         </div>
     </div>
 </div>
+@stop
+
+@section('scripts')
+{!! HTML::script(elixir('js/admin/pages/dashboard.js')) !!}
 @stop

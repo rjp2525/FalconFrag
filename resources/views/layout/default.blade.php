@@ -10,6 +10,7 @@
     <meta name="description" content="">
 
     {!! HTML::style(elixir('css/style.css')) !!}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body {!! Active::route('default.home', 'class="homepage"') !!}>
   <nav class="navbar navbar-default navbar-fixed-top down" role="navigation">
@@ -18,11 +19,11 @@
               <div class="row">
                   <div class="col-md-6 col-md-offset-6 text-right">
                       <ul class="header-top-links">
-                          <li><a href="#">Network Status</a></li>
-                          <li><a href="#">Support</a></li>
+                          <li><a href="{{ route('default.network') }}">Network Status</a></li>
+                          <li><a href="{{ route('help.index') }}">Support</a></li>
                           <li><a href="#">Client Portal</a></li>
                           <li><a href="#">Partners</a></li>
-                          <li><a href="#">Contact</a></li>
+                          <li><a href="{{ route('help.index') }}">Contact</a></li>
                       </ul>
                   </div>
               </div>
@@ -65,11 +66,11 @@
                         @endforelse
                       </ul>
                   </li>
-                  <li>
-                      <a href="#">Network</a>
+                  <li {!! Active::route('default.network', 'class="active"') !!}>
+                      <a href="{{ route('default.network') }}">Network</a>
                   </li>
-                  <li>
-                      <a href="#">Community</a>
+                  <li {!! Active::route('help.index', 'class="active"') !!}>
+                      <a href="{{ route('help.index') }}">Support</a>
                   </li>
               </ul>
           </div>
@@ -176,5 +177,13 @@
   </footer>
 
   {!! HTML::script(elixir('js/application.js')) !!}
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-41551742-3', 'auto');
+    ga('send', 'pageview');
+  </script>
 </body>
 </html>
