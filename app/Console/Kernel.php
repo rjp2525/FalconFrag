@@ -26,6 +26,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('cache:tweets')->cron('*/2 * * * *')->appendOutputTo(storage_path('logs/tweets.log'));
+        // $schedule->command('cache:tweets')->cron('*/2 * * * *')->appendOutputTo(storage_path('logs/tweets.log'));
     }
 }
