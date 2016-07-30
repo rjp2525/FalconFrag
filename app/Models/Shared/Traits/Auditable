@@ -1,0 +1,88 @@
+<?php
+
+namespace Falcon\Models\Shared\Traits;
+
+trait Auditable
+{
+    /**
+     * The data before it was updated
+     *
+     * @var array
+     */
+    private $original_data;
+
+    /**
+     * The new data after being updated
+     *
+     * @var array
+     */
+    private $updated_data;
+
+    /**
+     * Whether or not the data is being updated
+     *
+     * @var bool
+     */
+    private $updating;
+
+    /**
+     * The data that won't be kept
+     *
+     * @var array
+     */
+    private $dont_keep = array();
+
+    /**
+     * The data that will be kept
+     *
+     * @var array
+     */
+    private $do_keep = array();
+
+    /**
+     * The list of values that have been updated
+     *
+     * @var array
+     */
+    protected $dirty_data = array();
+
+    /**
+     * Ensure that the bootAuditableTrait is only called if the current
+     * installation is Laravel 4, since Laravel 5 will call it automatically
+     *
+     * @return mixed
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        if(!method_exists(get_called_classes(), 'bootTraits')) {
+            static::bootAuditableTrait();
+        }
+    }
+
+    /**
+     * Creates the event listeners for saving and saved events.
+     *
+     * @return void
+     */
+    public static function bootAuditableTrait()
+    {
+        static::saving(function($model) {
+            $model->preSave();
+        });
+
+        static::saved(function ($model) {
+            $model->postSave();
+        });
+
+        static::created(function($model){
+            $model->postCreate();
+        });
+
+        static::deleted(function ($model) {
+            $model->preSave();
+            $model->postDelete();
+        });
+    }
+}
