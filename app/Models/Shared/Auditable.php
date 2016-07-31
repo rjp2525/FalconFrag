@@ -70,7 +70,7 @@ class Auditable extends Model
      * This allows revisions to be saved whenever a save is made,
      * regardless of the HTTP method.
      *
-     * @return [type]
+     * @return void
      */
     public static function boot()
     {
@@ -125,7 +125,7 @@ class Auditable extends Model
                 }
             }
 
-            // This is ugly, but required to safe the standard model.
+            // This is ugly, but required to save the standard model.
             // Then store the keep/dont_keep values for use later in the isAuditable method
             $this->dont_keep = isset($this->exempt_audits) ? $this->exempt_audits + $this->dont_keep : $this->dont_keep;
             $this->do_keep = isset($this->enabled_audits) ? $this->enabled_audits + $this->do_keep : $this->do_keep;
