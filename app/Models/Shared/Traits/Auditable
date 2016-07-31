@@ -2,6 +2,8 @@
 
 namespace Falcon\Models\Shared\Traits;
 
+use Falcon\Models\Audit;
+
 trait Auditable
 {
     /**
@@ -84,5 +86,15 @@ trait Auditable
             $model->preSave();
             $model->postDelete();
         });
+    }
+
+    /**
+     * Returns the audit history for an item
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function history()
+    {
+        return $this->morphMany(Audit::class, 'auditable');
     }
 }
