@@ -97,4 +97,52 @@ trait Auditable
     {
         return $this->morphMany(Audit::class, 'auditable');
     }
+
+    /**
+     * Generates a list of the last $limit audits made to any objects of
+     * the class that the method is being called from.
+     *
+     * @param  int    $limit
+     * @param  string $order
+     * @return mixed
+     */
+    public function classHistory($limit = 100, $order = 'desc')
+    {
+        return Audit::where('auditable_type', get_called_class())
+            ->orderBy('updated_at', $order)->limit($limit)->get();
+    }
+
+    /**
+     * Invoked before a models is saved, returns false to abort the operation
+     *
+     * @return bool
+     */
+    public function preSave()
+    {
+        // If there is no auditEnabled, or if there is make sure it's true
+        if (!isset($this->auditing_enabled) || $this->auditing_enabled) {
+            $this->original_data = $this->original;
+            $this->updated_data = $this->attributes;
+
+            // Can only safely compare basic items, so for now
+            // just drop any object based items (such as DateTime)
+            foreach ($this->updated_data as $k => $v) {
+                if (gettype($v) == 'object' && !method_exists($v, '__toString')) {
+                    unset($this->original_data[$k]);
+                    unset($this->updated_data[$k]);
+                }
+            }
+
+            // This is ugly, but required to safe the standard model.
+            // Then store the keep/dont_keep values for use later in the isAuditable method
+            $this->dont_keep = isset($this->exempt_audits) ? $this->exempt_audits + $this->dont_keep : $this->dont_keep;
+            $this->do_keep = isset($this->enabled_audits) ? $this->enabled_audits + $this->do_keep : $this->do_keep;
+
+            unset($this->attributes['exempt_audits']);
+            unset($this->attributes['enabled_audits']);
+
+            $this->dirty_data = $this->getDirtyData();
+            $this->updating = $this->exists();
+        }
+    }
 }
