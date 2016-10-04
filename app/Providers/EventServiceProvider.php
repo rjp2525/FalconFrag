@@ -2,8 +2,8 @@
 
 namespace Falcon\Providers;
 
-use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -14,8 +14,8 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'Falcon\Events\SomeEvent' => [
-            'Falcon\Listeners\EventListener',
-        ],
+            'Falcon\Listeners\EventListener'
+        ]
     ];
 
     /**
@@ -24,10 +24,8 @@ class EventServiceProvider extends ServiceProvider
      * @param  \Illuminate\Contracts\Events\Dispatcher  $events
      * @return void
      */
-    public function boot(DispatcherContract $events)
+    public function boot()
     {
-        parent::boot($events);
-
-        //
+        parent::boot();
     }
 }

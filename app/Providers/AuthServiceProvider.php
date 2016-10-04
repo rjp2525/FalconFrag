@@ -2,8 +2,8 @@
 
 namespace Falcon\Providers;
 
-use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -19,11 +19,10 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * Register any application authentication / authorization services.
      *
-     * @param  \Illuminate\Contracts\Auth\Access\Gate $gate
      * @return void
      */
-    public function boot(GateContract $gate)
+    public function boot()
     {
-        $this->registerPolicies($gate);
+        $this->registerPolicies();
     }
 }

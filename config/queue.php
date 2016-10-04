@@ -14,7 +14,7 @@ return [
     | Supported: "null", "sync", "database", "beanstalkd",
     |            "sqs", "iron", "redis"
     |
-    */
+     */
 
     'default' => env('QUEUE_DRIVER', 'sync'),
 
@@ -27,26 +27,26 @@ return [
     | is used by your application. A default configuration has been added
     | for each back-end shipped with Laravel. You are free to add more.
     |
-    */
+     */
 
     'connections' => [
 
         'sync' => [
-            'driver' => 'sync',
+            'driver' => 'sync'
         ],
 
         'database' => [
             'driver' => 'database',
-            'table' => 'jobs',
-            'queue' => 'default',
-            'expire' => 60,
+            'table'  => 'jobs',
+            'queue'  => 'default',
+            'expire' => 60
         ],
 
         'beanstalkd' => [
             'driver' => 'beanstalkd',
             'host'   => 'localhost',
             'queue'  => 'default',
-            'ttr'    => 60,
+            'ttr'    => 60
         ],
 
         'sqs' => [
@@ -54,7 +54,7 @@ return [
             'key'    => 'your-public-key',
             'secret' => 'your-secret-key',
             'queue'  => 'your-queue-url',
-            'region' => 'us-east-1',
+            'region' => 'us-east-1'
         ],
 
         'iron' => [
@@ -63,15 +63,15 @@ return [
             'token'   => 'your-token',
             'project' => 'your-project-id',
             'queue'   => 'your-queue-name',
-            'encrypt' => true,
+            'encrypt' => true
         ],
 
         'redis' => [
-            'driver' => 'redis',
+            'driver'     => 'redis',
             'connection' => 'default',
-            'queue'  => 'default',
-            'expire' => 60,
-        ],
+            'queue'      => 'default',
+            'expire'     => 60
+        ]
 
     ],
 
@@ -84,10 +84,11 @@ return [
     | can control which database and table are used to store the jobs that
     | have failed. You may change them to any database / table you wish.
     |
-    */
+     */
 
     'failed' => [
-        'database' => 'mysql', 'table' => 'failed_jobs',
-    ],
+        'database' => env('DB_CONNECTION', 'mysql'),
+        'table'    => 'failed_jobs'
+    ]
 
 ];

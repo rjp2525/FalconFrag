@@ -28,4 +28,14 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('cache:tweets')->cron('*/2 * * * *')->appendOutputTo(storage_path('logs/tweets.log'));
     }
+
+    /**
+     * Register the Closure based commands for the application.
+     *
+     * @return void
+     */
+    protected function commands()
+    {
+        require base_path('routes/console.php');
+    }
 }

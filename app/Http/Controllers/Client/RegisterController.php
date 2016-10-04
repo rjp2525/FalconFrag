@@ -2,31 +2,48 @@
 
 namespace Falcon\Http\Controllers\Client;
 
-use Auth;
 use Falcon\Http\Controllers\Controller;
 use Falcon\Models\Account\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Validator;
 
-class AuthController extends Controller
+class RegisterController extends Controller
 {
-    use AuthenticatesUsers, RegistersUsers;
+    /*
+    |--------------------------------------------------------------------------
+    | Register Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+     */
+
+    use RegistersUsers;
 
     /**
-     * Create a new authentication controller instance.
+     * Where to redirect users after login / registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/home';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => ['getLogout', 'history']]);
+        $this->middleware('guest');
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param array $data
-     *
+     * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -34,15 +51,14 @@ class AuthController extends Controller
         return Validator::make($data, [
             'name'     => 'required|max:255',
             'email'    => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6'
+            'password' => 'required|min:6|confirmed'
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param array $data
-     *
+     * @param  array  $data
      * @return User
      */
     protected function create(array $data)
@@ -52,47 +68,6 @@ class AuthController extends Controller
             'email'    => $data['email'],
             'password' => bcrypt($data['password'])
         ]);
-    }
-
-    /**
-     * Show the application register form.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getRegister()
-    {
-        return view('client.auth.register');
-    }
-
-    /**
-     * Get the path to the login route.
-     *
-     * @return string
-     */
-    public function loginPath()
-    {
-        return route('client.auth.login');
-    }
-
-    /**
-     * Log the user out of the application.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getLogout()
-    {
-        Auth::logout();
-        return redirect()->route('client.login');
-    }
-
-    /**
-     * Get the post register / login redirect path.
-     *
-     * @return string
-     */
-    public function redirectPath()
-    {
-        return route('client.overview');
     }
 
     /**
@@ -116,12 +91,5 @@ class AuthController extends Controller
         }
 
         return 'Confirm your account';
-    }
-
-    public function history()
-    {
-        //$accounts = User::all()->revisionHistory;
-        //dd(Auth::user()->revisionHistory());
-        return view('auth.history');
     }
 }

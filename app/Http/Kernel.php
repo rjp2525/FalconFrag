@@ -12,13 +12,29 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-        \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-        \Falcon\Http\Middleware\EncryptCookies::class,
-        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-        \Illuminate\Session\Middleware\StartSession::class,
-        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        \LucaDegasperi\OAuth2Server\Middleware\OAuthExceptionHandlerMiddleware::class,
-        \Falcon\Http\Middleware\PermittedAddress::class
+        \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class
+    ];
+
+    /**
+     * The application's route middleware groups.
+     *
+     * @var array
+     */
+    protected $middlewareGroups = [
+        'web' => [
+            \Falcon\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \LucaDegasperi\OAuth2Server\Middleware\OAuthExceptionHandlerMiddleware::class,
+            //\Falcon\Http\Middleware\VerifyCsrfToken::class,
+            \Falcon\Http\Middleware\PermittedAddress::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class
+        ],
+        'api' => [
+            'throttle:60,1',
+            'bindings'
+        ]
     ];
 
     /**
@@ -30,7 +46,10 @@ class Kernel extends HttpKernel
         'csrf'       => \Falcon\Http\Middleware\VerifyCsrfToken::class,
         'auth'       => \Falcon\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'   => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'guest'      => \Falcon\Http\Middleware\RedirectIfAuthenticated::class,
+        'can'        => \Illuminate\Auth\Middleware\Authorize::class,
+        'throttle'   => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
         // OAuth2
         'oauth'                      => \LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware::class,

@@ -13,7 +13,7 @@ return [
     |
      */
 
-    'default' => env('BROADCAST_DRIVER', 'pusher'),
+    'default' => env('BROADCAST_DRIVER', 'null'),
 
     /*
     |--------------------------------------------------------------------------
@@ -49,6 +49,10 @@ return [
             'base_url'   => env('PUSHSTREAM_URL', 'http://localhost'),
             'access_key' => md5('foo'),
             'cert'       => null
+        ],
+
+        'null' => [
+            'driver' => 'null'
         ]
 
     ]

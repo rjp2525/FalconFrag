@@ -23,15 +23,15 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
         // Client panel routes
         Route::get('/', ['as' => 'client.index', 'uses' => 'HomeController@index']);
 
-        Route::get('register', ['as' => 'client.register', 'uses' => 'AuthController@getRegister']);
-        Route::post('register', ['as' => 'client.register.submit', 'uses' => 'AuthController@postRegister']);
-        Route::get('login', ['as' => 'client.login', 'uses' => 'AuthController@getLogin']);
-        Route::post('login', ['as' => 'client.login.submit', 'uses' => 'AuthController@postLogin']);
-        Route::get('confirm/{token?}', ['as' => 'client.confirm', 'uses' => 'AuthController@getConfirm']);
-        Route::get('logout', ['as' => 'client.logout', 'uses' => 'AuthController@getLogout']);
+        Route::get('register', ['as' => 'client.register', 'uses' => 'RegisterController@showRegisterForm']);
+        Route::post('register', ['as' => 'client.register.submit', 'uses' => 'RegisterController@register']);
+        Route::get('login', ['as' => 'client.login', 'uses' => 'LoginController@showLoginForm']);
+        Route::post('login', ['as' => 'client.login.submit', 'uses' => 'LoginController@login']);
+        Route::get('confirm/{token?}', ['as' => 'client.confirm', 'uses' => 'RegisterController@getConfirm']);
+        Route::get('logout', ['as' => 'client.logout', 'uses' => 'LoginController@logout']);
 
         Route::get('overview', ['as' => 'client.overview', 'uses' => 'HomeController@index']);
-        Route::get('history', ['as' => 'client.home', 'uses' => 'AuthController@history']);
+        Route::get('history', ['as' => 'client.home', 'uses' => 'LoginController@history']);
     });
 
     // Admin Panel
@@ -136,6 +136,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 Route::group(['prefix' => 'help', 'namespace' => 'Help'], function () {
     // Support Routes
     Route::get('/', ['as' => 'help.index', 'uses' => 'IndexController@index']);
+});
+
+Route::group(['prefix' => 'community', 'namespace' => ' Community'], function () {
+    // Community area
 });
 
 Route::get('/', ['as' => 'default.home', 'uses' => 'IndexController@index']);
