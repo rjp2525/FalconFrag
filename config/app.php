@@ -165,14 +165,12 @@ return [
          */
         Collective\Html\HtmlServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
-        LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
-        LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Bican\Roles\RolesServiceProvider::class,
         ArtemSchander\L5Modular\ModuleServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
-        Propaganistas\LaravelPhone\LaravelPhoneServiceProvider::class,
+        Propaganistas\LaravelPhone\PhoneServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
 
         /*

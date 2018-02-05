@@ -15,7 +15,6 @@ Route::group(['domain' => 'alpha.falconfrag.com'], function () {
         });
 
         Route::get('/', ['as' => 'api.v1.index', 'uses' => 'BaseController@index']);
-        Route::post('oauth/access_token', ['as' => 'api.v1.oauth.access_token', 'uses' => 'OAuthController@issueToken']);
     });
 
     // Client Panel

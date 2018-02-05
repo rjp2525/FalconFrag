@@ -7,7 +7,6 @@
 /public/img
 /public/fonts
 .env
-composer.lock
 sftp-config.json
 npm-debug.log
 .flooignore

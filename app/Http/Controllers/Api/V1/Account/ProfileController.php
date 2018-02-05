@@ -4,7 +4,6 @@ namespace Falcon\Http\Controllers\Api\V1\Account;
 
 use Falcon\Http\Controllers\Controller;
 use Falcon\Models\Account\User;
-use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 
 class ProfileController extends Controller
 {
@@ -15,6 +14,8 @@ class ProfileController extends Controller
      */
     public function getProfile()
     {
-        return response()->json(User::find(Authorizer::getResourceOwnerId()));
+        // Return a basic message since we removed LucaDegasperi\OAuth2Server
+        //return response()->json(User::find(Authorizer::getResourceOwnerId()));
+        return response()->json(['message' => 'Pending OAuth2 refactor, please check back again soon.']);
     }
 }
