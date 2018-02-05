@@ -12,7 +12,7 @@
     {!! HTML::style(elixir('css/style.css')) !!}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
-<body {!! Active::route('default.home', 'class="homepage"') !!}>
+<body {!! (if_route(['default.home']) ? 'class="homepage"' : ''); !!}>
   <nav class="navbar navbar-default navbar-fixed-top down" role="navigation">
       <div class="header-top">
           <div class="container">
@@ -44,13 +44,13 @@
           </div>
           <div class="collapse navbar-collapse" id="navbar">
               <ul class="nav navbar-nav navbar-right">
-                  <li {!! Active::route('default.home', 'class="active"') !!}>
+                  <li {!! (if_route(['default.home']) ? 'class="active"' : ''); !!}>
                       <a href="{{ route('default.home') }}">Home</a>
                   </li>
-                  <li {!! Active::route('default.about', 'class="active"') !!}>
+                  <li {!! (if_route(['default.about']) ? 'class="active"' : ''); !!}>
                       <a href="{{ route('default.about') }}">About</a>
                   </li>
-                  <li class="dropdown {!! Active::route(['product.index', 'product.category', 'product.detail']) !!}">
+                  <li class="dropdown {!! (if_route(['product.index', 'product.category', 'product.detail']) ? 'class="active"' : ''); !!}">
                       <a href="{{ route('product.index') }}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
                           Hosting Services <span class="caret"></span>
                       </a>
@@ -66,10 +66,10 @@
                         @endforelse
                       </ul>
                   </li>
-                  <li {!! Active::route('default.network', 'class="active"') !!}>
+                  <li {!! (if_route(['default.network']) ? 'class="active"' : ''); !!}>
                       <a href="{{ route('default.network') }}">Network</a>
                   </li>
-                  <li {!! Active::route('help.index', 'class="active"') !!}>
+                  <li {!! (if_route(['help.index']) ? 'class="active"' : ''); !!}>
                       <a href="{{ route('help.index') }}">Support</a>
                   </li>
               </ul>
