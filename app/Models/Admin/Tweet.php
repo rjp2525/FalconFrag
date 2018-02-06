@@ -28,6 +28,17 @@ class Tweet extends Model
     protected $casts = ['data' => 'object'];
 
     /**
+     * Get the data attribute as an object instead of a string.
+     *
+     * @param  string $value
+     * @return object
+     */
+    public function getDataAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    /**
      * Check if a specific tweet exists in the database.
      *
      * @param  int $id

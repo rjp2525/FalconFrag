@@ -19,14 +19,15 @@
     <div class="row">
         <div class="col-lg-12">
             @forelse($mentions as $mention)
+                <?php $d = json_decode($mention->data); ?>
                 <a class="block block-rounded block-link-hover3" href="{{ route('admin.social.twitter.tweet.view', $mention->id) }}">
                     <div class="block-content block-content-full clearfix">
                         <div class="text-right pull-right push-10-t">
-                            <div class="font-w600 push-5">{{ $mention->data->user->name }} <small><i>{{ $mention->data->user->screen_name }}</i></small></div>
-                            <div class="text-muted">{{ $mention->data->text }}</div>
+                            <div class="font-w600 push-5">{{ $d->user->name }} <small><i>{{ $d->user->screen_name }}</i></small></div>
+                            <div class="text-muted">{{ $d->text }}</div>
                         </div>
                         <div class="pull-left">
-                            <img class="img-avatar" src="{{ $mention->data->user->profile_image_url_https }}" alt="">
+                            <img class="img-avatar" src="{{ $d->user->profile_image_url_https }}" alt="{{ $d->user->name }}">
                         </div>
                     </div>
                 </a>

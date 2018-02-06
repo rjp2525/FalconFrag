@@ -17,7 +17,7 @@ class TwitterController extends Controller
      */
     public function getIndex(Tweet $tweets)
     {
-        $mentions = $tweets->all();
+        $mentions = $tweets->get();
         return view('admin.twitter.index', compact('mentions'));
     }
 
